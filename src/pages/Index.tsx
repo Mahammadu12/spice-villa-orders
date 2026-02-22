@@ -148,15 +148,47 @@ const Index = () => {
             <p className="text-muted-foreground mb-10 max-w-md mx-auto text-lg">
               {t("Beställ dina favoriter direkt via Uber Eats, Foodora eller Qopla och njut hemma.", "Order your favorites via Uber Eats, Foodora or Qopla and enjoy at home.")}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-primary-foreground px-12 py-4 rounded-lg font-semibold text-base hover:bg-primary/90 transition-colors shadow-lg">
-                {t("Beställ via Uber Eats", "Order via Uber Eats")}
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-stretch">
+              {/* Uber Eats */}
+              <a
+                href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(152,69%,41%)]/50 hover:shadow-xl hover:shadow-[hsl(152,69%,41%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]"
+              >
+                <svg viewBox="0 0 200 30" className="h-6 w-auto" fill="none">
+                  <text x="0" y="24" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="26" fill="#06C167">Uber</text>
+                  <text x="72" y="24" fontFamily="Arial, sans-serif" fontWeight="400" fontSize="26" fill="currentColor" className="text-foreground">Eats</text>
+                </svg>
+                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">
+                  {t("Beställ nu →", "Order now →")}
+                </span>
               </a>
-              <a href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2" target="_blank" rel="noopener noreferrer" className="inline-block bg-[hsl(338,90%,46%)] text-white px-12 py-4 rounded-lg font-semibold text-base hover:bg-[hsl(338,90%,40%)] transition-colors shadow-lg">
-                {t("Beställ via Foodora", "Order via Foodora")}
+
+              {/* Foodora */}
+              <a
+                href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(338,90%,46%)]/50 hover:shadow-xl hover:shadow-[hsl(338,90%,46%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]"
+              >
+                <span className="text-2xl font-bold tracking-tight" style={{ color: '#D70F64' }}>foodora</span>
+                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">
+                  {t("Beställ nu →", "Order now →")}
+                </span>
               </a>
-              <a href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order" target="_blank" rel="noopener noreferrer" className="inline-block bg-[hsl(142,70%,35%)] text-white px-12 py-4 rounded-lg font-semibold text-base hover:bg-[hsl(142,70%,30%)] transition-colors shadow-lg">
-                {t("Beställ via Qopla", "Order via Qopla")}
+
+              {/* Qopla */}
+              <a
+                href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(142,70%,45%)]/50 hover:shadow-xl hover:shadow-[hsl(142,70%,45%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]"
+              >
+                <span className="text-2xl font-bold tracking-tight" style={{ color: '#2DB84B' }}>Qopla</span>
+                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">
+                  {t("Beställ nu →", "Order now →")}
+                </span>
               </a>
             </div>
           </motion.div>
