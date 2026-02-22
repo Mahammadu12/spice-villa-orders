@@ -38,9 +38,17 @@ const Header = () => {
             href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary text-primary-foreground px-5 py-2 rounded text-sm font-semibold hover:bg-primary/90 transition-colors"
+            className="bg-primary text-primary-foreground px-4 py-2 rounded text-sm font-semibold hover:bg-primary/90 transition-colors"
           >
-            Beställ via Uber Eats
+            Uber Eats
+          </a>
+          <a
+            href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[hsl(338,90%,46%)] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-[hsl(338,90%,40%)] transition-colors"
+          >
+            Foodora
           </a>
         </nav>
 
@@ -76,6 +84,14 @@ const Header = () => {
             className="block text-center bg-primary text-primary-foreground px-5 py-3 rounded text-sm font-semibold hover:bg-primary/90 transition-colors"
           >
             Beställ via Uber Eats
+          </a>
+          <a
+            href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-center bg-[hsl(338,90%,46%)] text-white px-5 py-3 rounded text-sm font-semibold hover:bg-[hsl(338,90%,40%)] transition-colors"
+          >
+            Beställ via Foodora
           </a>
         </nav>
       )}
