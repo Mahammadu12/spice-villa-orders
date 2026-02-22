@@ -168,12 +168,20 @@ const Contact = () => {
                 Beställ via Uber Eats
               </a>
               <a
-                href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+                href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block bg-[hsl(338,90%,46%)] text-white px-6 py-3 rounded font-semibold text-sm text-center hover:bg-[hsl(338,90%,40%)] transition-colors"
               >
                 Beställ via Foodora
+              </a>
+              <a
+                href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-[hsl(142,70%,35%)] text-white px-6 py-3 rounded font-semibold text-sm text-center hover:bg-[hsl(142,70%,30%)] transition-colors"
+              >
+                Beställ via Qopla
               </a>
             </div>
           </motion.div>

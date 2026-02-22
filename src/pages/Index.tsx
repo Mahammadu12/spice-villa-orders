@@ -207,7 +207,7 @@ const Index = () => {
               Sugen? Beställ Nu!
             </h2>
             <p className="text-muted-foreground mb-10 max-w-md mx-auto text-lg">
-              Beställ dina favoriter direkt via Uber Eats eller Foodora och njut hemma.
+              Beställ dina favoriter direkt via Uber Eats, Foodora eller Qopla och njut hemma.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -219,12 +219,20 @@ const Index = () => {
                 Beställ via Uber Eats
               </a>
               <a
-                href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+                href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-[hsl(338,90%,46%)] text-white px-12 py-4 rounded-lg font-semibold text-base hover:bg-[hsl(338,90%,40%)] transition-colors shadow-lg"
               >
                 Beställ via Foodora
+              </a>
+              <a
+                href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[hsl(142,70%,35%)] text-white px-12 py-4 rounded-lg font-semibold text-base hover:bg-[hsl(142,70%,30%)] transition-colors shadow-lg"
+              >
+                Beställ via Qopla
               </a>
             </div>
           </motion.div>
