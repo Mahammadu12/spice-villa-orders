@@ -11,6 +11,7 @@ import Lunch from "./pages/Lunch";
 import Contact from "./pages/Contact";
 
 import Catering from "./pages/Catering";
+import Iftar from "./pages/Iftar";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/kontakt" element={<Contact />} />
             <Route path="/bokning" element={<Contact />} />
             <Route path="/catering" element={<Catering />} />
+            <Route path="/iftar" element={<Iftar />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
