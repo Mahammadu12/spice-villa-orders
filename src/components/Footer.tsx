@@ -17,8 +17,9 @@ const Footer = () => {
 
           <div className="text-center md:text-left">
             <h4 className="font-serif text-lg text-foreground mb-3">Öppettider</h4>
-            <p className="text-muted-foreground text-sm">Mån–Fre: 11:00 – 21:00</p>
-            <p className="text-muted-foreground text-sm">Lör–Sön: 12:00 – 21:00</p>
+            <p className="text-muted-foreground text-sm">Mån–Fre: 11:00 – 22:00</p>
+            <p className="text-muted-foreground text-sm">Lör: 12:00 – 22:00</p>
+            <p className="text-muted-foreground text-sm">Sön: 12:00 – 21:00</p>
           </div>
 
           <div className="text-center md:text-left">
