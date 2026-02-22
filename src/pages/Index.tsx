@@ -174,7 +174,7 @@ const Index = () => {
             <motion.div
               key={dish.name}
               variants={fadeUp}
-              className="bg-card rounded-lg overflow-hidden border border-border group hover:border-primary/40 transition-colors">
+              className="bg-card text-card-foreground rounded-lg overflow-hidden border border-card/80 group hover:border-primary/40 transition-colors shadow">
 
                 <div className="overflow-hidden h-56">
                   <img
@@ -185,10 +185,10 @@ const Index = () => {
                 </div>
                 <div className="p-5">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-serif text-lg text-foreground">{dish.name}</h3>
+                    <h3 className="font-serif text-lg">{dish.name}</h3>
                     <span className="text-primary font-semibold text-sm">{dish.price}</span>
                   </div>
-                  <p className="text-muted-foreground text-sm">{dish.desc}</p>
+                  <p className="text-card-foreground/60 text-sm">{dish.desc}</p>
                 </div>
               </motion.div>
             )}
