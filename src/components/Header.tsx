@@ -3,19 +3,27 @@ import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logoNew from "@/assets/logo-new.png";
 
-const navLinks = [
-  { label: "Hem", href: "/" },
-  { label: "Meny", href: "/meny" },
-  { label: "Lunch", href: "/lunch" },
-  { label: "Om Oss", href: "/om-oss" },
-  { label: "Iftar", href: "/iftar" },
-  { label: "Catering", href: "/catering" },
-  { label: "Kontakt", href: "/kontakt" },
-];
+// Ramadan 2026 ends approximately March 30, 2026
+const RAMADAN_END_DATE = new Date("2026-03-31");
+const isRamadanActive = () => new Date() <= RAMADAN_END_DATE;
+
+const getNavLinks = () => {
+  const links = [
+    { label: "Hem", href: "/" },
+    { label: "Meny", href: "/meny" },
+    { label: "Lunch", href: "/lunch" },
+    { label: "Om Oss", href: "/om-oss" },
+    ...(isRamadanActive() ? [{ label: "Iftar", href: "/iftar" }] : []),
+    { label: "Catering", href: "/catering" },
+    { label: "Kontakt", href: "/kontakt" },
+  ];
+  return links;
+};
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navLinks = getNavLinks();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-border/30">

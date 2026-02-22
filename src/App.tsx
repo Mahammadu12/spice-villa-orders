@@ -12,6 +12,10 @@ import Contact from "./pages/Contact";
 
 import Catering from "./pages/Catering";
 import Iftar from "./pages/Iftar";
+
+// Ramadan 2026 ends approximately March 30, 2026
+const RAMADAN_END_DATE = new Date("2026-03-31");
+const isRamadanActive = () => new Date() <= RAMADAN_END_DATE;
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
@@ -33,7 +37,7 @@ const App = () => (
             <Route path="/bokning" element={<Contact />} />
             <Route path="/catering" element={<Catering />} />
             <Route path="/om-oss" element={<About />} />
-            <Route path="/iftar" element={<Iftar />} />
+            {isRamadanActive() && <Route path="/iftar" element={<Iftar />} />}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
