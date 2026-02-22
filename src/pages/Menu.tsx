@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { dinnerMenu } from "@/data/menuData";
 import { categoryImages } from "@/data/menuImages";
+import menuCollageBg from "@/assets/menu-collage-bg.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -18,8 +19,14 @@ const Menu = () => {
     : dinnerMenu;
 
   return (
-    <div className="min-h-screen pt-24 pb-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen">
+      {/* Fixed full-page background */}
+      <div className="fixed inset-0 -z-10">
+        <img src={menuCollageBg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      <div className="container mx-auto px-4 pt-24 pb-20 bg-background/90 backdrop-blur-sm min-h-screen">
         <motion.div className="text-center mb-10" initial="hidden" animate="visible" variants={fadeUp}>
           <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-3">{t("Vår Meny", "Our Menu")}</h1>
           <p className="text-muted-foreground max-w-lg mx-auto">
