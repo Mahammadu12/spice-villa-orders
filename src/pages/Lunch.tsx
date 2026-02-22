@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { lunchMenu } from "@/data/menuData";
+import { lunchDishImages } from "@/data/menuImages";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -8,7 +9,7 @@ const fadeUp = {
 };
 
 const Lunch = () => {
-  const todayIndex = new Date().getDay(); // 0=Sun, 1=Mon...
+  const todayIndex = new Date().getDay();
   const dayMap: Record<number, string> = { 1: "Måndag", 2: "Tisdag", 3: "Onsdag", 4: "Torsdag", 5: "Fredag" };
   const todayName = dayMap[todayIndex] || null;
   const [activeDay, setActiveDay] = useState<string>(todayName || "Måndag");
@@ -46,36 +47,47 @@ const Lunch = () => {
           ))}
         </div>
 
-        {/* Lunch items */}
+        {/* Lunch items as cards with images */}
         {currentLunch && (
           <motion.div
             key={activeDay}
             initial="hidden"
             animate="visible"
             variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
-            className="max-w-2xl mx-auto"
+            className="max-w-3xl mx-auto grid gap-3"
           >
-            <div className="border border-border rounded-lg overflow-hidden">
-              {currentLunch.items.map((item, i) => (
+            {currentLunch.items.map((item, i) => {
+              const dishImage = lunchDishImages[item.name];
+              return (
                 <motion.div
                   key={item.name + i}
                   variants={fadeUp}
-                  className={`flex justify-between items-start px-5 py-4 ${
-                    i !== currentLunch.items.length - 1 ? "border-b border-border" : ""
-                  } hover:bg-secondary/50 transition-colors`}
+                  className="flex items-center gap-4 border border-border rounded-lg overflow-hidden hover:bg-secondary/50 transition-colors"
                 >
-                  <div className="flex-1 pr-4">
-                    <h3 className="text-foreground font-medium text-sm">{item.name}</h3>
+                  {dishImage && (
+                    <div className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0">
+                      <img
+                        src={dishImage}
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1 py-3 pr-4">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-foreground font-medium text-sm">{item.name}</h3>
+                      <span className="text-primary font-semibold text-sm whitespace-nowrap ml-3">
+                        {item.price}
+                      </span>
+                    </div>
                     {item.description && (
                       <p className="text-muted-foreground text-xs mt-0.5">{item.description}</p>
                     )}
                   </div>
-                  <span className="text-primary font-semibold text-sm whitespace-nowrap">
-                    {item.price}
-                  </span>
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
           </motion.div>
         )}
 

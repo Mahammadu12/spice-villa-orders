@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { dinnerMenu } from "@/data/menuData";
+import { categoryImages } from "@/data/menuImages";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -59,38 +60,68 @@ const Menu = () => {
             animate="visible"
             exit="hidden"
             variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
-            className="space-y-12"
+            className="space-y-14"
           >
-            {filtered.map((category) => (
-              <motion.div key={category.title} variants={fadeUp}>
-                <div className="mb-4">
-                  <h2 className="font-serif text-2xl md:text-3xl text-primary">{category.title}</h2>
-                  {category.description && (
-                    <p className="text-muted-foreground text-sm mt-1">{category.description}</p>
-                  )}
-                </div>
-                <div className="border border-border rounded-lg overflow-hidden">
-                  {category.items.map((item, i) => (
-                    <div
-                      key={item.name + i}
-                      className={`flex justify-between items-start px-5 py-4 ${
-                        i !== category.items.length - 1 ? "border-b border-border" : ""
-                      } hover:bg-secondary/50 transition-colors`}
-                    >
-                      <div className="flex-1 pr-4">
-                        <h3 className="text-foreground font-medium text-sm">{item.name}</h3>
-                        {item.description && (
-                          <p className="text-muted-foreground text-xs mt-0.5">{item.description}</p>
+            {filtered.map((category) => {
+              const catImage = categoryImages[category.title];
+              return (
+                <motion.div key={category.title} variants={fadeUp}>
+                  {/* Category header with image */}
+                  <div className="relative rounded-xl overflow-hidden mb-4">
+                    {catImage && (
+                      <div className="relative h-40 md:h-48">
+                        <img
+                          src={catImage}
+                          alt={category.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                        <div className="absolute bottom-0 left-0 p-5">
+                          <h2 className="font-serif text-2xl md:text-3xl text-primary drop-shadow-lg">
+                            {category.title}
+                          </h2>
+                          {category.description && (
+                            <p className="text-foreground/80 text-sm mt-1 max-w-lg drop-shadow">
+                              {category.description}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                    {!catImage && (
+                      <div className="mb-4">
+                        <h2 className="font-serif text-2xl md:text-3xl text-primary">{category.title}</h2>
+                        {category.description && (
+                          <p className="text-muted-foreground text-sm mt-1">{category.description}</p>
                         )}
                       </div>
-                      <span className="text-primary font-semibold text-sm whitespace-nowrap">
-                        {item.price}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                    )}
+                  </div>
+
+                  <div className="border border-border rounded-lg overflow-hidden">
+                    {category.items.map((item, i) => (
+                      <div
+                        key={item.name + i}
+                        className={`flex justify-between items-start px-5 py-4 ${
+                          i !== category.items.length - 1 ? "border-b border-border" : ""
+                        } hover:bg-secondary/50 transition-colors`}
+                      >
+                        <div className="flex-1 pr-4">
+                          <h3 className="text-foreground font-medium text-sm">{item.name}</h3>
+                          {item.description && (
+                            <p className="text-muted-foreground text-xs mt-0.5">{item.description}</p>
+                          )}
+                        </div>
+                        <span className="text-primary font-semibold text-sm whitespace-nowrap">
+                          {item.price}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </AnimatePresence>
 
