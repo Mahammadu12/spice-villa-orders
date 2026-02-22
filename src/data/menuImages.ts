@@ -1,6 +1,7 @@
 import chanaChaatImg from "@/assets/chana-chaat.jpeg";
 import biryaniImg from "@/assets/biryani.jpg";
 import sizzlerImg from "@/assets/sizzler.jpeg";
+import fishTikkaSizzlerImg from "@/assets/fish-tikka-sizzler.jpg";
 import punjabiCurryImg from "@/assets/punjabi-curry.jpg";
 import tikkaMasalaImg from "@/assets/tikka-masala.jpg";
 import karahi1Img from "@/assets/karahi1.jpeg";
