@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import heroImg from "@/assets/sizzler.jpeg";
-import foodImg from "@/assets/karahi1.jpeg";
+import foodImg from "@/assets/catering-hero.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
