@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Phone, Train, Car, Footprints, CalendarDays, Users } from "lucide-react";
+import { MapPin, Clock, Phone, Train, Car, Footprints, CalendarDays } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -29,13 +29,16 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Banner */}
-      <div className="relative h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden">
-        <img src={heroImg} alt="Spice Villa" className="absolute inset-0 w-full h-full object-cover" />
+    <div className="min-h-screen bg-background relative">
+      {/* Full-page background image */}
+      <div className="fixed inset-0 z-0">
+        <img src={heroImg} alt="Spice Villa" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      {/* Hero text */}
+      <div className="relative z-10 pt-32 pb-12 text-center px-4">
         <motion.div
-          className="relative z-10 text-center px-4"
           initial="hidden"
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
@@ -44,13 +47,13 @@ const Contact = () => {
             {t("Kontakt & Boka Bord", "Contact & Reserve")}
           </motion.h1>
           <motion.p variants={fadeUp} className="text-white/80 text-lg md:text-xl max-w-xl mx-auto">
-            {t("Boka bord, hitta oss eller beställ direkt.", "Book a table, find us or order directly.")}
+            {t("Boka bord eller hitta oss.", "Book a table or find us.")}
           </motion.p>
         </motion.div>
       </div>
 
-      {/* Main Content: Image + Form side by side */}
-      <div className="max-w-6xl mx-auto px-4 -mt-16 relative z-20 pb-12">
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto px-4 relative z-10 pb-12">
         {submitted ? (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -154,7 +157,7 @@ const Contact = () => {
       </div>
 
       {/* Transport & Map Section */}
-      <div className="max-w-6xl mx-auto px-4 pb-20">
+      <div className="max-w-6xl mx-auto px-4 pb-20 relative z-10">
         {/* Mobile contact info */}
         <div className="lg:hidden grid sm:grid-cols-3 gap-4 mb-8">
           <div className="bg-card text-card-foreground rounded-lg p-5 text-center shadow">
@@ -179,7 +182,7 @@ const Contact = () => {
         {/* Transport + Map */}
         <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }} className="grid lg:grid-cols-2 gap-8">
           <motion.div variants={fadeUp} className="space-y-4">
-            <h2 className="font-serif text-xl text-foreground">{t("Hitta till oss", "How to Find Us")}</h2>
+            <h2 className="font-serif text-xl text-white">{t("Hitta till oss", "How to Find Us")}</h2>
             <div className="grid gap-4">
               <div className="bg-card text-card-foreground rounded-lg p-4 shadow">
                 <Train className="text-primary mb-2" size={22} />
@@ -196,19 +199,6 @@ const Contact = () => {
                 <h3 className="font-serif text-sm font-semibold mb-1">{t("Till fots / Cykel", "Walk / Bike")}</h3>
                 <p className="text-muted-foreground text-xs">{t("Hjärtat av Tensta Centrum. Cykelparkering utanför entrén.", "Heart of Tensta Centrum. Bike parking outside.")}</p>
               </div>
-            </div>
-
-            {/* Order buttons */}
-            <div className="flex flex-col gap-3 pt-4">
-              <a href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg" target="_blank" rel="noopener noreferrer" className="block bg-primary text-primary-foreground px-6 py-3 rounded font-semibold text-sm text-center hover:bg-primary/90 transition-colors">
-                {t("Beställ via Uber Eats", "Order via Uber Eats")}
-              </a>
-              <a href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2" target="_blank" rel="noopener noreferrer" className="block bg-[hsl(338,90%,46%)] text-white px-6 py-3 rounded font-semibold text-sm text-center hover:bg-[hsl(338,90%,40%)] transition-colors">
-                {t("Beställ via Foodora", "Order via Foodora")}
-              </a>
-              <a href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order" target="_blank" rel="noopener noreferrer" className="block bg-[hsl(142,70%,35%)] text-white px-6 py-3 rounded font-semibold text-sm text-center hover:bg-[hsl(142,70%,30%)] transition-colors">
-                {t("Beställ via Qopla", "Order via Qopla")}
-              </a>
             </div>
           </motion.div>
 
