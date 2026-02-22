@@ -29,7 +29,9 @@ const Contact = () => {
           >
             <MapPin className="mx-auto text-primary mb-3" size={28} />
             <h3 className="font-serif text-lg text-foreground mb-2">Adress</h3>
-            <p className="text-muted-foreground text-sm">Adress kommer snart</p>
+            <p className="text-muted-foreground text-sm">Tenstagången 25</p>
+            <p className="text-muted-foreground text-sm">163 64 Spånga</p>
+            <p className="text-muted-foreground text-xs mt-1">Tensta Centrum</p>
           </motion.div>
 
           <motion.div
@@ -48,19 +50,30 @@ const Contact = () => {
           >
             <Phone className="mx-auto text-primary mb-3" size={28} />
             <h3 className="font-serif text-lg text-foreground mb-2">Telefon</h3>
-            <p className="text-muted-foreground text-sm">Kommer snart</p>
+            <a href="tel:+46764222770" className="text-primary hover:underline text-sm font-medium">
+              +46 76 422 27 70
+            </a>
           </motion.div>
         </motion.div>
 
-        {/* Map placeholder */}
+        {/* Google Maps */}
         <motion.div
-          className="max-w-4xl mx-auto mb-16 bg-card border border-border rounded-lg h-64 flex items-center justify-center"
+          className="max-w-4xl mx-auto mb-16 rounded-lg overflow-hidden border border-border"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <p className="text-muted-foreground text-sm">Google Maps – kommer snart</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2028.5!2d17.9!3d59.39!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9e5b0b0b0b0b%3A0x0!2sTenstag%C3%A5ngen+25%2C+163+64+Sp%C3%A5nga!5e0!3m2!1ssv!2sse!4v1700000000000!5m2!1ssv!2sse"
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Spice Villa - Tenstagången 25, Spånga"
+          />
         </motion.div>
 
         {/* CTA */}

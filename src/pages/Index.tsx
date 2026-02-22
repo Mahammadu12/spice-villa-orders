@@ -6,6 +6,10 @@ import interiorImg from "@/assets/interior.jpeg";
 import karahi1Img from "@/assets/karahi1.jpeg";
 import sizzlerImg from "@/assets/sizzler.jpeg";
 import karahi2Img from "@/assets/karahi2.jpeg";
+import chefExteriorImg from "@/assets/chef-exterior.jpeg";
+import diningAreaImg from "@/assets/dining-area.jpeg";
+import chapliKababImg from "@/assets/chapli-kabab.jpeg";
+import chanaChaatImg from "@/assets/chana-chaat.jpeg";
 import logo from "@/assets/logo.svg";
 
 const fadeUp = {
@@ -38,7 +42,7 @@ const Index = () => {
           <motion.img
             src={logo}
             alt="Spice Villa"
-            className="h-24 md:h-32 mx-auto mb-6"
+            className="h-28 md:h-36 mx-auto mb-6 drop-shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
             variants={fadeUp}
           />
           <motion.p
@@ -118,8 +122,8 @@ const Index = () => {
             </motion.div>
             <motion.div variants={fadeUp} className="rounded-lg overflow-hidden">
               <img
-                src={interiorImg}
-                alt="Spice Villa interiör"
+                src={diningAreaImg}
+                alt="Spice Villa matsal"
                 className="w-full h-80 md:h-[400px] object-cover rounded-lg"
               />
             </motion.div>
@@ -146,7 +150,7 @@ const Index = () => {
           </motion.div>
 
           <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
@@ -154,8 +158,9 @@ const Index = () => {
           >
             {[
               { img: karahi1Img, name: "Lamb Karahi", desc: "Traditionell karahi med lamm, färska tomater och kryddor", price: "179:-" },
+              { img: chapliKababImg, name: "Chapli Kabab", desc: "Kryddiga köttfärsbiffar med färska örter och citron", price: "169:-" },
+              { img: chanaChaatImg, name: "Chana Chaat", desc: "Krispiga kikärtor med potatis, tomat, lök och kryddiga såser", price: "89:-" },
               { img: sizzlerImg, name: "Mix Grill Sizzler", desc: "Kolgrillad mix av kyckling, lamm och seekh kabab på het platta", price: "249:-" },
-              { img: karahi2Img, name: "Chicken Tikka Masala", desc: "Grillad kyckling i krämig, söt tomatsås med nötter och grädde", price: "179:-" },
             ].map((dish) => (
               <motion.div
                 key={dish.name}
