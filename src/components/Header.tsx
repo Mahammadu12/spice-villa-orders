@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
+      <div className="w-full flex items-center justify-between h-16 px-4 md:px-8">
         <Link to="/" className="flex items-center gap-2">
           <img src={logoNew} alt="Spice Villa" className="h-12 drop-shadow-[0_0_10px_hsl(var(--primary)/0.3)]" />
         </Link>
