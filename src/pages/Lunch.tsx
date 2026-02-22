@@ -47,7 +47,7 @@ const Lunch = () => {
       </div>
 
       {/* Lunch items */}
-      <div className="max-w-5xl mx-auto px-4 py-16 bg-background/90 backdrop-blur-sm rounded-xl my-8">
+      <div className="max-w-5xl mx-auto px-4 py-16 my-8">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -60,7 +60,7 @@ const Lunch = () => {
               <motion.div
                 key={item.name + i}
                 variants={fadeUp}
-                className="border border-border rounded-lg overflow-hidden hover:bg-secondary/50 transition-colors"
+                className="border border-white/10 rounded-lg overflow-hidden bg-black/40 backdrop-blur-sm hover:bg-black/50 transition-colors"
               >
                 {dishImage && (
                   <div className="w-full h-40">
@@ -69,11 +69,11 @@ const Lunch = () => {
                 )}
                 <div className="p-4">
                   <div className="flex justify-between items-start">
-                    <h3 className="text-foreground font-medium text-sm">{item.name}</h3>
+                    <h3 className="text-white font-medium text-sm">{item.name}</h3>
                     <span className="text-primary font-semibold text-sm whitespace-nowrap ml-3">{item.price}</span>
                   </div>
                   {item.description && (
-                    <p className="text-muted-foreground text-xs mt-1">{item.description}</p>
+                    <p className="text-white/60 text-xs mt-1">{item.description}</p>
                   )}
                 </div>
               </motion.div>
