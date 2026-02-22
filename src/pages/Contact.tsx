@@ -40,8 +40,9 @@ const Contact = () => {
           >
             <Clock className="mx-auto text-primary mb-3" size={28} />
             <h3 className="font-serif text-lg text-foreground mb-2">Öppettider</h3>
-            <p className="text-muted-foreground text-sm">Mån–Fre: 11:00 – 21:00</p>
-            <p className="text-muted-foreground text-sm">Lör–Sön: 12:00 – 21:00</p>
+            <p className="text-muted-foreground text-sm">Mån–Fre: 11:00 – 22:00</p>
+            <p className="text-muted-foreground text-sm">Lör: 12:00 – 22:00</p>
+            <p className="text-muted-foreground text-sm">Sön: 12:00 – 21:00</p>
           </motion.div>
 
           <motion.div

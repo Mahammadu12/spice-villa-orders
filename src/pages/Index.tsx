@@ -158,10 +158,10 @@ const Index = () => {
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
           >
             {[
-              { img: karahi1Img, name: "Lamb Karahi", desc: "Traditionell karahi med lamm, färska tomater och kryddor", price: "179:-" },
-              { img: chapliKababImg, name: "Chapli Kabab", desc: "Kryddiga köttfärsbiffar med färska örter och citron", price: "169:-" },
-              { img: chanaChaatImg, name: "Chana Chaat", desc: "Krispiga kikärtor med potatis, tomat, lök och kryddiga såser", price: "89:-" },
-              { img: sizzlerImg, name: "Mix Grill Sizzler", desc: "Kolgrillad mix av kyckling, lamm och seekh kabab på het platta", price: "249:-" },
+              { img: karahi1Img, name: "Lamb Karahi", desc: "Traditionell karahi med lamm, färska tomater och kryddor", price: "179 kr" },
+              { img: chapliKababImg, name: "Chapli Kabab", desc: "Kryddiga köttfärsbiffar med färska örter och citron", price: "169 kr" },
+              { img: chanaChaatImg, name: "Chana Chaat", desc: "Krispiga kikärtor med potatis, tomat, lök och kryddiga såser", price: "89 kr" },
+              { img: sizzlerImg, name: "Mix Grill Sizzler", desc: "Kolgrillad mix av kyckling, lamm och seekh kabab på het platta", price: "249 kr" },
             ].map((dish) => (
               <motion.div
                 key={dish.name}
