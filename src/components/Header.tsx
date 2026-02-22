@@ -101,18 +101,30 @@ const Header = () => {
             </button>
             {orderOpen && (
               <div className="absolute right-0 top-full mt-2 bg-card/95 backdrop-blur-xl border border-border/50 rounded-xl shadow-2xl shadow-black/30 overflow-hidden min-w-[180px] animate-in fade-in slide-in-from-top-2 duration-200">
-                {orderLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-card-foreground hover:bg-white/5 transition-colors border-b border-border/20 last:border-0"
-                  >
-                    <span className={`w-2 h-2 rounded-full ${link.color.split(" ")[0]}`} />
-                    {link.label}
-                  </a>
-                ))}
+                 {orderLinks.map((link) => (
+                   <a
+                     key={link.label}
+                     href={link.href}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center gap-3 px-4 py-3 text-sm font-bold hover:bg-white/5 transition-colors border-b border-border/20 last:border-0"
+                   >
+                     <span
+                       className="tracking-tight"
+                       style={{
+                         color: link.label === "Uber Eats" ? "#06C167" : link.label === "Foodora" ? "#D70F64" : "#2DB84B",
+                       }}
+                     >
+                       {link.label === "Uber Eats" ? (
+                         <><span className="font-bold">Uber</span> <span className="font-normal text-card-foreground">Eats</span></>
+                       ) : link.label === "Foodora" ? (
+                         "foodora"
+                       ) : (
+                         "Qopla"
+                       )}
+                     </span>
+                   </a>
+                 ))}
               </div>
             )}
           </div>
