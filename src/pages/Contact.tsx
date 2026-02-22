@@ -29,12 +29,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Full-page background image */}
-      <div className="fixed inset-0 z-0">
-        <img src={heroImg} alt="Spice Villa" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
+    <div className="min-h-screen bg-background relative" style={{ backgroundImage: `url(${heroImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
 
       {/* Hero text */}
       <div className="relative z-10 pt-32 pb-12 text-center px-4">
