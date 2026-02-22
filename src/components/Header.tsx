@@ -46,12 +46,20 @@ const Header = () => {
             Uber Eats
           </a>
           <a
-            href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+            href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[hsl(338,90%,46%)] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-[hsl(338,90%,40%)] transition-colors"
           >
             Foodora
+          </a>
+          <a
+            href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[hsl(142,70%,35%)] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-[hsl(142,70%,30%)] transition-colors"
+          >
+            Qopla
           </a>
         </nav>
 
@@ -89,12 +97,20 @@ const Header = () => {
             Beställ via Uber Eats
           </a>
           <a
-            href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+            href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2"
             target="_blank"
             rel="noopener noreferrer"
             className="block text-center bg-[hsl(338,90%,46%)] text-white px-5 py-3 rounded text-sm font-semibold hover:bg-[hsl(338,90%,40%)] transition-colors"
           >
             Beställ via Foodora
+          </a>
+          <a
+            href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-center bg-[hsl(142,70%,35%)] text-white px-5 py-3 rounded text-sm font-semibold hover:bg-[hsl(142,70%,30%)] transition-colors"
+          >
+            Beställ via Qopla
           </a>
         </nav>
       )}
