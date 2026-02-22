@@ -19,30 +19,30 @@ import biryaniImg from "@/assets/biryani.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
 const About = () => {
   const { t } = useLanguage();
 
   const galleryPhotos = [
-    { src: chefExteriorImg, alt: t("Vår kock framför Spice Villa", "Our chef in front of Spice Villa"), span: "col-span-2 row-span-2" },
-    { src: diningAreaImg, alt: t("Vår mysiga matsal", "Our cozy dining area"), span: "col-span-2" },
-    { src: fruitChaatImg, alt: t("Färsk fruktsallad", "Fresh fruit salad"), span: "" },
-    { src: saladSaucesImg, alt: t("Sallad med hemgjorda såser", "Salad with homemade sauces"), span: "" },
-    { src: kitchenImg, alt: t("Vårt öppna kök", "Our open kitchen"), span: "col-span-2" },
-    { src: entranceImg, alt: t("Välkommen in", "Welcome in"), span: "" },
-    { src: chefsImg, alt: t("Våra kockar", "Our chefs"), span: "" },
-    { src: teamImg, alt: t("Spice Villa-teamet", "The Spice Villa team"), span: "col-span-2" },
-    { src: storefrontImg, alt: t("Spice Villa skyltfönster", "Spice Villa storefront"), span: "col-span-2" },
-  ];
+  { src: chefExteriorImg, alt: t("Vår kock framför Spice Villa", "Our chef in front of Spice Villa"), span: "col-span-2 row-span-2" },
+  { src: diningAreaImg, alt: t("Vår mysiga matsal", "Our cozy dining area"), span: "col-span-2" },
+  { src: fruitChaatImg, alt: t("Färsk fruktsallad", "Fresh fruit salad"), span: "" },
+  { src: saladSaucesImg, alt: t("Sallad med hemgjorda såser", "Salad with homemade sauces"), span: "" },
+  { src: kitchenImg, alt: t("Vårt öppna kök", "Our open kitchen"), span: "col-span-2" },
+  { src: entranceImg, alt: t("Välkommen in", "Welcome in"), span: "" },
+  { src: chefsImg, alt: t("Våra kockar", "Our chefs"), span: "" },
+  { src: teamImg, alt: t("Spice Villa-teamet", "The Spice Villa team"), span: "col-span-2" },
+  { src: storefrontImg, alt: t("Spice Villa skyltfönster", "Spice Villa storefront"), span: "col-span-2" }];
+
 
   const signatureDishes = [
-    { img: nihariImg, name: "Nihari", desc: t("Vår mest eftertraktade rätt — nötköttsstomp som kokas långsamt i timmar med hemliga kryddblandningar.", "Our most sought-after dish — beef slowly cooked for hours with secret spice blends.") },
-    { img: chapliKababImg, name: "Chapli Kebab", desc: t("Kryddiga köttfärsbiffar med färska örter, tomat och granatäpple — en afghansk klassiker.", "Spicy minced meat patties with fresh herbs, tomato and pomegranate — an Afghan classic.") },
-    { img: beefPayaImg, name: "Beef Paya", desc: t("Traditionell kotlettgryta med rik buljong och aromatiska kryddor, en helgfavorit.", "Traditional trotters stew with rich broth and aromatic spices, a weekend favorite.") },
-    { img: biryaniImg, name: "Biryani", desc: t("Doftande basmatiris tillagat med saffran, hela kryddor och möra köttbitar i lager.", "Fragrant basmati rice cooked with saffron, whole spices and tender meat in layers.") },
-  ];
+  { img: nihariImg, name: "Nihari", desc: t("Vår mest eftertraktade rätt — nötköttsstomp som kokas långsamt i timmar med hemliga kryddblandningar.", "Our most sought-after dish — beef slowly cooked for hours with secret spice blends.") },
+  { img: chapliKababImg, name: "Chapli Kebab", desc: t("Kryddiga köttfärsbiffar med färska örter, tomat och granatäpple — en afghansk klassiker.", "Spicy minced meat patties with fresh herbs, tomato and pomegranate — an Afghan classic.") },
+  { img: beefPayaImg, name: "Beef Paya", desc: t("Traditionell kotlettgryta med rik buljong och aromatiska kryddor, en helgfavorit.", "Traditional trotters stew with rich broth and aromatic spices, a weekend favorite.") },
+  { img: biryaniImg, name: "Biryani", desc: t("Doftande basmatiris tillagat med saffran, hela kryddor och möra köttbitar i lager.", "Fragrant basmati rice cooked with saffron, whole spices and tender meat in layers.") }];
+
 
   return (
     <div className="min-h-screen pt-24">
@@ -113,7 +113,7 @@ const About = () => {
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="relative">
-              <img src={diningAreaImg} alt="Spice Villa matsal" className="w-full h-[500px] object-cover rounded-2xl shadow-2xl" />
+              <img alt="Spice Villa matsal" className="w-full h-[500px] object-cover rounded-2xl shadow-2xl" src="/lovable-uploads/326f0c58-955f-4830-8b5c-9b231157081f.jpg" />
               <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-xl shadow-xl hidden md:block">
                 <span className="font-serif text-3xl block">20+</span>
                 <span className="text-sm font-medium">{t("År av Passion", "Years of Passion")}</span>
@@ -139,15 +139,15 @@ const About = () => {
           </motion.div>
 
           <motion.div className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
-            {signatureDishes.map((dish) => (
-              <motion.div key={dish.name} variants={fadeUp} className="flex gap-5 bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 p-5 group hover:border-primary/40 transition-all duration-300">
+            {signatureDishes.map((dish) =>
+            <motion.div key={dish.name} variants={fadeUp} className="flex gap-5 bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 p-5 group hover:border-primary/40 transition-all duration-300">
                 <img src={dish.img} alt={dish.name} className="w-28 h-28 object-cover rounded-xl flex-shrink-0" />
                 <div>
                   <h3 className="font-serif text-xl text-foreground mb-2">{dish.name}</h3>
                   <p className="text-card-foreground/60 text-sm leading-relaxed">{dish.desc}</p>
                 </div>
               </motion.div>
-            ))}
+            )}
           </motion.div>
         </div>
       </section>
@@ -162,17 +162,17 @@ const About = () => {
           </motion.div>
           <motion.div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
             {[
-              { icon: <Flame size={28} />, title: t("Kolgrillat", "Charcoal Grilled"), desc: t("Vi grillar över kol och i tandoori-ugn för autentisk smak.", "We grill over charcoal and in tandoori oven for authentic flavor.") },
-              { icon: <UtensilsCrossed size={28} />, title: t("Hemlagat", "Homemade"), desc: t("Alla rätter tillagas från grunden med färska råvaror varje dag.", "All dishes are prepared from scratch with fresh ingredients every day.") },
-              { icon: <Award size={28} />, title: "100% Halal", desc: t("All vår mat är halal-certifierad och noggrant utvald.", "All our food is halal-certified and carefully selected.") },
-              { icon: <ChefHat size={28} />, title: t("Erfarna Kockar", "Experienced Chefs"), desc: t("Vårt köksteam har decennier av erfarenhet från hela Sydasien.", "Our kitchen team has decades of experience from across South Asia.") },
-            ].map((item) => (
-              <motion.div key={item.title} variants={fadeUp} className="text-center p-8 rounded-2xl bg-secondary border border-border hover:border-primary/30 transition-colors">
+            { icon: <Flame size={28} />, title: t("Kolgrillat", "Charcoal Grilled"), desc: t("Vi grillar över kol och i tandoori-ugn för autentisk smak.", "We grill over charcoal and in tandoori oven for authentic flavor.") },
+            { icon: <UtensilsCrossed size={28} />, title: t("Hemlagat", "Homemade"), desc: t("Alla rätter tillagas från grunden med färska råvaror varje dag.", "All dishes are prepared from scratch with fresh ingredients every day.") },
+            { icon: <Award size={28} />, title: "100% Halal", desc: t("All vår mat är halal-certifierad och noggrant utvald.", "All our food is halal-certified and carefully selected.") },
+            { icon: <ChefHat size={28} />, title: t("Erfarna Kockar", "Experienced Chefs"), desc: t("Vårt köksteam har decennier av erfarenhet från hela Sydasien.", "Our kitchen team has decades of experience from across South Asia.") }].
+            map((item) =>
+            <motion.div key={item.title} variants={fadeUp} className="text-center p-8 rounded-2xl bg-secondary border border-border hover:border-primary/30 transition-colors">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-4">{item.icon}</div>
                 <h3 className="font-serif text-lg text-foreground mb-2">{item.title}</h3>
                 <p className="text-muted-foreground text-sm">{item.desc}</p>
               </motion.div>
-            ))}
+            )}
           </motion.div>
         </div>
       </section>
@@ -193,11 +193,11 @@ const About = () => {
           </motion.div>
 
           <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={{ visible: { transition: { staggerChildren: 0.08 } } }}>
-            {galleryPhotos.map((photo, i) => (
-              <motion.div key={i} variants={fadeUp} className={`overflow-hidden rounded-xl ${photo.span}`}>
+            {galleryPhotos.map((photo, i) =>
+            <motion.div key={i} variants={fadeUp} className={`overflow-hidden rounded-xl ${photo.span}`}>
                 <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 min-h-[200px]" loading="lazy" />
               </motion.div>
-            ))}
+            )}
           </motion.div>
         </div>
       </section>
@@ -223,8 +223,8 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 };
 
 export default About;
