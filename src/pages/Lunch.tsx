@@ -82,7 +82,7 @@ const Lunch = () => {
         {/* CTA */}
         <div className="text-center mt-16">
           <a
-            href="#"
+            href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors"
