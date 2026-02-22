@@ -1,4 +1,4 @@
-import logo from "@/assets/logo.svg";
+import logoNew from "@/assets/logo-new.png";
 
 const Footer = () => {
   return (
@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div className="flex flex-col items-center md:items-start">
-            <img src={logo} alt="Spice Villa" className="h-12 mb-4" />
+            <img src={logoNew} alt="Spice Villa" className="h-14 mb-4" />
             <p className="text-muted-foreground text-sm text-center md:text-left">
               Autentisk sydasiatisk mat — Indisk · Pakistansk · Bengalisk · Afghansk
             </p>

@@ -11,7 +11,7 @@ import chefExteriorImg from "@/assets/chef-exterior.jpeg";
 import diningAreaImg from "@/assets/dining-area.jpeg";
 import chapliKababImg from "@/assets/chapli-kabab.jpeg";
 import chanaChaatImg from "@/assets/chana-chaat.jpeg";
-import logo from "@/assets/logo.svg";
+import logoNew from "@/assets/logo-new.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -41,9 +41,9 @@ const Index = () => {
           }}
         >
           <motion.img
-            src={logo}
+            src={logoNew}
             alt="Spice Villa"
-            className="h-28 md:h-36 mx-auto mb-6 drop-shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
+            className="h-32 md:h-44 mx-auto mb-6 drop-shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
             variants={fadeUp}
           />
           <motion.p
