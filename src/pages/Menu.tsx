@@ -94,8 +94,7 @@ const Menu = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* CTA */}
-        <div className="text-center mt-16">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
           <a
             href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
             target="_blank"
@@ -103,6 +102,14 @@ const Menu = () => {
             className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors"
           >
             Beställ via Uber Eats
+          </a>
+          <a
+            href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[hsl(338,90%,46%)] text-white px-10 py-4 rounded font-semibold text-base hover:bg-[hsl(338,90%,40%)] transition-colors"
+          >
+            Beställ via Foodora
           </a>
         </div>
       </div>

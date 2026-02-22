@@ -67,6 +67,14 @@ const Index = () => {
             >
               Beställ via Uber Eats
             </a>
+            <a
+              href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[hsl(338,90%,46%)] text-white px-8 py-3 rounded font-semibold text-base hover:bg-[hsl(338,90%,40%)] transition-colors"
+            >
+              Beställ via Foodora
+            </a>
             <Link
               to="/meny"
               className="border border-primary text-primary px-8 py-3 rounded font-semibold text-base hover:bg-primary/10 transition-colors"
@@ -219,16 +227,26 @@ const Index = () => {
               Sugen? Beställ Nu!
             </h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              Beställ dina favoriter direkt via Uber Eats och njut hemma.
+              Beställ dina favoriter direkt via Uber Eats eller Foodora och njut hemma.
             </p>
-            <a
-              href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors"
-            >
-              Beställ via Uber Eats
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors"
+              >
+                Beställ via Uber Eats
+              </a>
+              <a
+                href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[hsl(338,90%,46%)] text-white px-10 py-4 rounded font-semibold text-base hover:bg-[hsl(338,90%,40%)] transition-colors"
+              >
+                Beställ via Foodora
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
