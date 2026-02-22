@@ -21,7 +21,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-border/30">
       <div className="w-full flex items-center justify-between h-20 md:h-24 px-4 md:px-8">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logoNew} alt="Spice Villa" className="h-16 md:h-20 drop-shadow-[0_0_12px_hsl(var(--primary)/0.3)]" />
+          <img src={logoNew} alt="Spice Villa" className="h-10 md:h-14 drop-shadow-[0_0_12px_hsl(var(--primary)/0.3)] bg-white rounded p-1" />
         </Link>
 
         {/* Desktop nav */}
