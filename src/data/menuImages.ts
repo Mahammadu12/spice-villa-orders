@@ -11,6 +11,11 @@ import nihariImg from "@/assets/nihari.jpg";
 import wrapRollImg from "@/assets/wrap-roll.jpg";
 import naanRiceImg from "@/assets/naan-rice.jpg";
 import gulabJamunImg from "@/assets/gulab-jamun.jpg";
+import kycklinggytaImg from "@/assets/kycklinggryta.jpg";
+import lammgrytaImg from "@/assets/lammgryta.jpg";
+import dalFryImg from "@/assets/dal-fry.jpg";
+import alooGobiImg from "@/assets/aloo-gobi.jpg";
+import chickenTikkaMasalaImg from "@/assets/chicken-tikka-masala.jpg";
 
 // Map menu category titles to images
 export const categoryImages: Record<string, string> = {
@@ -31,13 +36,13 @@ export const categoryImages: Record<string, string> = {
 
 // Map lunch dish keywords to images for the lunch page
 export const lunchDishImages: Record<string, string> = {
-  "Dal Fry": punjabiCurryImg,
-  "Aloo Gobi": palakPaneerImg,
-  "Chicken Tikka Masala": tikkaMasalaImg,
+  "Dal Fry": dalFryImg,
+  "Aloo Gobi": alooGobiImg,
+  "Chicken Tikka Masala": chickenTikkaMasalaImg,
   "Chicken Tandoori": plainGrillImg,
   "Chicken Tikka Sizzler": sizzlerImg,
-  "Lammgryta": punjabiCurryImg,
-  "Kycklinggryta": tikkaMasalaImg,
+  "Lammgryta": lammgrytaImg,
+  "Kycklinggryta": kycklinggytaImg,
   "Achari Chicken": karahi1Img,
   "Palak Paneer": palakPaneerImg,
   "Biff Sambal": punjabiCurryImg,
