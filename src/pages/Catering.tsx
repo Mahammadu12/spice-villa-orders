@@ -91,7 +91,7 @@ const Catering = () => {
               initial="hidden"
               animate="visible"
               variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-              className="bg-card p-8 md:p-10"
+              className="bg-card/90 backdrop-blur-md p-8 md:p-10 border-l border-border/30"
             >
               <motion.div variants={fadeUp}>
                 <h2 className="font-serif text-2xl md:text-3xl text-card-foreground mb-1">{t("Få en offert", "Get a Quote")}</h2>
