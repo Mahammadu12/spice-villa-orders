@@ -29,7 +29,7 @@ const Index = () => {
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={exteriorImg} alt="Spice Villa restaurang" className="w-full h-full object-cover" />
+          <img src={exteriorImg} alt="Spice Villa restaurang" className="w-full h-full object-cover" width={2000} height={1407} decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
         </div>
         <motion.div
@@ -83,7 +83,7 @@ const Index = () => {
             {popularDishes.map((dish) => (
               <motion.div key={dish.name} variants={fadeUp} className="bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 group hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
                 <div className="overflow-hidden h-64">
-                  <img src={dish.img} alt={dish.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={dish.img} alt={dish.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={600} height={512} loading="lazy" decoding="async" />
                 </div>
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-2">
@@ -108,7 +108,7 @@ const Index = () => {
       {new Date() <= new Date("2026-03-31") && (
         <section className="relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src={iftarBg} alt="" className="w-full h-full object-cover" />
+            <img src={iftarBg} alt="" className="w-full h-full object-cover" width={1920} height={1080} loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-black/50" />
           </div>
           <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">

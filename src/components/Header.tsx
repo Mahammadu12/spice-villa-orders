@@ -59,6 +59,9 @@ const Header = () => {
             src={logoNew}
             alt="Spice Villa"
             className="h-9 md:h-12 rounded-lg bg-white/95 p-1 shadow-md group-hover:shadow-primary/20 transition-shadow duration-300"
+            width={96}
+            height={48}
+            decoding="async"
           />
           <div className="hidden sm:block">
             <span className="font-serif text-lg md:text-xl text-foreground tracking-wide">
