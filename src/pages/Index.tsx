@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { UtensilsCrossed, Flame, Award } from "lucide-react";
+import { UtensilsCrossed, Flame, Award, Moon } from "lucide-react";
 import PhotoGallery from "@/components/PhotoGallery";
 import exteriorImg from "@/assets/exterior.jpeg";
 import interiorImg from "@/assets/interior.jpeg";
@@ -12,6 +12,7 @@ import diningAreaImg from "@/assets/dining-area.jpeg";
 import chapliKababImg from "@/assets/chapli-kabab.jpeg";
 import chanaChaatImg from "@/assets/chana-chaat.jpeg";
 import logoNew from "@/assets/logo-new.png";
+import iftarBg from "@/assets/iftar-bg.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -214,7 +215,46 @@ const Index = () => {
       {/* Photo Gallery */}
       <PhotoGallery />
 
-      {/* CTA */}
+      {/* Iftar CTA Banner */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={iftarBg} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">
+          <motion.div
+            className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-4xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
+          >
+            <motion.div variants={fadeUp} className="text-center md:text-left">
+              <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+                <Moon size={20} className="text-[hsl(43,80%,65%)]" />
+                <span className="text-[hsl(43,80%,65%)] text-sm font-semibold tracking-wider uppercase">
+                  Ramadan Special
+                </span>
+              </div>
+              <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
+                Iftar hos Spice Villa
+              </h2>
+              <p className="text-white/60 max-w-md">
+                Komplett iftarmåltid med förrätter, karahi, dessert och drycker. Från 219 kr/person.
+              </p>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <Link
+                to="/iftar"
+                className="inline-block bg-[hsl(43,80%,55%)] text-[hsl(220,50%,10%)] px-8 py-3 rounded-lg font-bold text-base hover:bg-[hsl(43,80%,60%)] transition-colors shadow-lg whitespace-nowrap"
+              >
+                Se Iftar Menyn 🌙
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="py-20">
         <div className="container mx-auto px-4 text-center">
           <motion.div
