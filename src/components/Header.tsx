@@ -35,7 +35,7 @@ const Header = () => {
             </Link>
           ))}
           <a
-            href="#"
+            href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-primary text-primary-foreground px-5 py-2 rounded text-sm font-semibold hover:bg-primary/90 transition-colors"
@@ -70,7 +70,7 @@ const Header = () => {
             </Link>
           ))}
           <a
-            href="#"
+            href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
             target="_blank"
             rel="noopener noreferrer"
             className="block text-center bg-primary text-primary-foreground px-5 py-3 rounded text-sm font-semibold hover:bg-primary/90 transition-colors"

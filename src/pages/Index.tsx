@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { UtensilsCrossed, Flame, Award } from "lucide-react";
+import PhotoGallery from "@/components/PhotoGallery";
 import exteriorImg from "@/assets/exterior.jpeg";
 import interiorImg from "@/assets/interior.jpeg";
 import karahi1Img from "@/assets/karahi1.jpeg";
@@ -59,7 +60,7 @@ const Index = () => {
           </motion.h1>
           <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={fadeUp}>
             <a
-              href="#"
+              href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary text-primary-foreground px-8 py-3 rounded font-semibold text-base hover:bg-primary/90 transition-colors"
@@ -202,6 +203,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Photo Gallery */}
+      <PhotoGallery />
+
       {/* CTA */}
       <section className="py-20">
         <div className="container mx-auto px-4 text-center">
@@ -218,7 +222,7 @@ const Index = () => {
               Beställ dina favoriter direkt via Uber Eats och njut hemma.
             </p>
             <a
-              href="#"
+              href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors"
