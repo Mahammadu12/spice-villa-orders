@@ -23,8 +23,10 @@ const Footer = () => {
 
           <div className="text-center md:text-left">
             <h4 className="font-serif text-lg text-foreground mb-3">Kontakt</h4>
-            <p className="text-muted-foreground text-sm">Adress kommer snart</p>
-            <p className="text-muted-foreground text-sm">Tel: Kommer snart</p>
+            <p className="text-muted-foreground text-sm">Tenstagången 25, 163 64 Spånga</p>
+            <p className="text-muted-foreground text-sm">
+              Tel: <a href="tel:+46764222770" className="text-primary hover:underline">+46 76 422 27 70</a>
+            </p>
           </div>
         </div>
 
