@@ -7,6 +7,8 @@ const navLinks = [
   { label: "Hem", href: "/" },
   { label: "Meny", href: "/meny" },
   { label: "Lunch", href: "/lunch" },
+  { label: "Bokning", href: "/bokning" },
+  { label: "Catering", href: "/catering" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 
