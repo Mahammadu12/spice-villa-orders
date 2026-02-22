@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Clock, Phone } from "lucide-react";
+import { MapPin, Clock, Phone, Train, Car, Footprints } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -55,6 +55,36 @@ const Contact = () => {
               +46 76 422 27 70
             </a>
           </motion.div>
+        </motion.div>
+
+        {/* How to reach us */}
+        <motion.div
+          className="max-w-4xl mx-auto mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+        >
+          <motion.h2 variants={fadeUp} className="font-serif text-2xl md:text-3xl text-foreground text-center mb-8">
+            Hitta till oss
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div variants={fadeUp} className="bg-card border border-border rounded-lg p-6">
+              <Train className="text-primary mb-3" size={28} />
+              <h3 className="font-serif text-lg text-foreground mb-2">Kollektivtrafik</h3>
+              <p className="text-muted-foreground text-sm">Tunnelbana blå linje till <strong>Tensta station</strong>. Restaurangen ligger i Tensta Centrum, ca 2 min gångväg från stationen.</p>
+            </motion.div>
+            <motion.div variants={fadeUp} className="bg-card border border-border rounded-lg p-6">
+              <Car className="text-primary mb-3" size={28} />
+              <h3 className="font-serif text-lg text-foreground mb-2">Bil</h3>
+              <p className="text-muted-foreground text-sm">Kör mot Tensta Centrum via Tenstagången. Gratis parkering finns i anslutning till centrumet.</p>
+            </motion.div>
+            <motion.div variants={fadeUp} className="bg-card border border-border rounded-lg p-6">
+              <Footprints className="text-primary mb-3" size={28} />
+              <h3 className="font-serif text-lg text-foreground mb-2">Till fots / Cykel</h3>
+              <p className="text-muted-foreground text-sm">Vi ligger i hjärtat av Tensta Centrum, Tenstagången 25. Cykelparkering finns utanför entrén.</p>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Google Maps */}
