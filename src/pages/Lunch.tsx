@@ -24,11 +24,15 @@ const Lunch = () => {
   const dishes = Array.from(allDishes.values());
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
+      {/* Fixed full-page background */}
+      <div className="fixed inset-0 -z-10">
+        <img src={heroImg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
       {/* Hero Banner */}
       <div className="relative h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden">
-        <img src={heroImg} alt="Lunch" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/60" />
         <motion.div className="relative z-10 text-center px-4" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
           <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4">
             {t("Lunchmeny", "Lunch Menu")}
@@ -43,7 +47,7 @@ const Lunch = () => {
       </div>
 
       {/* Lunch items */}
-      <div className="max-w-3xl mx-auto px-4 py-16">
+      <div className="max-w-3xl mx-auto px-4 py-16 bg-background/90 backdrop-blur-sm rounded-xl my-8">
         <motion.div
           initial="hidden"
           animate="visible"

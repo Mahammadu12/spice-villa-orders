@@ -45,13 +45,15 @@ const About = () => {
 
 
   return (
-    <div className="min-h-screen pt-24">
+    <div className="min-h-screen">
+      {/* Fixed full-page background */}
+      <div className="fixed inset-0 -z-10">
+        <img src={interiorImg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
       {/* Hero Banner */}
-      <section className="relative h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={interiorImg} alt="Spice Villa interiör" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />
-        </div>
+      <section className="relative h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24">
         <motion.div className="relative z-10 text-center px-4" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
           <motion.span className="text-primary text-sm font-semibold tracking-[0.3em] uppercase mb-4 block" variants={fadeUp}>
             {t("Vår Historia", "Our Story")}
@@ -66,7 +68,7 @@ const About = () => {
       </section>
 
       {/* Our Story */}
-      <section className="py-24 md:py-32">
+      <section className="py-24 md:py-32 bg-background/90 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <motion.div className="grid md:grid-cols-2 gap-16 items-center" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={{ visible: { transition: { staggerChildren: 0.2 } } }}>
             <motion.div variants={fadeUp}>
@@ -124,7 +126,7 @@ const About = () => {
       </section>
 
       {/* Our Specialties */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24 bg-secondary/90 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-3 block">
@@ -153,7 +155,7 @@ const About = () => {
       </section>
 
       {/* What Sets Us Apart */}
-      <section className="py-24">
+      <section className="py-24 bg-background/90 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
@@ -178,7 +180,7 @@ const About = () => {
       </section>
 
       {/* Photo Gallery */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24 bg-secondary/90 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <motion.div className="text-center mb-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-3 block">
@@ -203,7 +205,7 @@ const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24">
+      <section className="py-24 bg-background/90 backdrop-blur-sm">
         <div className="container mx-auto px-4 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
