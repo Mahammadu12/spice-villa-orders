@@ -7,6 +7,7 @@ import chefsImg from "@/assets/chefs.jpeg";
 import teamImg from "@/assets/team.jpeg";
 import fruitChaatImg from "@/assets/fruit-chaat.jpeg";
 import saladSaucesImg from "@/assets/salad-sauces.jpeg";
+import storefrontImg from "@/assets/storefront.jpeg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -22,6 +23,7 @@ const photos = [
   { src: entranceImg, alt: "Välkommen in", span: "" },
   { src: chefsImg, alt: "Våra kockar", span: "" },
   { src: teamImg, alt: "Spice Villa-teamet", span: "col-span-2" },
+  { src: storefrontImg, alt: "Spice Villa skyltfönster", span: "col-span-2" },
 ];
 
 const PhotoGallery = () => {
