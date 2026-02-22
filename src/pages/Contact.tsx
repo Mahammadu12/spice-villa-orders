@@ -1,5 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Phone, Train, Car, Footprints } from "lucide-react";
+import { MapPin, Clock, Phone, Train, Car, Footprints, CalendarDays, Users } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -7,124 +12,172 @@ const fadeUp = {
 };
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitted(true);
+    toast({
+      title: "Bokning mottagen!",
+      description: "Vi återkommer med en bekräftelse inom kort.",
+    });
+  };
+
   return (
     <div className="min-h-screen pt-24 pb-20">
       <div className="container mx-auto px-4">
         <motion.div className="text-center mb-12" initial="hidden" animate="visible" variants={fadeUp}>
-          <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-3">Kontakt & Hitta Hit</h1>
+          <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-3">Kontakt & Boka Bord</h1>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Vi ser fram emot ditt besök! Kontakta oss eller beställ direkt via Uber Eats.
+            Boka bord, hitta oss eller beställ direkt via Uber Eats & Foodora.
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16"
-          initial="hidden"
-          animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-        >
+        <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto mb-16">
+          {/* Left column – Booking + Info + Transport */}
           <motion.div
-            variants={fadeUp}
-            className="bg-card border border-border rounded-lg p-6 text-center"
+            className="lg:col-span-3 space-y-8"
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
           >
-            <MapPin className="mx-auto text-primary mb-3" size={28} />
-            <h3 className="font-serif text-lg text-foreground mb-2">Adress</h3>
-            <p className="text-muted-foreground text-sm">Tenstagången 25</p>
-            <p className="text-muted-foreground text-sm">163 64 Spånga</p>
-            <p className="text-muted-foreground text-xs mt-1">Tensta Centrum</p>
+            {/* Booking form */}
+            <motion.div variants={fadeUp} className="bg-card border border-border rounded-lg p-6 md:p-8">
+              <h2 className="font-serif text-2xl text-foreground mb-5 flex items-center gap-2">
+                <CalendarDays className="text-primary" size={24} /> Boka bord
+              </h2>
+
+              {submitted ? (
+                <div className="text-center py-6">
+                  <CalendarDays className="text-primary mx-auto mb-4" size={48} />
+                  <h3 className="font-serif text-xl text-foreground mb-2">Tack för din bokning!</h3>
+                  <p className="text-muted-foreground mb-4 text-sm">Vi återkommer med bekräftelse via telefon eller e-post.</p>
+                  <Button onClick={() => setSubmitted(false)} variant="outline" size="sm">Gör en ny bokning</Button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium text-foreground">Namn *</label>
+                      <Input name="name" required placeholder="Ditt namn" maxLength={100} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium text-foreground">Telefon *</label>
+                      <Input name="phone" type="tel" required placeholder="07X XXX XX XX" maxLength={20} />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-foreground">E-post</label>
+                    <Input name="email" type="email" placeholder="din@email.se" maxLength={255} />
+                  </div>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium text-foreground text-xs flex items-center gap-1"><CalendarDays size={12} /> Datum *</label>
+                      <Input name="date" type="date" required />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium text-foreground text-xs flex items-center gap-1"><Clock size={12} /> Tid *</label>
+                      <Input name="time" type="time" required />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium text-foreground text-xs flex items-center gap-1"><Users size={12} /> Gäster *</label>
+                      <Input name="guests" type="number" min={1} max={50} required placeholder="2" />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-foreground">Önskemål</label>
+                    <Textarea name="message" placeholder="Allergier, barnstol, speciella önskemål..." maxLength={500} rows={2} />
+                  </div>
+                  <Button type="submit" className="w-full" size="lg">Skicka bokning</Button>
+                </form>
+              )}
+            </motion.div>
+
+            {/* Contact info cards */}
+            <motion.div variants={fadeUp} className="grid sm:grid-cols-3 gap-4">
+              <div className="bg-card border border-border rounded-lg p-5 text-center">
+                <MapPin className="mx-auto text-primary mb-2" size={24} />
+                <h3 className="font-serif text-sm font-semibold text-foreground mb-1">Adress</h3>
+                <p className="text-muted-foreground text-xs">Tenstagången 25</p>
+                <p className="text-muted-foreground text-xs">163 64 Spånga</p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-5 text-center">
+                <Clock className="mx-auto text-primary mb-2" size={24} />
+                <h3 className="font-serif text-sm font-semibold text-foreground mb-1">Öppettider</h3>
+                <p className="text-muted-foreground text-xs">Mån–Fre: 11–22</p>
+                <p className="text-muted-foreground text-xs">Lör: 12–22 · Sön: 12–21</p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-5 text-center">
+                <Phone className="mx-auto text-primary mb-2" size={24} />
+                <h3 className="font-serif text-sm font-semibold text-foreground mb-1">Telefon</h3>
+                <a href="tel:+46764222770" className="text-primary hover:underline text-xs font-medium">+46 76 422 27 70</a>
+              </div>
+            </motion.div>
+
+            {/* Transport */}
+            <motion.div variants={fadeUp} className="space-y-4">
+              <h2 className="font-serif text-xl text-foreground">Hitta till oss</h2>
+              <div className="grid sm:grid-cols-3 gap-4">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <Train className="text-primary mb-2" size={22} />
+                  <h3 className="font-serif text-sm font-semibold text-foreground mb-1">Kollektivtrafik</h3>
+                  <p className="text-muted-foreground text-xs">Tunnelbana blå linje till <strong>Tensta station</strong>, 2 min gångväg.</p>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <Car className="text-primary mb-2" size={22} />
+                  <h3 className="font-serif text-sm font-semibold text-foreground mb-1">Bil</h3>
+                  <p className="text-muted-foreground text-xs">Kör mot Tensta Centrum. Gratis parkering i anslutning.</p>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <Footprints className="text-primary mb-2" size={22} />
+                  <h3 className="font-serif text-sm font-semibold text-foreground mb-1">Till fots / Cykel</h3>
+                  <p className="text-muted-foreground text-xs">Hjärtat av Tensta Centrum. Cykelparkering utanför entrén.</p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
+          {/* Right column – Map */}
           <motion.div
+            className="lg:col-span-2 space-y-4"
+            initial="hidden"
+            animate="visible"
             variants={fadeUp}
-            className="bg-card border border-border rounded-lg p-6 text-center"
           >
-            <Clock className="mx-auto text-primary mb-3" size={28} />
-            <h3 className="font-serif text-lg text-foreground mb-2">Öppettider</h3>
-            <p className="text-muted-foreground text-sm">Mån–Fre: 11:00 – 22:00</p>
-            <p className="text-muted-foreground text-sm">Lör: 12:00 – 22:00</p>
-            <p className="text-muted-foreground text-sm">Sön: 12:00 – 21:00</p>
+            <div className="rounded-lg overflow-hidden border border-border sticky top-28">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2028.5!2d17.9!3d59.39!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9e5b0b0b0b0b%3A0x0!2sTenstag%C3%A5ngen+25%2C+163+64+Sp%C3%A5nga!5e0!3m2!1ssv!2sse!4v1700000000000!5m2!1ssv!2sse"
+                width="100%"
+                height="500"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Spice Villa - Tenstagången 25, Spånga"
+              />
+            </div>
+
+            {/* Order buttons */}
+            <div className="flex flex-col gap-3">
+              <a
+                href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-primary text-primary-foreground px-6 py-3 rounded font-semibold text-sm text-center hover:bg-primary/90 transition-colors"
+              >
+                Beställ via Uber Eats
+              </a>
+              <a
+                href="https://www.foodora.se/restaurant/ruvj/spice-villa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-[hsl(338,90%,46%)] text-white px-6 py-3 rounded font-semibold text-sm text-center hover:bg-[hsl(338,90%,40%)] transition-colors"
+              >
+                Beställ via Foodora
+              </a>
+            </div>
           </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="bg-card border border-border rounded-lg p-6 text-center"
-          >
-            <Phone className="mx-auto text-primary mb-3" size={28} />
-            <h3 className="font-serif text-lg text-foreground mb-2">Telefon</h3>
-            <a href="tel:+46764222770" className="text-primary hover:underline text-sm font-medium">
-              +46 76 422 27 70
-            </a>
-          </motion.div>
-        </motion.div>
-
-        {/* How to reach us */}
-        <motion.div
-          className="max-w-4xl mx-auto mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-        >
-          <motion.h2 variants={fadeUp} className="font-serif text-2xl md:text-3xl text-foreground text-center mb-8">
-            Hitta till oss
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <motion.div variants={fadeUp} className="bg-card border border-border rounded-lg p-6">
-              <Train className="text-primary mb-3" size={28} />
-              <h3 className="font-serif text-lg text-foreground mb-2">Kollektivtrafik</h3>
-              <p className="text-muted-foreground text-sm">Tunnelbana blå linje till <strong>Tensta station</strong>. Restaurangen ligger i Tensta Centrum, ca 2 min gångväg från stationen.</p>
-            </motion.div>
-            <motion.div variants={fadeUp} className="bg-card border border-border rounded-lg p-6">
-              <Car className="text-primary mb-3" size={28} />
-              <h3 className="font-serif text-lg text-foreground mb-2">Bil</h3>
-              <p className="text-muted-foreground text-sm">Kör mot Tensta Centrum via Tenstagången. Gratis parkering finns i anslutning till centrumet.</p>
-            </motion.div>
-            <motion.div variants={fadeUp} className="bg-card border border-border rounded-lg p-6">
-              <Footprints className="text-primary mb-3" size={28} />
-              <h3 className="font-serif text-lg text-foreground mb-2">Till fots / Cykel</h3>
-              <p className="text-muted-foreground text-sm">Vi ligger i hjärtat av Tensta Centrum, Tenstagången 25. Cykelparkering finns utanför entrén.</p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Google Maps */}
-        <motion.div
-          className="max-w-4xl mx-auto mb-16 rounded-lg overflow-hidden border border-border"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2028.5!2d17.9!3d59.39!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9e5b0b0b0b0b%3A0x0!2sTenstag%C3%A5ngen+25%2C+163+64+Sp%C3%A5nga!5e0!3m2!1ssv!2sse!4v1700000000000!5m2!1ssv!2sse"
-            width="100%"
-            height="400"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Spice Villa - Tenstagången 25, Spånga"
-          />
-        </motion.div>
-
-        {/* CTA */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors"
-          >
-            Beställ via Uber Eats
-          </a>
-          <a
-            href="https://www.foodora.se/restaurant/ruvj/spice-villa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-[hsl(338,90%,46%)] text-white px-10 py-4 rounded font-semibold text-base hover:bg-[hsl(338,90%,40%)] transition-colors"
-          >
-            Beställ via Foodora
-          </a>
         </div>
       </div>
     </div>
