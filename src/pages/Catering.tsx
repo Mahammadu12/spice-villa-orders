@@ -50,11 +50,11 @@ const Catering = () => {
         {submitted ? (
           <motion.div
             variants={fadeUp}
-            className="bg-card border border-border rounded-lg p-8 text-center"
+            className="bg-card text-card-foreground rounded-lg p-8 text-center shadow-lg"
           >
             <PartyPopper className="text-primary mx-auto mb-4" size={48} />
-            <h2 className="font-serif text-2xl text-foreground mb-2">Tack för din förfrågan!</h2>
-            <p className="text-muted-foreground mb-6">Vi har tagit emot ditt meddelande och kontaktar dig så snart som möjligt för att diskutera detaljer och offert.</p>
+            <h2 className="font-serif text-2xl mb-2">Tack för din förfrågan!</h2>
+            <p className="text-card-foreground/60 mb-6">Vi har tagit emot ditt meddelande och kontaktar dig så snart som möjligt.</p>
             <Button onClick={() => setSubmitted(false)} variant="outline">Skicka en ny förfrågan</Button>
           </motion.div>
         ) : (
@@ -68,8 +68,8 @@ const Catering = () => {
                   onClick={() => setSelectedEvent(type.label)}
                   className={`flex flex-col items-center gap-2 p-4 rounded-lg border transition-all ${
                     selectedEvent === type.label
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border bg-card text-muted-foreground hover:border-primary/50"
+                      ? "border-primary bg-primary/20 text-primary shadow-md"
+                      : "border-foreground/20 bg-secondary text-foreground/70 hover:border-primary/50 hover:text-foreground"
                   }`}
                 >
                   <type.icon size={24} />
@@ -81,45 +81,46 @@ const Catering = () => {
             <motion.form
               variants={fadeUp}
               onSubmit={handleSubmit}
-              className="bg-card border border-border rounded-lg p-6 md:p-8 space-y-5"
+              className="bg-card text-card-foreground rounded-lg p-6 md:p-8 space-y-5 shadow-lg"
             >
               <input type="hidden" name="eventType" value={selectedEvent} />
 
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">Namn *</label>
-                  <Input name="name" required placeholder="Ditt namn" maxLength={100} />
+                  <label className="text-sm font-medium">Namn *</label>
+                  <Input name="name" required placeholder="Ditt namn" maxLength={100} className="border-input bg-white/80 text-card-foreground" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">Telefon *</label>
-                  <Input name="phone" type="tel" required placeholder="07X XXX XX XX" maxLength={20} />
+                  <label className="text-sm font-medium">Telefon *</label>
+                  <Input name="phone" type="tel" required placeholder="07X XXX XX XX" maxLength={20} className="border-input bg-white/80 text-card-foreground" />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">E-post *</label>
-                <Input name="email" type="email" required placeholder="din@email.se" maxLength={255} />
+                <label className="text-sm font-medium">E-post *</label>
+                <Input name="email" type="email" required placeholder="din@email.se" maxLength={255} className="border-input bg-white/80 text-card-foreground" />
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">Datum för eventet</label>
-                  <Input name="date" type="date" />
+                  <label className="text-sm font-medium">Datum för eventet</label>
+                  <Input name="date" type="date" className="border-input bg-white/80 text-card-foreground" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">Antal gäster (ungefär)</label>
-                  <Input name="guests" type="number" min={1} max={500} placeholder="50" />
+                  <label className="text-sm font-medium">Antal gäster (ungefär)</label>
+                  <Input name="guests" type="number" min={1} max={500} placeholder="50" className="border-input bg-white/80 text-card-foreground" />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Berätta om ditt event *</label>
+                <label className="text-sm font-medium">Berätta om ditt event *</label>
                 <Textarea
                   name="message"
                   required
                   placeholder="Beskriv ditt event, önskemål om mat, allergier, plats, budget etc..."
                   maxLength={2000}
                   rows={5}
+                  className="border-input bg-white/80 text-card-foreground"
                 />
               </div>
 
