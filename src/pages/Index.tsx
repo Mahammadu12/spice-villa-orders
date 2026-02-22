@@ -1,22 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { UtensilsCrossed, Flame, Award, Moon, ChefHat, Clock, Star } from "lucide-react";
+import { Moon } from "lucide-react";
 import exteriorImg from "@/assets/exterior.jpeg";
-import interiorImg from "@/assets/interior.jpeg";
 import nihariImg from "@/assets/nihari.jpg";
 import chapliKababImg from "@/assets/chapli-kabab.jpeg";
 import beefPayaImg from "@/assets/beef-paya.jpg";
 import biryaniImg from "@/assets/biryani.jpg";
-import chefExteriorImg from "@/assets/chef-exterior.jpeg";
-import diningAreaImg from "@/assets/dining-area.jpeg";
-import kitchenImg from "@/assets/kitchen.jpeg";
-import entranceImg from "@/assets/entrance.jpeg";
-import chefsImg from "@/assets/chefs.jpeg";
-import teamImg from "@/assets/team.jpeg";
-import fruitChaatImg from "@/assets/fruit-chaat.jpeg";
-import saladSaucesImg from "@/assets/salad-sauces.jpeg";
-import storefrontImg from "@/assets/storefront.jpeg";
-import logoNew from "@/assets/logo-new.png";
 import iftarBg from "@/assets/iftar-bg.jpg";
 
 const fadeUp = {
@@ -32,17 +21,6 @@ const Index = () => {
     { img: biryaniImg, name: "Biryani", desc: "Doftande basmatiris tillagat med saffran, hela kryddor och möra köttbitar", price: "179 kr" },
   ];
 
-  const galleryPhotos = [
-    { src: chefExteriorImg, alt: "Vår kock framför Spice Villa", span: "col-span-2 row-span-2" },
-    { src: diningAreaImg, alt: "Vår mysiga matsal", span: "col-span-2" },
-    { src: fruitChaatImg, alt: "Färsk fruktsallad", span: "" },
-    { src: saladSaucesImg, alt: "Sallad med hemgjorda såser", span: "" },
-    { src: kitchenImg, alt: "Vårt öppna kök", span: "col-span-2" },
-    { src: entranceImg, alt: "Välkommen in", span: "" },
-    { src: chefsImg, alt: "Våra kockar", span: "" },
-    { src: teamImg, alt: "Spice Villa-teamet", span: "col-span-2" },
-    { src: storefrontImg, alt: "Spice Villa skyltfönster", span: "col-span-2" },
-  ];
 
   return (
     <div className="min-h-screen">
@@ -102,106 +80,6 @@ const Index = () => {
             🕌 100% Halal Certifierad
           </motion.span>
         </motion.div>
-      </section>
-
-      {/* About / Om Oss with Gallery */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-4">
-          {/* Intro */}
-          <motion.div
-            className="grid md:grid-cols-2 gap-16 items-center mb-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
-          >
-            <motion.div variants={fadeUp}>
-              <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-                Vår Historia
-              </span>
-              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6 leading-tight">
-                Välkommen till <span className="text-primary">Spice Villa</span>
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-4 text-lg">
-                Spice Villa erbjuder en unik matupplevelse med autentiska recept från Indien, Pakistan,
-                Bangladesh och Afghanistan. Vår huvudkock har över <strong className="text-foreground">20 års erfarenhet</strong> inom
-                branschen och brinner för att servera de mest autentiska smakerna.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                Vi är kända för våra signatur­rätter som <strong className="text-foreground">Nihari</strong>, <strong className="text-foreground">Chapli Kebab</strong> och <strong className="text-foreground">Biryani</strong> — 
-                alla tillagade med traditionella metoder, färska kryddor och kärlek. 
-                Vår mysiga restaurang med tegelstensinteriör bjuder in till en avkopplande middag med familj och vänner.
-              </p>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="text-center p-4 rounded-lg bg-secondary border border-border">
-                  <ChefHat className="mx-auto mb-2 text-primary" size={24} />
-                  <span className="text-2xl font-serif text-foreground block">20+</span>
-                  <span className="text-muted-foreground text-xs">Års Erfarenhet</span>
-                </div>
-                <div className="text-center p-4 rounded-lg bg-secondary border border-border">
-                  <Flame className="mx-auto mb-2 text-primary" size={24} />
-                  <span className="text-2xl font-serif text-foreground block">100%</span>
-                  <span className="text-muted-foreground text-xs">Halal Certifierad</span>
-                </div>
-                <div className="text-center p-4 rounded-lg bg-secondary border border-border">
-                  <Star className="mx-auto mb-2 text-primary" size={24} />
-                  <span className="text-2xl font-serif text-foreground block">4.5</span>
-                  <span className="text-muted-foreground text-xs">Betyg</span>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} className="relative">
-              <img
-                src={diningAreaImg}
-                alt="Spice Villa matsal"
-                className="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-xl shadow-xl hidden md:block">
-                <span className="font-serif text-3xl block">20+</span>
-                <span className="text-sm font-medium">År av Passion</span>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Photo Gallery */}
-          <motion.div
-            className="text-center mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-3">
-              Vår Restaurang
-            </h3>
-            <p className="text-muted-foreground max-w-lg mx-auto">
-              En inblick i vår matsal, vårt kök och vårt passionerade team.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-          >
-            {galleryPhotos.map((photo, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                className={`overflow-hidden rounded-xl ${photo.span}`}
-              >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 min-h-[200px]"
-                  loading="lazy"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
       </section>
 
       {/* Popular Dishes */}

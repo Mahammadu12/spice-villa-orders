@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 
 import Catering from "./pages/Catering";
 import Iftar from "./pages/Iftar";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/kontakt" element={<Contact />} />
             <Route path="/bokning" element={<Contact />} />
             <Route path="/catering" element={<Catering />} />
+            <Route path="/om-oss" element={<About />} />
             <Route path="/iftar" element={<Iftar />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
