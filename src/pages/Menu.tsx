@@ -43,8 +43,8 @@ const Menu = () => {
     <div className="min-h-screen">
       {/* Fixed full-page background */}
       <div className="fixed inset-0 -z-10">
-        <img src={menuCollageBg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
-        <div className="absolute inset-0 bg-black/60" />
+        <img src={menuCollageBg} alt="" className="w-full h-full object-cover opacity-20" aria-hidden="true" />
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       <div className="container mx-auto px-4 pt-24 pb-20">
