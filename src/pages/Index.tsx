@@ -1,23 +1,25 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Moon, MapPin, Phone, Star } from "lucide-react";
+import { Moon, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import exteriorImg from "@/assets/exterior.jpeg";
+import logoNew from "@/assets/logo-new.png";
+import menuCollageBg from "@/assets/menu-collage-bg.jpg";
 import nihariImg from "@/assets/nihari.jpg";
 import chapliKababImg from "@/assets/chapli-kabab.jpeg";
 import beefPayaImg from "@/assets/beef-paya-new.png";
 import biryaniImg from "@/assets/biryani.jpg";
+import cateringHeroImg from "@/assets/catering-hero.jpg";
 import iftarBg from "@/assets/iftar-bg.jpg";
 
 const OPENING_HOURS: Record<number, { open: number; close: number }> = {
-  1: { open: 11, close: 22 }, // Mon
-  2: { open: 11, close: 22 }, // Tue
-  3: { open: 11, close: 22 }, // Wed
-  4: { open: 11, close: 22 }, // Thu
-  5: { open: 11, close: 22 }, // Fri
-  6: { open: 12, close: 22 }, // Sat
-  0: { open: 12, close: 21 }, // Sun
+  1: { open: 11, close: 22 },
+  2: { open: 11, close: 22 },
+  3: { open: 11, close: 22 },
+  4: { open: 11, close: 22 },
+  5: { open: 11, close: 22 },
+  6: { open: 12, close: 22 },
+  0: { open: 12, close: 21 },
 };
 
 const DAY_NAMES_SV = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"];
@@ -36,7 +38,7 @@ function getOpenStatus(lang: string) {
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 const Index = () => {
@@ -57,20 +59,85 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* ── Hero ── */}
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* Background food image */}
         <div className="absolute inset-0">
-          <img src={exteriorImg} alt="Spice Villa restaurang" className="w-full h-full object-cover" width={2000} height={1407} decoding="async" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
+          <img
+            src={menuCollageBg}
+            alt="Spice Villa mat"
+            className="w-full h-full object-cover"
+            width={2000}
+            height={1333}
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-black/55" />
         </div>
+
+        {/* Centered content */}
         <motion.div
-          className="relative z-10 text-center px-4 max-w-3xl"
-          initial="hidden" animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+          className="relative z-10 flex flex-col items-center text-center px-4"
+          initial="hidden"
+          animate="visible"
+          variants={{ visible: { transition: { staggerChildren: 0.18 } } }}
         >
-          {/* Open Now badge */}
-          <motion.div className="flex justify-center mb-6" variants={fadeUp}>
-            <span className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-sm border border-white/10 text-white/90 px-5 py-2 rounded-full text-sm">
+          {/* Circular logo */}
+          <motion.div
+            variants={fadeUp}
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-white/30 bg-black/40 backdrop-blur-sm flex items-center justify-center mb-6"
+          >
+            <img
+              src={logoNew}
+              alt="Spice Villa"
+              className="h-20 md:h-24 object-contain"
+              width={192}
+              height={96}
+              decoding="async"
+            />
+          </motion.div>
+
+          {/* Name */}
+          <motion.h1
+            variants={fadeUp}
+            className="font-serif text-4xl md:text-6xl text-white tracking-[0.15em] uppercase mb-1"
+          >
+            Spice Villa
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            className="text-white/60 text-sm md:text-base tracking-[0.3em] uppercase mb-10"
+          >
+            Spånga
+          </motion.p>
+
+          {/* Big navigation links */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col sm:flex-row items-center gap-6 sm:gap-16 mb-12"
+          >
+            <Link
+              to="/meny"
+              className="group relative"
+            >
+              <span className="font-serif text-4xl md:text-6xl lg:text-7xl text-white tracking-[0.1em] uppercase transition-colors duration-300 group-hover:text-primary">
+                {t("Meny", "Menu")}
+              </span>
+              <span className="block h-0.5 w-full bg-white/40 mt-2 group-hover:bg-primary transition-colors duration-300" />
+            </Link>
+            <Link
+              to="/lunch"
+              className="group relative"
+            >
+              <span className="font-serif text-4xl md:text-6xl lg:text-7xl text-white tracking-[0.1em] uppercase transition-colors duration-300 group-hover:text-primary">
+                Lunch
+              </span>
+              <span className="block h-0.5 w-full bg-white/40 mt-2 group-hover:bg-primary transition-colors duration-300" />
+            </Link>
+          </motion.div>
+
+          {/* Open status badge */}
+          <motion.div variants={fadeUp} className="mb-6">
+            <span className="inline-flex items-center gap-2 bg-black/40 backdrop-blur-sm border border-white/10 text-white/80 px-5 py-2 rounded-full text-sm">
               <span className={`w-2 h-2 rounded-full ${openStatus.isOpen ? "bg-green-500" : "bg-red-500"} animate-pulse`} />
               {openStatus.isOpen
                 ? t(`Öppet Nu · ${openStatus.dayName} ${openStatus.timeStr}`, `Open Now · ${openStatus.dayName} ${openStatus.timeStr}`)
@@ -79,48 +146,66 @@ const Index = () => {
             </span>
           </motion.div>
 
-          <motion.h1 className="font-serif text-5xl md:text-7xl text-white mb-2 leading-tight" variants={fadeUp}>
-            Spice Villa
-          </motion.h1>
-          <motion.h2 className="font-serif text-4xl md:text-6xl text-primary mb-6" variants={fadeUp}>
-            Spånga
-          </motion.h2>
-          <motion.p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl mx-auto" variants={fadeUp}>
-            {t("Autentisk pakistansk mat lagad med kärlek — från vår traditionella lerugn till ditt bord. Upplev de rika smakerna från Lahore i hjärtat av Spånga.", "Authentic Pakistani cuisine crafted with love — from our traditional clay oven to your table. Experience the rich flavors of Lahore in the heart of Spånga.")}
-          </motion.p>
-          <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={fadeUp}>
-            <Link to="/meny" className="bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors inline-flex items-center gap-2 justify-center">
-              🍽️ {t("Utforska Menyn", "Explore Our Menu")}
-            </Link>
-            <Link to="/kontakt" className="border border-white/30 text-white px-10 py-4 rounded font-semibold text-base hover:bg-white/10 transition-colors backdrop-blur-sm inline-flex items-center gap-2 justify-center">
-              📅 {t("Boka Bord", "Book a Table")}
-            </Link>
-          </motion.div>
-
-          {/* Info bar */}
-          <motion.div className="flex flex-wrap items-center justify-center gap-5 mt-10 text-white/60 text-sm" variants={fadeUp}>
+          {/* Address & phone */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 text-white/50 text-sm tracking-wider uppercase"
+          >
             <span className="inline-flex items-center gap-1.5">
               <MapPin size={14} className="text-primary" />
-              Tenstagången 25, Spånga
+              Tenstagången 25, 163 64 Spånga
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Phone size={14} className="text-primary" />
-              +46 76-422 27 70
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Star size={14} className="text-primary" />
-              4.6 ★ Rating
+              <a href="tel:+46764222770" className="hover:text-primary transition-colors">
+                073-597 72 46
+              </a>
             </span>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Popular Dishes */}
-      <section className="py-24 bg-secondary">
+      {/* ── Welcome ── */}
+      <section className="py-20 md:py-28 bg-secondary">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ visible: { transition: { staggerChildren: 0.12 } } }}>
+            <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-4xl text-foreground mb-6">
+              {lang === "sv" ? (
+                <>Vi på Spice Villa hälsar er hjärtligt <span className="text-primary">välkomna</span>.</>
+              ) : (
+                <>We at Spice Villa warmly <span className="text-primary">welcome</span> you.</>
+              )}
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-muted-foreground text-base md:text-lg leading-relaxed">
+              {t(
+                "Vi är engagerade i att erbjuda våra gäster en matupplevelse utöver det vanliga. Vår meny sträcker sig från traditionella pakistanska grytor till sizzlers och biryanis — allt lagat från grunden med färska kryddor och kärlek. Vi ser fram emot att dela vår passion för matlagning med er.",
+                "We are committed to offering our guests an extraordinary dining experience. Our menu ranges from traditional Pakistani curries to sizzlers and biryanis — all made from scratch with fresh spices and love. We look forward to sharing our passion for cooking with you."
+              )}
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/meny"
+                className="bg-primary text-primary-foreground px-8 py-3 rounded font-semibold hover:bg-primary/90 transition-colors"
+              >
+                🍽️ {t("Utforska Menyn", "Explore Menu")}
+              </Link>
+              <Link
+                to="/kontakt"
+                className="border border-border text-foreground px-8 py-3 rounded font-semibold hover:bg-card transition-colors"
+              >
+                📅 {t("Boka Bord", "Book a Table")}
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Popular Dishes ── */}
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-3 block">
-              {t("Signatur­rätter", "Signature Dishes")}
+              {t("Signaturrätter", "Signature Dishes")}
             </span>
             <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-4">
               {t("Populära Rätter", "Popular Dishes")}
@@ -132,13 +217,27 @@ const Index = () => {
 
           <motion.div
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
           >
             {popularDishes.map((dish) => (
-              <motion.div key={dish.name} variants={fadeUp} className="bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 group hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+              <motion.div
+                key={dish.name}
+                variants={fadeUp}
+                className="bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 group hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
                 <div className="overflow-hidden h-64">
-                  <img src={dish.img} alt={dish.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={600} height={512} loading="lazy" decoding="async" />
+                  <img
+                    src={dish.img}
+                    alt={dish.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    width={600}
+                    height={512}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-2">
@@ -152,14 +251,17 @@ const Index = () => {
           </motion.div>
 
           <motion.div className="text-center mt-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <Link to="/meny" className="inline-block border-2 border-primary text-primary px-10 py-4 rounded-lg font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors tracking-wide uppercase">
+            <Link
+              to="/meny"
+              className="inline-block border-2 border-primary text-primary px-10 py-4 rounded-lg font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors tracking-wide uppercase"
+            >
               {t("Se Hela Menyn", "See Full Menu")}
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Iftar CTA Banner */}
+      {/* ── Iftar CTA Banner ── */}
       {new Date() <= new Date("2026-03-31") && (
         <section className="relative overflow-hidden">
           <div className="absolute inset-0">
@@ -190,36 +292,37 @@ const Index = () => {
         </section>
       )}
 
-      {/* Order CTA */}
-      <section className="py-24">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-3 block">
-              {t("Leverans", "Delivery")}
-            </span>
-            <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-4">
-              {t("Sugen? Beställ Nu!", "Hungry? Order Now!")}
-            </h2>
-            <p className="text-muted-foreground mb-10 max-w-md mx-auto text-lg">
-              {t("Beställ dina favoriter direkt via Uber Eats, Foodora eller Qopla och njut hemma.", "Order your favorites via Uber Eats, Foodora or Qopla and enjoy at home.")}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-5 justify-center items-stretch">
-              <a href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(152,69%,41%)]/50 hover:shadow-xl hover:shadow-[hsl(152,69%,41%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]">
-                <svg viewBox="0 0 200 30" className="h-6 w-auto" fill="none">
-                  <text x="0" y="24" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="26" fill="#06C167">Uber</text>
-                  <text x="72" y="24" fontFamily="Arial, sans-serif" fontWeight="400" fontSize="26" fill="currentColor" className="text-foreground">Eats</text>
-                </svg>
-                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">{t("Beställ nu →", "Order now →")}</span>
-              </a>
-              <a href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(338,90%,46%)]/50 hover:shadow-xl hover:shadow-[hsl(338,90%,46%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]">
-                <span className="text-2xl font-bold tracking-tight" style={{ color: '#D70F64' }}>foodora</span>
-                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">{t("Beställ nu →", "Order now →")}</span>
-              </a>
-              <a href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(142,70%,45%)]/50 hover:shadow-xl hover:shadow-[hsl(142,70%,45%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]">
-                <span className="text-2xl font-bold tracking-tight" style={{ color: '#2DB84B' }}>Qopla</span>
-                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">{t("Beställ nu →", "Order now →")}</span>
-              </a>
-            </div>
+      {/* ── Catering ── */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={cateringHeroImg} alt="" className="w-full h-full object-cover" width={1920} height={1080} loading="lazy" decoding="async" />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 py-20 md:py-28">
+          <motion.div
+            className="max-w-2xl mx-auto text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
+          >
+            <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-5xl text-white mb-4">
+              Catering
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-white/70 text-base md:text-lg mb-8 leading-relaxed">
+              {t(
+                "Vi erbjuder catering för olika evenemang — bröllop, företagsfester, familjesammankomster och mer. Tveka inte att kontakta oss för meny samt prisförslag.",
+                "We offer catering for various events — weddings, corporate parties, family gatherings and more. Don't hesitate to contact us for menu and pricing."
+              )}
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <Link
+                to="/catering"
+                className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded font-semibold hover:bg-primary/90 transition-colors"
+              >
+                {t("Läs Mer", "Learn More")}
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
