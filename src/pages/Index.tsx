@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Moon } from "lucide-react";
+import { Moon, MapPin, Phone, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import exteriorImg from "@/assets/exterior.jpeg";
 import nihariImg from "@/assets/nihari.jpg";
@@ -37,26 +37,47 @@ const Index = () => {
           initial="hidden" animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.p className="text-primary font-medium tracking-[0.3em] uppercase text-sm md:text-base mb-4" variants={fadeUp}>
-            {t("Indisk · Pakistansk · Bengalisk · Afghansk", "Indian · Pakistani · Bengali · Afghan")}
-          </motion.p>
-          <motion.h1 className="font-serif text-5xl md:text-7xl text-white mb-6 leading-tight" variants={fadeUp}>
-            {t("Autentiska Smaker från Sydasien", "Authentic Flavors from South Asia")}
+          {/* Open Now badge */}
+          <motion.div className="flex justify-center mb-6" variants={fadeUp}>
+            <span className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-sm border border-white/10 text-white/90 px-5 py-2 rounded-full text-sm">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              {t("Öppet Nu · Idag 10:00 – 21:00", "Open Now · Today 10:00 – 21:00")}
+            </span>
+          </motion.div>
+
+          <motion.h1 className="font-serif text-5xl md:text-7xl text-white mb-2 leading-tight" variants={fadeUp}>
+            Spice Villa
           </motion.h1>
+          <motion.h2 className="font-serif text-4xl md:text-6xl text-primary mb-6" variants={fadeUp}>
+            Spånga
+          </motion.h2>
           <motion.p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl mx-auto" variants={fadeUp}>
-            {t("Upplev kulinarisk excellens med över 20 års erfarenhet av traditionellt kök", "Experience culinary excellence with over 20 years of traditional cooking")}
+            {t("Autentisk pakistansk mat lagad med kärlek — från vår traditionella lerugn till ditt bord. Upplev de rika smakerna från Lahore i hjärtat av Spånga.", "Authentic Pakistani cuisine crafted with love — from our traditional clay oven to your table. Experience the rich flavors of Lahore in the heart of Spånga.")}
           </motion.p>
           <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={fadeUp}>
-            <Link to="/meny" className="bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors">
-              {t("Utforska Menyn", "Explore the Menu")}
+            <Link to="/meny" className="bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors inline-flex items-center gap-2 justify-center">
+              🍽️ {t("Utforska Menyn", "Explore Our Menu")}
             </Link>
-            <Link to="/kontakt" className="border border-white/40 text-white px-10 py-4 rounded font-semibold text-base hover:bg-white/10 transition-colors backdrop-blur-sm">
-              {t("Boka Bord", "Book a Table")}
+            <Link to="/kontakt" className="border border-white/30 text-white px-10 py-4 rounded font-semibold text-base hover:bg-white/10 transition-colors backdrop-blur-sm inline-flex items-center gap-2 justify-center">
+              📅 {t("Boka Bord", "Book a Table")}
             </Link>
           </motion.div>
-          <motion.span className="inline-block mt-8 bg-primary/20 text-primary px-5 py-2 rounded-full text-xs font-semibold tracking-wider uppercase border border-primary/30" variants={fadeUp}>
-            🕌 {t("100% Halal Certifierad", "100% Halal Certified")}
-          </motion.span>
+
+          {/* Info bar */}
+          <motion.div className="flex flex-wrap items-center justify-center gap-5 mt-10 text-white/60 text-sm" variants={fadeUp}>
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin size={14} className="text-primary" />
+              Tenstagången 25, Spånga
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Phone size={14} className="text-primary" />
+              +46 76-422 27 70
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Star size={14} className="text-primary" />
+              4.6 ★ Rating
+            </span>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -149,46 +170,20 @@ const Index = () => {
               {t("Beställ dina favoriter direkt via Uber Eats, Foodora eller Qopla och njut hemma.", "Order your favorites via Uber Eats, Foodora or Qopla and enjoy at home.")}
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-stretch">
-              {/* Uber Eats */}
-              <a
-                href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(152,69%,41%)]/50 hover:shadow-xl hover:shadow-[hsl(152,69%,41%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]"
-              >
+              <a href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(152,69%,41%)]/50 hover:shadow-xl hover:shadow-[hsl(152,69%,41%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]">
                 <svg viewBox="0 0 200 30" className="h-6 w-auto" fill="none">
                   <text x="0" y="24" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="26" fill="#06C167">Uber</text>
                   <text x="72" y="24" fontFamily="Arial, sans-serif" fontWeight="400" fontSize="26" fill="currentColor" className="text-foreground">Eats</text>
                 </svg>
-                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">
-                  {t("Beställ nu →", "Order now →")}
-                </span>
+                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">{t("Beställ nu →", "Order now →")}</span>
               </a>
-
-              {/* Foodora */}
-              <a
-                href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(338,90%,46%)]/50 hover:shadow-xl hover:shadow-[hsl(338,90%,46%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]"
-              >
+              <a href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(338,90%,46%)]/50 hover:shadow-xl hover:shadow-[hsl(338,90%,46%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]">
                 <span className="text-2xl font-bold tracking-tight" style={{ color: '#D70F64' }}>foodora</span>
-                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">
-                  {t("Beställ nu →", "Order now →")}
-                </span>
+                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">{t("Beställ nu →", "Order now →")}</span>
               </a>
-
-              {/* Qopla */}
-              <a
-                href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(142,70%,45%)]/50 hover:shadow-xl hover:shadow-[hsl(142,70%,45%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]"
-              >
+              <a href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-2xl px-8 py-6 hover:border-[hsl(142,70%,45%)]/50 hover:shadow-xl hover:shadow-[hsl(142,70%,45%)]/10 transition-all duration-300 hover:-translate-y-1 min-w-[200px]">
                 <span className="text-2xl font-bold tracking-tight" style={{ color: '#2DB84B' }}>Qopla</span>
-                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">
-                  {t("Beställ nu →", "Order now →")}
-                </span>
+                <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors">{t("Beställ nu →", "Order now →")}</span>
               </a>
             </div>
           </motion.div>
