@@ -26,8 +26,8 @@ const Footer = () => {
             </div>
             <p className="text-white/50 text-sm leading-relaxed">
               {t(
-                "Autentisk pakistansk mat i hjärtat av Spånga. Från vår lerugn till ditt bord med kärlek.",
-                "Authentic Pakistani cuisine in the heart of Spånga. From our clay oven to your table with love.",
+                "Autentisk Indisk - pakistansk - Bengalisk mat i hjärtat av Spånga. Från vår lerugn till ditt bord.",
+                "Authentic Indian - Pakistani - Bengali food in the heart of Spånga. From our clay oven to your table.",
               )}
             </p>
           </div>
