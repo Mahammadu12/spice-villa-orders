@@ -22,10 +22,10 @@ const Iftar = () => {
 
   const iftarCourses = [
     { title: t("Iftar Öppning", "Iftar Opening"), subtitle: t("Bryt fastan med", "Break your fast with"), items: ["Khajoor (Dates)", "Rooh Afza (Drink)"], image: roohAfzaDatesImg },
-    { title: t("Förrätter", "Starters"), items: ["Aloo Chana Chaat", "Dahi Bhare", "Veg Samosa", "Mix Veg Pakora"], image: chanaChaatImg, secondImage: dahiBhareImg },
-    { title: "Karahi", subtitle: t("Välj en", "Choose one"), items: ["Lamb", "Chicken", "Beef"], image: karahi1Img },
-    { title: t("Vegetariskt", "Vegetarian"), subtitle: t("Välj en", "Choose one"), items: ["Aloo Palak", "Dal", "Lahori Chana"], image: karahi2Img },
-    { title: t("Tillbehör", "Sides"), items: ["Zeera Rice", "Naan Bread", "Salad", "Mint Raita", "Garlic Sauce"], image: naanRiceImg, secondImage: saladSaucesImg },
+    { title: t("Förrätter", "Starters"), items: ["Aloo Chana Chaat", "Dahi Bhare", "Veg Samosa", "Mix Veg Pakora"], image: iftarStarterImg },
+    { title: "Karahi", subtitle: t("Välj en", "Choose one"), items: ["Lamb", "Chicken", "Beef"], image: iftarKarahiImg },
+    { title: t("Vegetariskt", "Vegetarian"), subtitle: t("Välj en", "Choose one"), items: ["Aloo Palak", "Dal", "Lahori Chana"], image: iftarVegetarianImg },
+    { title: t("Tillbehör", "Sides"), items: ["Zeera Rice", "Naan Bread", "Salad", "Mint Raita", "Garlic Sauce"], image: iftarSidesImg },
     { title: t("Dessert & Drycker", "Dessert & Drinks"), items: ["Zarda", "Gulab Jamun", "Chai (Tea)", "Coffee"], image: zardaImg, secondImage: gulabJamunImg },
   ];
 
