@@ -58,7 +58,11 @@ const Footer = () => {
               <li>Tenstagången 25, 163 64 Spånga</li>
               <li><a href="tel:+46764222770" className="hover:text-primary transition-colors">+46 76 422 27 70</a></li>
               <li><a href="mailto:info@spicevillaspanga.se" className="hover:text-primary transition-colors">info@spicevillaspanga.se</a></li>
-              <li>{t("Öppet dagligen: 11:00 – 22:00", "Open Daily: 11:00 – 22:00")}</li>
+              <li className="leading-relaxed">
+                {t("Mån – Fre: 11:00 – 22:00", "Mon – Fri: 11:00 – 22:00")}<br />
+                {t("Lör: 12:00 – 22:00", "Sat: 12:00 – 22:00")}<br />
+                {t("Sön: 12:00 – 21:00", "Sun: 12:00 – 21:00")}
+              </li>
             </ul>
           </div>
         </div>
