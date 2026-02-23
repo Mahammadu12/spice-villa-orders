@@ -6,11 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { sendToZapier } from "@/lib/zapier";
+import { sendFormEmail } from "@/lib/sendFormEmail";
 import heroImg from "@/assets/exterior.jpeg";
 import sideImg from "@/assets/interior.jpeg";
-
-const BOOKING_WEBHOOK_URL = localStorage.getItem("spicevilla_booking_webhook") || "";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -22,7 +20,6 @@ const Contact = () => {
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
-  const [webhookUrl, setWebhookUrl] = useState(BOOKING_WEBHOOK_URL);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,10 +38,7 @@ const Contact = () => {
     };
 
     try {
-      if (webhookUrl) {
-        await sendToZapier(webhookUrl, data);
-        localStorage.setItem("spicevilla_booking_webhook", webhookUrl);
-      }
+      await sendFormEmail(data);
       setSubmitted(true);
       toast({
         title: t("Bokning mottagen!", "Booking received!"),
@@ -67,11 +61,7 @@ const Contact = () => {
 
       {/* Hero text */}
       <div className="relative z-10 pt-32 pb-12 text-center px-4">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-        >
+        <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
           <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4">
             {t("Kontakt & Boka Bord", "Contact & Reserve")}
           </motion.h1>
@@ -84,11 +74,7 @@ const Contact = () => {
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 relative z-10 pb-12">
         {submitted ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-card text-card-foreground rounded-xl p-10 text-center shadow-xl max-w-lg mx-auto"
-          >
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-card text-card-foreground rounded-xl p-10 text-center shadow-xl max-w-lg mx-auto">
             <CalendarDays className="text-primary mx-auto mb-4" size={48} />
             <h2 className="font-serif text-2xl mb-2">{t("Tack för din bokning!", "Thank you for your booking!")}</h2>
             <p className="text-muted-foreground mb-6">{t("Vi återkommer med bekräftelse.", "We will confirm shortly.")}</p>
@@ -126,16 +112,9 @@ const Contact = () => {
             </div>
 
             {/* Right: Booking form */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-              className="bg-card/90 backdrop-blur-md p-8 md:p-10 border-l border-border/30"
-            >
+            <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.08 } } }} className="bg-card/90 backdrop-blur-md p-8 md:p-10 border-l border-border/30">
               <motion.div variants={fadeUp}>
-                <h2 className="font-serif text-2xl md:text-3xl text-card-foreground mb-1">
-                  {t("Boka bord", "Book a Table")}
-                </h2>
+                <h2 className="font-serif text-2xl md:text-3xl text-card-foreground mb-1">{t("Boka bord", "Book a Table")}</h2>
                 <div className="w-12 h-1 bg-primary rounded mb-6" />
               </motion.div>
 
@@ -176,18 +155,6 @@ const Contact = () => {
                   <Textarea name="message" placeholder={t("Allergier, barnstol, speciella önskemål...", "Allergies, high chair, special requests...")} maxLength={500} rows={3} className="border-border bg-secondary/50" />
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Zapier Webhook URL</label>
-                  <Input
-                    value={webhookUrl}
-                    onChange={(e) => setWebhookUrl(e.target.value)}
-                    placeholder="https://hooks.zapier.com/hooks/catch/..."
-                    type="url"
-                    className="border-border bg-secondary/50 text-xs"
-                  />
-                  <p className="text-[10px] text-muted-foreground">{t("Valfritt – koppla till Zapier för att ta emot bokningar.", "Optional – connect to Zapier to receive bookings.")}</p>
-                </div>
-
                 <Button type="submit" className="w-full" size="lg" disabled={sending}>
                   {sending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   {t("Skicka bokning", "Submit Booking")}
@@ -200,7 +167,6 @@ const Contact = () => {
 
       {/* Transport & Map Section */}
       <div className="max-w-6xl mx-auto px-4 pb-20 relative z-10">
-        {/* Mobile contact info */}
         <div className="lg:hidden grid sm:grid-cols-3 gap-4 mb-8">
           <div className="bg-card text-card-foreground rounded-lg p-5 text-center shadow">
             <MapPin className="mx-auto text-primary mb-2" size={24} />
@@ -221,7 +187,6 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Transport + Map */}
         <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }} className="grid lg:grid-cols-2 gap-8">
           <motion.div variants={fadeUp} className="space-y-4">
             <h2 className="font-serif text-xl text-white">{t("Hitta till oss", "How to Find Us")}</h2>
