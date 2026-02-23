@@ -82,11 +82,7 @@ const Index = () => {
           variants={{ visible: { transition: { staggerChildren: 0.18 } } }}>
 
           {/* Circular logo */}
-          <motion.div
-            variants={fadeUp}
-            className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-white shadow-2xl flex items-center justify-center mb-6">
-
-            
+          
 
 
 
@@ -94,7 +90,11 @@ const Index = () => {
 
 
 
-          </motion.div>
+
+
+
+
+
 
           {/* Name */}
           <motion.h1
