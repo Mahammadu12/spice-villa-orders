@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import exteriorImg from "@/assets/exterior.jpeg";
 import nihariImg from "@/assets/nihari.jpg";
 import chapliKababImg from "@/assets/chapli-kabab.jpeg";
-import beefPayaImg from "@/assets/beef-paya.jpg";
+import beefPayaImg from "@/assets/beef-paya-new.png";
 import biryaniImg from "@/assets/biryani.jpg";
 import iftarBg from "@/assets/iftar-bg.jpg";
 

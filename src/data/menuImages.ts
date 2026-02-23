@@ -27,6 +27,9 @@ import lammKarahiImg from "@/assets/lamm-karahi.png";
 import chickenSambalImg from "@/assets/chicken-sambal.png";
 import alooPalakImg from "@/assets/aloo-palak.png";
 import biffMadrasImg from "@/assets/biff-madras.png";
+import lammPalakImg from "@/assets/lamm-palak.png";
+import chickenKarahiImg from "@/assets/chicken-karahi.png";
+import paneerJalfreziImg from "@/assets/paneer-jalfrezi.png";
 
 // Map menu category titles to images
 export const categoryImages: Record<string, string> = {
@@ -63,7 +66,7 @@ export const lunchDishImages: Record<string, string> = {
   "Chicken Sambal": chickenSambalImg,
   "Aloo Palak": alooPalakImg,
   "Biff Madras": biffMadrasImg,
-  "Lamm Palak": alooPalakImg,
-  "Chicken Karahi": lammKarahiImg,
-  "Paneer Jalfrezi": palakPaneerImg,
+  "Lamm Palak": lammPalakImg,
+  "Chicken Karahi": chickenKarahiImg,
+  "Paneer Jalfrezi": paneerJalfreziImg,
 };

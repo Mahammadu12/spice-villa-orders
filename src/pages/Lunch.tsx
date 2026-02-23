@@ -81,18 +81,6 @@ const Lunch = () => {
           })}
         </motion.div>
 
-        {/* CTA - matching Menu page style */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
-          <a href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded font-semibold text-base hover:bg-primary/90 transition-colors text-center">
-            {t("Beställ via Uber Eats", "Order via Uber Eats")}
-          </a>
-          <a href="https://www.foodora.se/restaurant/ljf2/spice-villa-ljf2" target="_blank" rel="noopener noreferrer" className="inline-block bg-[hsl(338,90%,46%)] text-white px-10 py-4 rounded font-semibold text-base hover:bg-[hsl(338,90%,40%)] transition-colors text-center">
-            {t("Beställ via Foodora", "Order via Foodora")}
-          </a>
-          <a href="https://qopla.com/restaurant/spice-villa-spanga/qZkwaaE0oN/order" target="_blank" rel="noopener noreferrer" className="inline-block bg-[hsl(142,70%,35%)] text-white px-10 py-4 rounded font-semibold text-base hover:bg-[hsl(142,70%,30%)] transition-colors text-center">
-            {t("Beställ via Qopla", "Order via Qopla")}
-          </a>
-        </div>
       </div>
     </div>
   );
