@@ -10,26 +10,6 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
-const spiceLevels: { key: SpiceLevel; label: string; color: string; dots: number }[] = [
-  { key: "mild", label: "Mild", color: "bg-green-500", dots: 1 },
-  { key: "medium", label: "Medium", color: "bg-yellow-500", dots: 2 },
-  { key: "spicy", label: "Spicy", color: "bg-orange-500", dots: 3 },
-  { key: "hot", label: "Hot", color: "bg-red-500", dots: 4 },
-  { key: "extra-hot", label: "Extra Hot", color: "bg-red-700", dots: 5 },
-];
-
-const SpiceBadge = ({ level }: { level: SpiceLevel }) => {
-  const info = spiceLevels.find((s) => s.key === level);
-  if (!info) return null;
-  return (
-    <span className="inline-flex items-center gap-1 text-[10px] font-medium text-white/70">
-      {Array.from({ length: info.dots }).map((_, i) => (
-        <span key={i} className={`w-1.5 h-1.5 rounded-full ${info.color}`} />
-      ))}
-      <span className="ml-0.5">{info.label}</span>
-    </span>
-  );
-};
 
 const Menu = () => {
   const { t } = useLanguage();
@@ -112,10 +92,7 @@ const Menu = () => {
                     {category.items.map((item, i) => (
                       <div key={item.name + i} className={`flex justify-between items-start px-5 py-4 ${i !== category.items.length - 1 ? "border-b border-white/10" : ""} hover:bg-white/5 transition-colors`}>
                         <div className="flex-1 pr-4">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <h3 className="text-white font-medium text-sm">{item.name}</h3>
-                            {item.spice && <SpiceBadge level={item.spice} />}
-                          </div>
+                          <h3 className="text-white font-medium text-sm">{item.name}</h3>
                           {item.description && <p className="text-white/60 text-xs mt-0.5">{item.description}</p>}
                         </div>
                         <span className="text-primary font-semibold text-sm whitespace-nowrap">{item.price}</span>
