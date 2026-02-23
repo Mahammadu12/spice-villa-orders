@@ -10,7 +10,7 @@ import iftarVegetarianImg from "@/assets/iftar-vegetarian.png";
 import iftarSidesImg from "@/assets/iftar-sides.png";
 import gulabJamunImg from "@/assets/gulab-jamun.jpg";
 import zardaImg from "@/assets/zarda.jpg";
-import saladSaucesImg from "@/assets/salad-sauces.jpeg";
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
