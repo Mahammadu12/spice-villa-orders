@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { PartyPopper, Phone } from "lucide-react";
+import { PartyPopper, Phone, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { sendToZapier } from "@/lib/zapier";
 import heroImg from "@/assets/sizzler.jpeg";
 import foodImg from "@/assets/catering-hero.jpg";
+
+const CATERING_WEBHOOK_URL = localStorage.getItem("spicevilla_catering_webhook") || "";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -19,15 +22,45 @@ const Catering = () => {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [foodType, setFoodType] = useState("");
+  const [webhookUrl, setWebhookUrl] = useState(CATERING_WEBHOOK_URL);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast({
-      title: t("Förfrågan skickad!", "Request sent!"),
-      description: t("Vi kontaktar dig inom kort för att diskutera ditt event.", "We will contact you shortly to discuss your event."),
-    });
+    setSending(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {
+      form_type: "catering",
+      date: formData.get("date") as string,
+      food_type: foodType,
+      guests: formData.get("guests") as string,
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      if (webhookUrl) {
+        await sendToZapier(webhookUrl, data);
+        localStorage.setItem("spicevilla_catering_webhook", webhookUrl);
+      }
+      setSubmitted(true);
+      toast({
+        title: t("Förfrågan skickad!", "Request sent!"),
+        description: t("Vi kontaktar dig inom kort för att diskutera ditt event.", "We will contact you shortly to discuss your event."),
+      });
+    } catch {
+      toast({
+        title: t("Något gick fel", "Something went wrong"),
+        description: t("Försök igen eller ring oss.", "Please try again or call us."),
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -164,7 +197,20 @@ const Catering = () => {
                   />
                 </div>
 
-                <Button type="submit" className="w-full" size="lg">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Zapier Webhook URL</label>
+                  <Input
+                    value={webhookUrl}
+                    onChange={(e) => setWebhookUrl(e.target.value)}
+                    placeholder="https://hooks.zapier.com/hooks/catch/..."
+                    type="url"
+                    className="border-border bg-secondary/50 text-xs"
+                  />
+                  <p className="text-[10px] text-muted-foreground">{t("Valfritt – koppla till Zapier för att ta emot förfrågningar.", "Optional – connect to Zapier to receive requests.")}</p>
+                </div>
+
+                <Button type="submit" className="w-full" size="lg" disabled={sending}>
+                  {sending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   {t("Skicka förfrågan", "Send Request")}
                 </Button>
               </motion.form>

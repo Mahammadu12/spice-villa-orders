@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Phone, Train, Car, Footprints, CalendarDays } from "lucide-react";
+import { MapPin, Clock, Phone, Train, Car, Footprints, CalendarDays, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { sendToZapier } from "@/lib/zapier";
 import heroImg from "@/assets/exterior.jpeg";
 import sideImg from "@/assets/interior.jpeg";
+
+const BOOKING_WEBHOOK_URL = localStorage.getItem("spicevilla_booking_webhook") || "";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -18,14 +21,44 @@ const Contact = () => {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [webhookUrl, setWebhookUrl] = useState(BOOKING_WEBHOOK_URL);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast({
-      title: t("Bokning mottagen!", "Booking received!"),
-      description: t("Vi återkommer med en bekräftelse inom kort.", "We will confirm your booking shortly."),
-    });
+    setSending(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {
+      form_type: "table_booking",
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      email: formData.get("email") as string,
+      date: formData.get("date") as string,
+      time: formData.get("time") as string,
+      guests: formData.get("guests") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      if (webhookUrl) {
+        await sendToZapier(webhookUrl, data);
+        localStorage.setItem("spicevilla_booking_webhook", webhookUrl);
+      }
+      setSubmitted(true);
+      toast({
+        title: t("Bokning mottagen!", "Booking received!"),
+        description: t("Vi återkommer med en bekräftelse inom kort.", "We will confirm your booking shortly."),
+      });
+    } catch {
+      toast({
+        title: t("Något gick fel", "Something went wrong"),
+        description: t("Försök igen eller ring oss.", "Please try again or call us."),
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -143,7 +176,20 @@ const Contact = () => {
                   <Textarea name="message" placeholder={t("Allergier, barnstol, speciella önskemål...", "Allergies, high chair, special requests...")} maxLength={500} rows={3} className="border-border bg-secondary/50" />
                 </div>
 
-                <Button type="submit" className="w-full" size="lg">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Zapier Webhook URL</label>
+                  <Input
+                    value={webhookUrl}
+                    onChange={(e) => setWebhookUrl(e.target.value)}
+                    placeholder="https://hooks.zapier.com/hooks/catch/..."
+                    type="url"
+                    className="border-border bg-secondary/50 text-xs"
+                  />
+                  <p className="text-[10px] text-muted-foreground">{t("Valfritt – koppla till Zapier för att ta emot bokningar.", "Optional – connect to Zapier to receive bookings.")}</p>
+                </div>
+
+                <Button type="submit" className="w-full" size="lg" disabled={sending}>
+                  {sending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   {t("Skicka bokning", "Submit Booking")}
                 </Button>
               </motion.form>
