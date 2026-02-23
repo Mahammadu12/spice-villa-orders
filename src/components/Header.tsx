@@ -53,7 +53,7 @@ const Header = () => {
           : "bg-gradient-to-b from-black/50 to-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+      <div className="w-full flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
           <img

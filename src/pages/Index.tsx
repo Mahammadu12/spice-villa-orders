@@ -89,7 +89,7 @@ const Index = () => {
             <img
               src={logoNew}
               alt="Spice Villa"
-              className="h-20 md:h-24 object-contain"
+              className="h-20 md:h-24 object-contain rounded-full bg-white p-2"
               width={192}
               height={96}
               decoding="async"
