@@ -59,9 +59,9 @@ const Header = () => {
           <img
             src={logoNew}
             alt="Spice Villa"
-            className="h-9 md:h-12 rounded-lg bg-white/95 p-1 shadow-md group-hover:shadow-primary/20 transition-shadow duration-300"
-            width={96}
-            height={48}
+            className="h-10 md:h-14 rounded-full bg-white p-1.5 shadow-md group-hover:shadow-primary/20 transition-shadow duration-300"
+            width={56}
+            height={56}
             decoding="async"
           />
           <div className="hidden sm:block">
