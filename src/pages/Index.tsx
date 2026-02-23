@@ -350,8 +350,8 @@ const Index = () => {
             </motion.h2>
             <motion.p variants={fadeUp} className="text-white/70 text-base md:text-lg mb-8 leading-relaxed">
               {t(
-                "Vi erbjuder catering för olika evenemang — bröllop, företagsfester, familjesammankomster och mer. Tveka inte att kontakta oss för meny samt prisförslag.",
-                "We offer catering for various events — weddings, corporate parties, family gatherings and more. Don't hesitate to contact us for menu and pricing.",
+                "Vi erbjuder catering för olika evenemang bröllop, företagsfester, familjesammankomster och mer. Tveka inte att kontakta oss för meny samt prisförslag.",
+                "We offer catering for various events weddings, corporate parties, family gatherings and more. Don't hesitate to contact us for menu and pricing.",
               )}
             </motion.p>
             <motion.div variants={fadeUp}>
