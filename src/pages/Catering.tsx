@@ -8,8 +8,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { sendToZapier } from "@/lib/zapier";
-import heroImg from "@/assets/sizzler.jpeg";
-import foodImg from "@/assets/catering-hero.jpg";
+import heroImg from "@/assets/catering-hero.jpg";
+import foodImg from "@/assets/sizzler.jpeg";
 
 const CATERING_WEBHOOK_URL = localStorage.getItem("spicevilla_catering_webhook") || "";
 
