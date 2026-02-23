@@ -69,7 +69,7 @@ const Index = () => {
             className="w-full h-full object-cover"
             width={2000}
             height={1333}
-            decoding="async" />
+            fetchPriority="high" />
 
           <div className="absolute inset-0 bg-black/55" />
         </div>
