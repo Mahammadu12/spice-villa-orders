@@ -17,6 +17,16 @@ import lammgrytaImg from "@/assets/lammgryta.jpg";
 import dalFryImg from "@/assets/dal-fry.jpg";
 import alooGobiImg from "@/assets/aloo-gobi.jpg";
 import chickenTikkaMasalaImg from "@/assets/chicken-tikka-masala.jpg";
+import chickenTandooriImg from "@/assets/chicken-tandoori.png";
+import chickenTikkaSizzlerImg from "@/assets/chicken-tikka-sizzler.png";
+import lammgrytaNewImg from "@/assets/lammgryta-new.png";
+import kycklinggytaNewImg from "@/assets/kycklinggryta-new.png";
+import biffSambalImg from "@/assets/biff-sambal.png";
+import mixSabziImg from "@/assets/mix-sabzi.png";
+import lammKarahiImg from "@/assets/lamm-karahi.png";
+import chickenSambalImg from "@/assets/chicken-sambal.png";
+import alooPalakImg from "@/assets/aloo-palak.png";
+import biffMadrasImg from "@/assets/biff-madras.png";
 
 // Map menu category titles to images
 export const categoryImages: Record<string, string> = {
@@ -40,20 +50,20 @@ export const lunchDishImages: Record<string, string> = {
   "Dal Fry": dalFryImg,
   "Aloo Gobi": alooGobiImg,
   "Chicken Tikka Masala": chickenTikkaMasalaImg,
-  "Chicken Tandoori": plainGrillImg,
-  "Chicken Tikka Sizzler": sizzlerImg,
-  "Lammgryta": lammgrytaImg,
-  "Kycklinggryta": kycklinggytaImg,
+  "Chicken Tandoori": chickenTandooriImg,
+  "Chicken Tikka Sizzler": chickenTikkaSizzlerImg,
+  "Lammgryta": lammgrytaNewImg,
+  "Kycklinggryta": kycklinggytaNewImg,
   "Achari Chicken": karahi1Img,
   "Palak Paneer": palakPaneerImg,
-  "Biff Sambal": punjabiCurryImg,
+  "Biff Sambal": biffSambalImg,
   "Butter Chicken": tikkaMasalaImg,
-  "Mix Sabzi": palakPaneerImg,
-  "Lamm Karahi": karahi1Img,
-  "Chicken Sambal": punjabiCurryImg,
-  "Aloo Palak": palakPaneerImg,
-  "Biff Madras": punjabiCurryImg,
-  "Lamm Palak": palakPaneerImg,
-  "Chicken Karahi": karahi1Img,
+  "Mix Sabzi": mixSabziImg,
+  "Lamm Karahi": lammKarahiImg,
+  "Chicken Sambal": chickenSambalImg,
+  "Aloo Palak": alooPalakImg,
+  "Biff Madras": biffMadrasImg,
+  "Lamm Palak": alooPalakImg,
+  "Chicken Karahi": lammKarahiImg,
   "Paneer Jalfrezi": palakPaneerImg,
 };
