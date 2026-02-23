@@ -14,7 +14,7 @@ import storefrontImg from "@/assets/storefront.jpeg";
 import interiorImg from "@/assets/interior.jpeg";
 import nihariImg from "@/assets/nihari.jpg";
 import chapliKababImg from "@/assets/chapli-kabab.jpeg";
-import beefPayaImg from "@/assets/beef-paya.jpg";
+import beefPayaImg from "@/assets/beef-paya-new.png";
 import biryaniImg from "@/assets/biryani.jpg";
 
 const fadeUp = {
