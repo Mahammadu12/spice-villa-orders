@@ -84,12 +84,12 @@ const Index = () => {
           {/* Circular logo */}
           <motion.div
             variants={fadeUp}
-            className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-white/30 bg-black/40 backdrop-blur-sm flex items-center justify-center mb-6"
+            className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-white shadow-2xl flex items-center justify-center mb-6"
           >
             <img
               src={logoNew}
               alt="Spice Villa"
-              className="h-20 md:h-24 object-contain rounded-full bg-white p-2"
+              className="h-16 md:h-20 object-contain"
               width={192}
               height={96}
               decoding="async"
