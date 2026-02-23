@@ -55,19 +55,6 @@ const Menu = () => {
           </p>
         </motion.div>
 
-        {/* Spice Guide */}
-        <motion.div className="flex flex-wrap items-center justify-center gap-4 mb-10 text-sm" initial="hidden" animate="visible" variants={fadeUp}>
-          <span className="text-white/50 text-xs font-medium uppercase tracking-wider">{t("Kryddguide:", "Spice Guide:")}</span>
-          {spiceLevels.map((s) => (
-            <span key={s.key} className="inline-flex items-center gap-1.5 text-white/70 text-xs">
-              {Array.from({ length: s.dots }).map((_, i) => (
-                <span key={i} className={`w-1.5 h-1.5 rounded-full ${s.color}`} />
-              ))}
-              {s.label}
-            </span>
-          ))}
-        </motion.div>
-
         {/* Category filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           <button
