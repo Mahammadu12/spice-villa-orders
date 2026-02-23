@@ -65,6 +65,10 @@ Deno.serve(async (req) => {
       throw new Error("RESEND_API_KEY not configured");
     }
 
+    console.log("Sending email with subject:", subject);
+    console.log("Resend API key present:", !!resendKey);
+    console.log("Sending to:", RESTAURANT_EMAIL);
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -79,12 +83,15 @@ Deno.serve(async (req) => {
       }),
     });
 
+    const resBody = await res.text();
+    console.log("Resend response status:", res.status);
+    console.log("Resend response body:", resBody);
+
     if (!res.ok) {
-      const error = await res.text();
-      throw new Error(`Resend error: ${error}`);
+      throw new Error(`Resend error: ${resBody}`);
     }
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, resend: JSON.parse(resBody) }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
