@@ -4,14 +4,13 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import iftarBg from "@/assets/iftar-bg.jpg";
 import roohAfzaDatesImg from "@/assets/rooh-afza-dates.jpg";
-import chanaChaatImg from "@/assets/chana-chaat.jpeg";
-import dahiBhareImg from "@/assets/dahi-bhare.jpg";
-import karahi1Img from "@/assets/karahi1.jpeg";
-import karahi2Img from "@/assets/karahi2.jpeg";
-import naanRiceImg from "@/assets/naan-rice.jpg";
+import iftarStarterImg from "@/assets/iftar-starter.png";
+import iftarKarahiImg from "@/assets/iftar-karahi.png";
+import iftarVegetarianImg from "@/assets/iftar-vegetarian.png";
+import iftarSidesImg from "@/assets/iftar-sides.png";
 import gulabJamunImg from "@/assets/gulab-jamun.jpg";
 import zardaImg from "@/assets/zarda.jpg";
-import saladSaucesImg from "@/assets/salad-sauces.jpeg";
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -23,10 +22,10 @@ const Iftar = () => {
 
   const iftarCourses = [
     { title: t("Iftar Öppning", "Iftar Opening"), subtitle: t("Bryt fastan med", "Break your fast with"), items: ["Khajoor (Dates)", "Rooh Afza (Drink)"], image: roohAfzaDatesImg },
-    { title: t("Förrätter", "Starters"), items: ["Aloo Chana Chaat", "Dahi Bhare", "Veg Samosa", "Mix Veg Pakora"], image: chanaChaatImg, secondImage: dahiBhareImg },
-    { title: "Karahi", subtitle: t("Välj en", "Choose one"), items: ["Lamb", "Chicken", "Beef"], image: karahi1Img },
-    { title: t("Vegetariskt", "Vegetarian"), subtitle: t("Välj en", "Choose one"), items: ["Aloo Palak", "Dal", "Lahori Chana"], image: karahi2Img },
-    { title: t("Tillbehör", "Sides"), items: ["Zeera Rice", "Naan Bread", "Salad", "Mint Raita", "Garlic Sauce"], image: naanRiceImg, secondImage: saladSaucesImg },
+    { title: t("Förrätter", "Starters"), items: ["Aloo Chana Chaat", "Dahi Bhare", "Veg Samosa", "Mix Veg Pakora"], image: iftarStarterImg },
+    { title: "Karahi", subtitle: t("Välj en", "Choose one"), items: ["Lamb", "Chicken", "Beef"], image: iftarKarahiImg },
+    { title: t("Vegetariskt", "Vegetarian"), subtitle: t("Välj en", "Choose one"), items: ["Aloo Palak", "Dal", "Lahori Chana"], image: iftarVegetarianImg },
+    { title: t("Tillbehör", "Sides"), items: ["Zeera Rice", "Naan Bread", "Salad", "Mint Raita", "Garlic Sauce"], image: iftarSidesImg },
     { title: t("Dessert & Drycker", "Dessert & Drinks"), items: ["Zarda", "Gulab Jamun", "Chai (Tea)", "Coffee"], image: zardaImg, secondImage: gulabJamunImg },
   ];
 
