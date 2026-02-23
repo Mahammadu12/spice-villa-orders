@@ -16,7 +16,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Catering = lazy(() => import("./pages/Catering"));
 const Iftar = lazy(() => import("./pages/Iftar"));
 const About = lazy(() => import("./pages/About"));
-const Loyalty = lazy(() => import("./pages/Loyalty"));
+
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Ramadan 2026 ends approximately March 30, 2026
@@ -44,7 +44,7 @@ const App = () => (
                 <Route path="/bokning" element={<Contact />} />
                 <Route path="/catering" element={<Catering />} />
                 <Route path="/om-oss" element={<About />} />
-                <Route path="/lojalitet" element={<Loyalty />} />
+                
                 {isRamadanActive() && <Route path="/iftar" element={<Iftar />} />}
                 <Route path="*" element={<NotFound />} />
               </Routes>
