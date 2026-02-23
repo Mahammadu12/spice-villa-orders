@@ -15,7 +15,7 @@ const getNavLinks = (t: (sv: string, en: string) => string) => [
   { label: t("Om Oss", "About"), href: "/om-oss" },
   ...(isRamadanActive() ? [{ label: "Iftar", href: "/iftar" }] : []),
   { label: "Catering", href: "/catering" },
-  { label: t("Lojalitet", "Loyalty"), href: "/lojalitet" },
+  
   { label: t("Kontakt", "Contact"), href: "/kontakt" },
 ];
 

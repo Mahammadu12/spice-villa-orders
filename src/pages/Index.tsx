@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Moon, MapPin, Phone, Star } from "lucide-react";
@@ -9,13 +10,43 @@ import beefPayaImg from "@/assets/beef-paya.jpg";
 import biryaniImg from "@/assets/biryani.jpg";
 import iftarBg from "@/assets/iftar-bg.jpg";
 
+const OPENING_HOURS: Record<number, { open: number; close: number }> = {
+  1: { open: 11, close: 22 }, // Mon
+  2: { open: 11, close: 22 }, // Tue
+  3: { open: 11, close: 22 }, // Wed
+  4: { open: 11, close: 22 }, // Thu
+  5: { open: 11, close: 22 }, // Fri
+  6: { open: 12, close: 22 }, // Sat
+  0: { open: 12, close: 21 }, // Sun
+};
+
+const DAY_NAMES_SV = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"];
+const DAY_NAMES_EN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+function getOpenStatus(lang: string) {
+  const now = new Date();
+  const day = now.getDay();
+  const hour = now.getHours();
+  const todayHours = OPENING_HOURS[day];
+  const isOpen = hour >= todayHours.open && hour < todayHours.close;
+  const dayName = lang === "sv" ? DAY_NAMES_SV[day] : DAY_NAMES_EN[day];
+  const timeStr = `${String(todayHours.open).padStart(2, "0")}:00 – ${String(todayHours.close).padStart(2, "0")}:00`;
+  return { isOpen, dayName, timeStr };
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const [openStatus, setOpenStatus] = useState(() => getOpenStatus(lang));
+
+  useEffect(() => {
+    const interval = setInterval(() => setOpenStatus(getOpenStatus(lang)), 60000);
+    return () => clearInterval(interval);
+  }, [lang]);
 
   const popularDishes = [
     { img: nihariImg, name: "Nihari", desc: t("Långkokt nötköttsgryta med djupa kryddor, serverad med färsk ingefära och koriander", "Slow-cooked beef stew with deep spices, served with fresh ginger and coriander"), price: "189 kr" },
@@ -40,8 +71,11 @@ const Index = () => {
           {/* Open Now badge */}
           <motion.div className="flex justify-center mb-6" variants={fadeUp}>
             <span className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-sm border border-white/10 text-white/90 px-5 py-2 rounded-full text-sm">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              {t("Öppet Nu · Idag 10:00 – 21:00", "Open Now · Today 10:00 – 21:00")}
+              <span className={`w-2 h-2 rounded-full ${openStatus.isOpen ? "bg-green-500" : "bg-red-500"} animate-pulse`} />
+              {openStatus.isOpen
+                ? t(`Öppet Nu · ${openStatus.dayName} ${openStatus.timeStr}`, `Open Now · ${openStatus.dayName} ${openStatus.timeStr}`)
+                : t(`Stängt · ${openStatus.dayName} ${openStatus.timeStr}`, `Closed · ${openStatus.dayName} ${openStatus.timeStr}`)
+              }
             </span>
           </motion.div>
 
