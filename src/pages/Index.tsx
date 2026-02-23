@@ -182,44 +182,6 @@ const Index = () => {
         </motion.button>
       </section>
 
-      {/* ── Welcome ── */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={menuCollageBg} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" />
-          <div className="absolute inset-0 bg-black/70" />
-        </div>
-        <div className="container mx-auto px-4 max-w-3xl text-center relative z-10">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ visible: { transition: { staggerChildren: 0.12 } } }}>
-            <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-4xl text-white mb-6">
-              {lang === "sv" ? (
-                <>Vi på Spice Villa hälsar er hjärtligt <span className="text-primary">välkomna</span>.</>
-              ) : (
-                <>We at Spice Villa warmly <span className="text-primary">welcome</span> you.</>
-              )}
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/70 text-base md:text-lg leading-relaxed">
-              {t(
-                "Vi är engagerade i att erbjuda våra gäster en matupplevelse utöver det vanliga. Vår meny sträcker sig från traditionella pakistanska grytor till sizzlers och biryanis — allt lagat från grunden med färska kryddor och kärlek. Vi ser fram emot att dela vår passion för matlagning med er.",
-                "We are committed to offering our guests an extraordinary dining experience. Our menu ranges from traditional Pakistani curries to sizzlers and biryanis — all made from scratch with fresh spices and love. We look forward to sharing our passion for cooking with you."
-              )}
-            </motion.p>
-            <motion.div variants={fadeUp} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/meny"
-                className="bg-primary text-primary-foreground px-8 py-3 rounded font-semibold hover:bg-primary/90 transition-colors"
-              >
-                🍽️ {t("Utforska Menyn", "Explore Menu")}
-              </Link>
-              <Link
-                to="/kontakt"
-                className="border border-white/30 text-white px-8 py-3 rounded font-semibold hover:bg-white/10 transition-colors"
-              >
-                📅 {t("Boka Bord", "Book a Table")}
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* ── Popular Dishes ── */}
       <section className="py-24">
