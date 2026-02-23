@@ -7,7 +7,7 @@ const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-[hsl(15,40%,12%)] border-t border-white/10 py-14 text-white/80">
+    <footer className="bg-secondary border-t border-border py-14 text-muted-foreground">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
