@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Check, Accessibility } from "lucide-react";
-import logoNew from "@/assets/logo-new.png";
+import logoNew from "@/assets/logo-new.svg";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
