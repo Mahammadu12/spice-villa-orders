@@ -31,13 +31,14 @@ const Iftar = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Full-page background */}
+      <div className="fixed inset-0 -z-10">
+        <img src={iftarBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={iftarBg} alt="Ramadan background" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
         <motion.div className="relative z-10 text-center px-4 max-w-2xl" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
           <motion.p className="text-[hsl(43,80%,65%)] font-medium tracking-[0.3em] uppercase text-sm mb-3" variants={fadeUp}>
             🌙 Ramadan Mubarak
@@ -68,7 +69,7 @@ const Iftar = () => {
       </section>
 
       {/* Booking notice */}
-      <section className="bg-[hsl(220,50%,12%)] py-4">
+      <section className="bg-black/40 backdrop-blur-sm py-4">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Star size={16} className="text-[hsl(43,80%,55%)]" />
@@ -90,7 +91,7 @@ const Iftar = () => {
       </section>
 
       {/* Menu courses */}
-      <section className="bg-[hsl(220,50%,8%)] py-16">
+      <section className="bg-black/30 backdrop-blur-sm py-16">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">
@@ -114,7 +115,7 @@ const Iftar = () => {
                     </div>
                   )}
                 </div>
-                <div className="md:w-3/5 bg-[hsl(220,40%,14%)] border border-[hsl(43,80%,55%)]/15 rounded-xl p-6 md:p-8 flex flex-col justify-center">
+                <div className="md:w-3/5 bg-black/40 backdrop-blur-sm border border-[hsl(43,80%,55%)]/15 rounded-xl p-6 md:p-8 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="bg-[hsl(43,80%,55%)]/15 text-[hsl(43,80%,65%)] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">{idx + 1}</span>
                     <h3 className="font-serif text-2xl text-white">{course.title}</h3>
@@ -134,10 +135,6 @@ const Iftar = () => {
 
       {/* Bottom info */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={iftarBg} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
         <div className="relative z-10 container mx-auto px-4 py-16 text-center max-w-2xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
             <motion.div className="flex items-center justify-center gap-2 mb-4" variants={fadeUp}>
