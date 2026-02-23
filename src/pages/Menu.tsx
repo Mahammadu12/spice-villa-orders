@@ -1,13 +1,34 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { dinnerMenu } from "@/data/menuData";
+import { dinnerMenu, SpiceLevel } from "@/data/menuData";
 import { categoryImages } from "@/data/menuImages";
 import menuCollageBg from "@/assets/menu-collage-bg.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+const spiceLevels: { key: SpiceLevel; label: string; color: string; dots: number }[] = [
+  { key: "mild", label: "Mild", color: "bg-green-500", dots: 1 },
+  { key: "medium", label: "Medium", color: "bg-yellow-500", dots: 2 },
+  { key: "spicy", label: "Spicy", color: "bg-orange-500", dots: 3 },
+  { key: "hot", label: "Hot", color: "bg-red-500", dots: 4 },
+  { key: "extra-hot", label: "Extra Hot", color: "bg-red-700", dots: 5 },
+];
+
+const SpiceBadge = ({ level }: { level: SpiceLevel }) => {
+  const info = spiceLevels.find((s) => s.key === level);
+  if (!info) return null;
+  return (
+    <span className="inline-flex items-center gap-1 text-[10px] font-medium text-white/70">
+      {Array.from({ length: info.dots }).map((_, i) => (
+        <span key={i} className={`w-1.5 h-1.5 rounded-full ${info.color}`} />
+      ))}
+      <span className="ml-0.5">{info.label}</span>
+    </span>
+  );
 };
 
 const Menu = () => {
@@ -27,11 +48,24 @@ const Menu = () => {
       </div>
 
       <div className="container mx-auto px-4 pt-24 pb-20">
-        <motion.div className="text-center mb-10" initial="hidden" animate="visible" variants={fadeUp}>
+        <motion.div className="text-center mb-6" initial="hidden" animate="visible" variants={fadeUp}>
           <h1 className="font-serif text-4xl md:text-5xl text-white mb-3">{t("Vår Meny", "Our Menu")}</h1>
           <p className="text-white/70 max-w-lg mx-auto">
-            {t("Utforska vårt kompletta utbud av autentiska sydasiatiska rätter.", "Explore our complete range of authentic South Asian dishes.")}
+            {t("Utforska vårt kompletta utbud av autentiska sydasiatiska rätter.", "Discover authentic Pakistani flavors — each dish crafted with traditional spices and love")}
           </p>
+        </motion.div>
+
+        {/* Spice Guide */}
+        <motion.div className="flex flex-wrap items-center justify-center gap-4 mb-10 text-sm" initial="hidden" animate="visible" variants={fadeUp}>
+          <span className="text-white/50 text-xs font-medium uppercase tracking-wider">{t("Kryddguide:", "Spice Guide:")}</span>
+          {spiceLevels.map((s) => (
+            <span key={s.key} className="inline-flex items-center gap-1.5 text-white/70 text-xs">
+              {Array.from({ length: s.dots }).map((_, i) => (
+                <span key={i} className={`w-1.5 h-1.5 rounded-full ${s.color}`} />
+              ))}
+              {s.label}
+            </span>
+          ))}
         </motion.div>
 
         {/* Category filter */}
@@ -91,7 +125,10 @@ const Menu = () => {
                     {category.items.map((item, i) => (
                       <div key={item.name + i} className={`flex justify-between items-start px-5 py-4 ${i !== category.items.length - 1 ? "border-b border-white/10" : ""} hover:bg-white/5 transition-colors`}>
                         <div className="flex-1 pr-4">
-                          <h3 className="text-white font-medium text-sm">{item.name}</h3>
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="text-white font-medium text-sm">{item.name}</h3>
+                            {item.spice && <SpiceBadge level={item.spice} />}
+                          </div>
                           {item.description && <p className="text-white/60 text-xs mt-0.5">{item.description}</p>}
                         </div>
                         <span className="text-primary font-semibold text-sm whitespace-nowrap">{item.price}</span>

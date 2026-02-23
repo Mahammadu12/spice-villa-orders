@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingParticles from "@/components/FloatingParticles";
 import Index from "./pages/Index";
 
 const Menu = lazy(() => import("./pages/Menu"));
@@ -15,6 +16,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Catering = lazy(() => import("./pages/Catering"));
 const Iftar = lazy(() => import("./pages/Iftar"));
 const About = lazy(() => import("./pages/About"));
+const Loyalty = lazy(() => import("./pages/Loyalty"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Ramadan 2026 ends approximately March 30, 2026
@@ -30,6 +32,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <FloatingParticles />
           <Header />
           <main>
             <Suspense fallback={null}>
@@ -41,6 +44,7 @@ const App = () => (
                 <Route path="/bokning" element={<Contact />} />
                 <Route path="/catering" element={<Catering />} />
                 <Route path="/om-oss" element={<About />} />
+                <Route path="/lojalitet" element={<Loyalty />} />
                 {isRamadanActive() && <Route path="/iftar" element={<Iftar />} />}
                 <Route path="*" element={<NotFound />} />
               </Routes>
