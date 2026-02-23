@@ -1,112 +1,83 @@
-import { MapPin, Phone, Mail, Clock, Train, Bus, Car } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Check, Accessibility } from "lucide-react";
 import logoNew from "@/assets/logo-new.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const OPENING_HOURS = [
-  { day: "Monday", sv: "Måndag", hours: "11:00 – 22:00" },
-  { day: "Tuesday", sv: "Tisdag", hours: "11:00 – 22:00" },
-  { day: "Wednesday", sv: "Onsdag", hours: "11:00 – 22:00" },
-  { day: "Thursday", sv: "Torsdag", hours: "11:00 – 22:00" },
-  { day: "Friday", sv: "Fredag", hours: "11:00 – 22:00" },
-  { day: "Saturday", sv: "Lördag", hours: "12:00 – 22:00" },
-  { day: "Sunday", sv: "Söndag", hours: "12:00 – 21:00" },
-];
-
 const Footer = () => {
   const { t } = useLanguage();
-  const today = new Date().getDay(); // 0=Sun, 1=Mon...
-  const todayIndex = today === 0 ? 6 : today - 1;
 
   return (
-    <footer className="bg-secondary border-t border-border py-14">
+    <footer className="bg-[hsl(15,40%,12%)] border-t border-white/10 py-14 text-white/80">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-10">
-          {/* Contact Information */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <img src={logoNew} alt="Spice Villa" className="h-12" width={96} height={48} loading="lazy" decoding="async" />
-              <div>
-                <span className="font-serif text-lg text-foreground">Spice Villa</span>
-                <span className="block text-[10px] text-primary font-medium tracking-[0.2em] uppercase">SPÅNGA</span>
-              </div>
+            <div className="flex items-center gap-2.5 mb-4">
+              <img src={logoNew} alt="Spice Villa" className="h-8" width={64} height={32} loading="lazy" decoding="async" />
+              <span className="font-serif text-xl text-white">Spice Villa</span>
             </div>
-            <h4 className="font-serif text-lg text-foreground mb-4">{t("Kontaktinformation", "Contact Information")}</h4>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
-                <div>
-                  <p>Tenstagången 25</p>
-                  <p>163 64 Spånga, Sweden</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone size={16} className="text-primary shrink-0" />
-                <a href="tel:+46764222770" className="hover:text-primary transition-colors">+46 76 422 27 70</a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail size={16} className="text-primary shrink-0" />
-                <a href="mailto:info@spicevillaspanga.se" className="hover:text-primary transition-colors">info@spicevillaspanga.se</a>
-              </div>
-            </div>
-            <span className="mt-4 inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase">
-              100% Halal
-            </span>
+            <p className="text-white/50 text-sm leading-relaxed">
+              {t(
+                "Autentisk pakistansk mat i hjärtat av Spånga. Från vår lerugn till ditt bord — med kärlek.",
+                "Authentic Pakistani cuisine in the heart of Spånga. From our clay oven to your table — with love."
+              )}
+            </p>
           </div>
 
-          {/* Opening Hours */}
+          {/* Quick Links */}
           <div>
-            <h4 className="font-serif text-lg text-foreground mb-4 flex items-center gap-2">
-              <Clock size={18} className="text-primary" />
-              {t("Öppettider", "Opening Hours")}
-            </h4>
-            <div className="space-y-2 text-sm">
-              {OPENING_HOURS.map((item, i) => (
-                <div
-                  key={item.day}
-                  className={`flex justify-between py-1.5 px-2 rounded ${
-                    i === todayIndex
-                      ? "bg-primary/10 text-primary font-semibold"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  <span>{t(item.sv, item.day)}</span>
-                  <span>{item.hours}</span>
-                </div>
-              ))}
-            </div>
+            <h4 className="font-semibold text-white text-base mb-4">{t("Snabblänkar", "Quick Links")}</h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link to="/" className="hover:text-primary transition-colors">{t("Hem", "Home")}</Link></li>
+              <li><Link to="/meny" className="hover:text-primary transition-colors">{t("Meny", "Menu")}</Link></li>
+              <li><Link to="/lunch" className="hover:text-primary transition-colors">{t("Lunch", "Lunch Specials")}</Link></li>
+              <li><Link to="/om-oss" className="hover:text-primary transition-colors">{t("Om Oss", "About")}</Link></li>
+              <li><Link to="/kontakt" className="hover:text-primary transition-colors">{t("Kontakt", "Contact")}</Link></li>
+            </ul>
           </div>
 
-          {/* Getting Here */}
+          {/* Services */}
           <div>
-            <h4 className="font-serif text-lg text-foreground mb-4">{t("Hitta Hit", "Getting Here")}</h4>
-            <div className="space-y-4 text-sm text-muted-foreground">
-              <div className="flex items-start gap-2.5">
-                <Train size={16} className="text-primary mt-0.5 shrink-0" />
-                <div>
-                  <p className="font-medium text-foreground">{t("Tunnelbana", "Metro")}</p>
-                  <p>{t("Tensta station (Blå linjen) — 5 min promenad", "Tensta station (Blue Line) — 5 min walk")}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <Bus size={16} className="text-primary mt-0.5 shrink-0" />
-                <div>
-                  <p className="font-medium text-foreground">{t("Buss", "Bus")}</p>
-                  <p>{t("Linje 179, 514 — hållplats Tenstagången", "Lines 179, 514 — stop at Tenstagången")}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <Car size={16} className="text-primary mt-0.5 shrink-0" />
-                <div>
-                  <p className="font-medium text-foreground">{t("Bil", "Driving")}</p>
-                  <p>{t("Gratis parkering utanför restaurangen", "Free parking available outside the restaurant")}</p>
-                </div>
-              </div>
-            </div>
+            <h4 className="font-semibold text-white text-base mb-4">{t("Tjänster", "Services")}</h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link to="/catering" className="hover:text-primary transition-colors">Catering</Link></li>
+              <li><Link to="/lunch" className="hover:text-primary transition-colors">{t("Lunch", "Lunch Specials")}</Link></li>
+              <li>
+                <a href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  {t("Leverans via Uber Eats", "Delivery via Uber Eats")}
+                </a>
+              </li>
+              <li><Link to="/kontakt" className="hover:text-primary transition-colors">{t("Bokning", "Reservation")}</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-semibold text-white text-base mb-4">{t("Kontakt", "Contact")}</h4>
+            <ul className="space-y-2.5 text-sm">
+              <li>Tenstagången 25, 163 64 Spånga</li>
+              <li><a href="tel:+46764222770" className="hover:text-primary transition-colors">+46 76 422 27 70</a></li>
+              <li><a href="mailto:info@spicevillaspanga.se" className="hover:text-primary transition-colors">info@spicevillaspanga.se</a></li>
+              <li>{t("Öppet dagligen: 11:00 – 22:00", "Open Daily: 11:00 – 22:00")}</li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border text-center text-muted-foreground text-xs">
-          © {new Date().getFullYear()} Spice Villa. {t("Alla rättigheter förbehållna.", "All rights reserved.")}
+        {/* Bottom bar */}
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-white/40 text-xs">
+            © {new Date().getFullYear()} Spice Villa Spånga. {t("Alla rättigheter förbehållna.", "All rights reserved.")}
+          </p>
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 border border-primary/40 text-primary px-3.5 py-1.5 rounded-full text-xs font-semibold">
+              <Check size={14} />
+              Halal Certified
+            </span>
+            <span className="inline-flex items-center gap-1.5 border border-white/20 text-white/70 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+              <Accessibility size={14} />
+              Accessible
+            </span>
+          </div>
         </div>
       </div>
     </footer>
