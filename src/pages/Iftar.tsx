@@ -3,7 +3,7 @@ import { Phone, Clock, MapPin, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import iftarBg from "@/assets/iftar-bg.jpg";
-import roohAfzaDatesImg from "@/assets/rooh-afza-dates.jpg";
+import iftarOpeningImg from "@/assets/iftar-opening.png";
 import iftarStarterImg from "@/assets/iftar-starter.png";
 import iftarKarahiImg from "@/assets/iftar-karahi.png";
 import iftarVegetarianImg from "@/assets/iftar-vegetarian.png";
@@ -21,7 +21,7 @@ const Iftar = () => {
   const { t } = useLanguage();
 
   const iftarCourses = [
-    { title: t("Iftar Öppning", "Iftar Opening"), subtitle: t("Bryt fastan med", "Break your fast with"), items: ["Khajoor (Dates)", "Rooh Afza (Drink)"], image: roohAfzaDatesImg },
+    { title: t("Iftar Öppning", "Iftar Opening"), subtitle: t("Bryt fastan med", "Break your fast with"), items: ["Khajoor (Dates)", "Rooh Afza (Drink)"], image: iftarOpeningImg },
     { title: t("Förrätter", "Starters"), items: ["Aloo Chana Chaat", "Dahi Bhare", "Veg Samosa", "Mix Veg Pakora"], image: iftarStarterImg },
     { title: "Karahi", subtitle: t("Välj en", "Choose one"), items: ["Lamb", "Chicken", "Beef"], image: iftarKarahiImg },
     { title: t("Vegetariskt", "Vegetarian"), subtitle: t("Välj en", "Choose one"), items: ["Aloo Palak", "Dal", "Lahori Chana"], image: iftarVegetarianImg },
