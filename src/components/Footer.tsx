@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <img src={logoNew} alt="Spice Villa" className="h-8" width={64} height={32} loading="lazy" decoding="async" />
+              <img src={logoNew} alt="Spice Villa" className="h-10 rounded-full bg-white p-1.5" width={40} height={40} loading="lazy" decoding="async" />
               <span className="font-serif text-xl text-white">Spice Villa</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed">
