@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logoNew from "@/assets/logo-new.png";
+import logoNew from "@/assets/logo-new.svg";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Ramadan 2026 ends approximately March 30, 2026

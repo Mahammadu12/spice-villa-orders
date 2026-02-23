@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Moon, MapPin, Phone, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import logoNew from "@/assets/logo-new.png";
+import logoNew from "@/assets/logo-new.svg";
 import menuCollageBg from "@/assets/menu-collage-bg.jpg";
 import nihariImg from "@/assets/nihari.jpg";
 import chapliKababImg from "@/assets/chapli-kabab.jpeg";
