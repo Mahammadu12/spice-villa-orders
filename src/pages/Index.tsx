@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Moon, MapPin, Phone } from "lucide-react";
+import { Moon, MapPin, Phone, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoNew from "@/assets/logo-new.png";
 import menuCollageBg from "@/assets/menu-collage-bg.jpg";
@@ -163,6 +163,23 @@ const Index = () => {
             </span>
           </motion.div>
         </motion.div>
+
+        {/* Scroll down arrow */}
+        <motion.button
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/50 hover:text-primary transition-colors"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.6 }}
+          aria-label="Scroll down"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown size={32} />
+          </motion.div>
+        </motion.button>
       </section>
 
       {/* ── Welcome ── */}

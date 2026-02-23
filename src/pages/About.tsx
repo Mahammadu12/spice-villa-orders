@@ -46,14 +46,18 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Fixed full-page background */}
+      {/* Fixed full-page background with subtle pattern overlay */}
       <div className="fixed inset-0 -z-10">
-        <img src={interiorImg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
-        <div className="absolute inset-0 bg-black/60" />
+        <img src={interiorImg} alt="" className="w-full h-full object-cover opacity-30" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       </div>
 
       {/* Hero Banner */}
       <section className="relative h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24">
+        <div className="absolute inset-0">
+          <img src={interiorImg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
         <motion.div className="relative z-10 text-center px-4" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
           <motion.span className="text-primary text-sm font-semibold tracking-[0.3em] uppercase mb-4 block" variants={fadeUp}>
             {t("Vår Historia", "Our Story")}
