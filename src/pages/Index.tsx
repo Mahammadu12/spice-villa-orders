@@ -124,9 +124,9 @@ const Index = () => {
             <img
               src={logoNew}
               alt="Spice Villa"
-              className="h-44 md:h-56 lg:h-64 mx-auto mix-blend-screen drop-shadow-2xl object-contain"
-              width={256}
-              height={256}
+              className="h-64 md:h-80 lg:h-96 mx-auto drop-shadow-2xl object-contain"
+              width={384}
+              height={384}
               fetchPriority="high" />
 
           </motion.div>
