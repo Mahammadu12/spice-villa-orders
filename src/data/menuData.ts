@@ -227,8 +227,8 @@ export const lunchMenu: LunchDay[] = [
       { name: "Chicken Tandoori", description: "Marinerad och grillad kyckling.", price: "99 kr" },
       { name: "Chicken Tikka Sizzler", description: "Het järnplatta med kyckling och grönsaker.", price: "99 kr" },
       { name: "Lamm Karahi", description: "Lamm med tomat & kryddor.", price: "119 kr" },
+      { name: "Lamm Palak", description: "Lamm med spenat i mild sås.", price: "119 kr" },
       { name: "Chicken Sambal", description: "Kyckling i stark sås.", price: "99 kr" },
-      { name: "Achari Chicken", description: "Kyckling i syrlig och kryddig sås.", price: "119 kr" },
     ],
   },
   {
