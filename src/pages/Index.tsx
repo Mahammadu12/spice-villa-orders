@@ -124,7 +124,7 @@ const Index = () => {
             <img
               src={logoNew}
               alt="Spice Villa"
-              className="h-32 md:h-44 lg:h-52 rounded-2xl bg-white p-2 shadow-2xl shadow-black/40"
+              className="h-32 md:h-44 lg:h-52 drop-shadow-2xl"
               width={208}
               height={208}
               fetchPriority="high"
