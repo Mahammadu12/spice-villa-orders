@@ -56,14 +56,6 @@ const Header = () => {
       <div className="w-full flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <img
-            src={logoNew}
-            alt="Spice Villa"
-            className="h-12 md:h-14 mix-blend-screen drop-shadow-lg group-hover:drop-shadow-xl transition-all duration-300"
-            width={56}
-            height={56}
-            decoding="async"
-          />
           <div className="hidden sm:block">
             <span className="font-serif text-lg md:text-xl text-foreground tracking-wide">
               Spice Villa
@@ -72,6 +64,9 @@ const Header = () => {
               {t("Restaurang & Catering", "Restaurant & Catering")}
             </span>
           </div>
+          <span className="sm:hidden font-serif text-lg text-foreground tracking-wide">
+            Spice Villa
+          </span>
         </Link>
 
         {/* Desktop nav */}
