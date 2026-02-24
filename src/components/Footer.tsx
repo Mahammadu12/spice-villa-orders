@@ -16,9 +16,9 @@ const Footer = () => {
               <img
                 src={logoNew}
                 alt="Spice Villa"
-                className="h-14 mix-blend-screen drop-shadow-lg"
-                width={56}
-                height={56}
+                className="h-12 mix-blend-screen drop-shadow-lg"
+                width={48}
+                height={48}
                 loading="lazy"
                 decoding="async"
               />
