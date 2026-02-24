@@ -12,14 +12,14 @@ import biryaniImg from "@/assets/biryani.jpg";
 import cateringHeroImg from "@/assets/catering-hero.jpg";
 import iftarBg from "@/assets/iftar-bg.jpg";
 
-const OPENING_HOURS: Record<number, { open: number; close: number }> = {
+const OPENING_HOURS: Record<number, {open: number;close: number;}> = {
   1: { open: 11, close: 22 },
   2: { open: 11, close: 22 },
   3: { open: 11, close: 22 },
   4: { open: 11, close: 22 },
   5: { open: 11, close: 22 },
   6: { open: 12, close: 22 },
-  0: { open: 12, close: 21 },
+  0: { open: 12, close: 21 }
 };
 
 const DAY_NAMES_SV = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"];
@@ -38,7 +38,7 @@ function getOpenStatus(lang: string) {
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
 const Index = () => {
@@ -51,43 +51,43 @@ const Index = () => {
   }, [lang]);
 
   const popularDishes = [
-    {
-      img: nihariImg,
-      name: "Nihari Lamm",
-      desc: t(
-        "Långkokt lammgryta med kryddor, lime, lök, chili och koriander",
-        "Slow-cooked lamb stew with spices, lime, onion, chili and coriander",
-      ),
-      price: "170 kr",
-    },
-    {
-      img: chapliKababImg,
-      name: "Chapli Kebab",
-      desc: t(
-        "Kryddiga köttfärsbiffar med färska örter, tomat och granatäpple",
-        "Spicy minced meat patties with fresh herbs, tomato and pomegranate",
-      ),
-      price: "149 kr",
-    },
-    {
-      img: beefPayaImg,
-      name: "Beef Paya",
-      desc: t(
-        "Traditionell långkokt kotlettgryta med rik buljong och aromatiska kryddor",
-        "Traditional slow-cooked trotters stew with rich broth and aromatic spices",
-      ),
-      price: "169 kr",
-    },
-    {
-      img: biryaniImg,
-      name: "Lamm Biryani",
-      desc: t(
-        "Doftande basmatiris tillagat med saffran, hela kryddor och möra köttbitar",
-        "Fragrant basmati rice cooked with saffron, whole spices and tender meat",
-      ),
-      price: "169 kr",
-    },
-  ];
+  {
+    img: nihariImg,
+    name: "Nihari Lamm",
+    desc: t(
+      "Långkokt lammgryta med kryddor, lime, lök, chili och koriander",
+      "Slow-cooked lamb stew with spices, lime, onion, chili and coriander"
+    ),
+    price: "170 kr"
+  },
+  {
+    img: chapliKababImg,
+    name: "Chapli Kebab",
+    desc: t(
+      "Kryddiga köttfärsbiffar med färska örter, tomat och granatäpple",
+      "Spicy minced meat patties with fresh herbs, tomato and pomegranate"
+    ),
+    price: "149 kr"
+  },
+  {
+    img: beefPayaImg,
+    name: "Beef Paya",
+    desc: t(
+      "Traditionell långkokt kotlettgryta med rik buljong och aromatiska kryddor",
+      "Traditional slow-cooked trotters stew with rich broth and aromatic spices"
+    ),
+    price: "169 kr"
+  },
+  {
+    img: biryaniImg,
+    name: "Lamm Biryani",
+    desc: t(
+      "Doftande basmatiris tillagat med saffran, hela kryddor och möra köttbitar",
+      "Fragrant basmati rice cooked with saffron, whole spices and tender meat"
+    ),
+    price: "169 kr"
+  }];
+
 
   return (
     <div className="min-h-screen">
@@ -101,8 +101,8 @@ const Index = () => {
             className="w-full h-full object-cover"
             width={2000}
             height={1333}
-            fetchPriority="high"
-          />
+            fetchPriority="high" />
+
 
           <div className="absolute inset-0 bg-black/55" />
         </div>
@@ -112,28 +112,28 @@ const Index = () => {
           className="relative z-10 flex flex-col items-center text-center px-4"
           initial="hidden"
           animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.18 } } }}
-        >
+          variants={{ visible: { transition: { staggerChildren: 0.18 } } }}>
+
           {/* Circular logo with fade-in popup */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-6"
-          >
+            className="mb-6">
+
             <img
               src={logoNew}
               alt="Spice Villa"
-              className="h-36 md:h-48 lg:h-56 mix-blend-screen drop-shadow-2xl"
+              className="h-36 md:h-48 lg:h-56 mix-blend-screen drop-shadow-2xl object-cover border-0 border-primary border-none rounded-lg shadow-none"
               width={224}
               height={224}
-              fetchPriority="high"
-            />
+              fetchPriority="high" />
+
           </motion.div>
           <motion.h1
             variants={fadeUp}
-            className="font-serif text-4xl md:text-6xl text-white tracking-[0.15em] uppercase mb-1"
-          >
+            className="font-serif text-4xl md:text-6xl text-white tracking-[0.15em] uppercase mb-1">
+
             Spice Villa
           </motion.h1>
           <motion.p variants={fadeUp} className="text-white/60 text-sm md:text-base tracking-[0.3em] uppercase mb-10">
@@ -160,25 +160,25 @@ const Index = () => {
           <motion.div variants={fadeUp} className="mb-6">
             <span className="inline-flex items-center gap-2 bg-black/40 backdrop-blur-sm border border-white/10 text-white/80 px-5 py-2 rounded-full text-sm">
               <span
-                className={`w-2 h-2 rounded-full ${openStatus.isOpen ? "bg-green-500" : "bg-red-500"} animate-pulse`}
-              />
-              {openStatus.isOpen
-                ? t(
-                    `Öppet Nu · ${openStatus.dayName} ${openStatus.timeStr}`,
-                    `Open Now · ${openStatus.dayName} ${openStatus.timeStr}`,
-                  )
-                : t(
-                    `Stängt · ${openStatus.dayName} ${openStatus.timeStr}`,
-                    `Closed · ${openStatus.dayName} ${openStatus.timeStr}`,
-                  )}
+                className={`w-2 h-2 rounded-full ${openStatus.isOpen ? "bg-green-500" : "bg-red-500"} animate-pulse`} />
+
+              {openStatus.isOpen ?
+              t(
+                `Öppet Nu · ${openStatus.dayName} ${openStatus.timeStr}`,
+                `Open Now · ${openStatus.dayName} ${openStatus.timeStr}`
+              ) :
+              t(
+                `Stängt · ${openStatus.dayName} ${openStatus.timeStr}`,
+                `Closed · ${openStatus.dayName} ${openStatus.timeStr}`
+              )}
             </span>
           </motion.div>
 
           {/* Address & phone */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 text-white/50 text-sm tracking-wider uppercase"
-          >
+            className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 text-white/50 text-sm tracking-wider uppercase">
+
             <span className="inline-flex items-center gap-1.5">
               <MapPin size={14} className="text-primary" />
               Tenstagången 25, 163 64 Spånga
@@ -199,8 +199,8 @@ const Index = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.6 }}
-          aria-label="Scroll down"
-        >
+          aria-label="Scroll down">
+
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}>
             <ChevronDown size={32} />
           </motion.div>
@@ -215,8 +215,8 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeUp}
-          >
+            variants={fadeUp}>
+
             <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-3 block">
               {t("Signaturrätter", "Signature Dishes")}
             </span>
@@ -226,7 +226,7 @@ const Index = () => {
             <p className="text-muted-foreground max-w-lg mx-auto text-lg">
               {t(
                 "Smaka på våra mest älskade rätter, tillagade med kärlek och tradition.",
-                "Taste our most beloved dishes, prepared with love and tradition.",
+                "Taste our most beloved dishes, prepared with love and tradition."
               )}
             </p>
           </motion.div>
@@ -236,24 +236,24 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          >
-            {popularDishes.map((dish) => (
-              <motion.div
-                key={dish.name}
-                variants={fadeUp}
-                className="bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 group hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
-              >
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
+
+            {popularDishes.map((dish) =>
+            <motion.div
+              key={dish.name}
+              variants={fadeUp}
+              className="bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 group hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+
                 <div className="overflow-hidden h-64">
                   <img
-                    src={dish.img}
-                    alt={dish.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    width={600}
-                    height={512}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  src={dish.img}
+                  alt={dish.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  width={600}
+                  height={512}
+                  loading="lazy"
+                  decoding="async" />
+
                 </div>
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-2">
@@ -263,7 +263,7 @@ const Index = () => {
                   <p className="text-card-foreground/60 text-sm leading-relaxed">{dish.desc}</p>
                 </div>
               </motion.div>
-            ))}
+            )}
           </motion.div>
 
           <motion.div
@@ -271,12 +271,12 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeUp}
-          >
+            variants={fadeUp}>
+
             <Link
               to="/meny"
-              className="inline-block border-2 border-primary text-primary px-10 py-4 rounded-lg font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors tracking-wide uppercase"
-            >
+              className="inline-block border-2 border-primary text-primary px-10 py-4 rounded-lg font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors tracking-wide uppercase">
+
               {t("Se Hela Menyn", "See Full Menu")}
             </Link>
           </motion.div>
@@ -284,28 +284,28 @@ const Index = () => {
       </section>
 
       {/* ── Iftar CTA Banner ── */}
-      {new Date() <= new Date("2026-03-31") && (
-        <section className="relative overflow-hidden">
+      {new Date() <= new Date("2026-03-31") &&
+      <section className="relative overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src={iftarBg}
-              alt=""
-              className="w-full h-full object-cover"
-              width={1920}
-              height={1080}
-              loading="lazy"
-              decoding="async"
-            />
+            src={iftarBg}
+            alt=""
+            className="w-full h-full object-cover"
+            width={1920}
+            height={1080}
+            loading="lazy"
+            decoding="async" />
+
             <div className="absolute inset-0 bg-black/50" />
           </div>
           <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">
             <motion.div
-              className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-4xl mx-auto"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
-            >
+            className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-4xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{ visible: { transition: { staggerChildren: 0.12 } } }}>
+
               <motion.div variants={fadeUp} className="text-center md:text-left">
                 <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
                   <Moon size={20} className="text-[hsl(43,80%,65%)]" />
@@ -318,23 +318,23 @@ const Index = () => {
                 </h2>
                 <p className="text-white/60 max-w-md">
                   {t(
-                    "Komplett iftarmåltid med förrätter, karahi, dessert och drycker. Från 219 kr/person.",
-                    "Complete iftar meal with starters, karahi, dessert and drinks. From 219 kr/person.",
-                  )}
+                  "Komplett iftarmåltid med förrätter, karahi, dessert och drycker. Från 219 kr/person.",
+                  "Complete iftar meal with starters, karahi, dessert and drinks. From 219 kr/person."
+                )}
                 </p>
               </motion.div>
               <motion.div variants={fadeUp}>
                 <Link
-                  to="/iftar"
-                  className="inline-block bg-[hsl(43,80%,55%)] text-[hsl(220,50%,10%)] px-8 py-3 rounded-lg font-bold text-base hover:bg-[hsl(43,80%,60%)] transition-colors shadow-lg whitespace-nowrap"
-                >
+                to="/iftar"
+                className="inline-block bg-[hsl(43,80%,55%)] text-[hsl(220,50%,10%)] px-8 py-3 rounded-lg font-bold text-base hover:bg-[hsl(43,80%,60%)] transition-colors shadow-lg whitespace-nowrap">
+
                   {t("Se Iftar Menyn 🌙", "See Iftar Menu 🌙")}
                 </Link>
               </motion.div>
             </motion.div>
           </div>
         </section>
-      )}
+      }
 
       {/* ── Catering ── */}
       <section className="relative overflow-hidden">
@@ -346,8 +346,8 @@ const Index = () => {
             width={1920}
             height={1080}
             loading="lazy"
-            decoding="async"
-          />
+            decoding="async" />
+
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="relative z-10 container mx-auto px-4 py-20 md:py-28">
@@ -356,30 +356,30 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
-          >
+            variants={{ visible: { transition: { staggerChildren: 0.12 } } }}>
+
             <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-5xl text-white mb-4">
               Catering
             </motion.h2>
             <motion.p variants={fadeUp} className="text-white/70 text-base md:text-lg mb-8 leading-relaxed">
               {t(
                 "Vi erbjuder catering för olika evenemang bröllop, företagsfester, familjesammankomster och mer. Tveka inte att kontakta oss för meny samt prisförslag.",
-                "We offer catering for various events weddings, corporate parties, family gatherings and more. Don't hesitate to contact us for menu and pricing.",
+                "We offer catering for various events weddings, corporate parties, family gatherings and more. Don't hesitate to contact us for menu and pricing."
               )}
             </motion.p>
             <motion.div variants={fadeUp}>
               <Link
                 to="/catering"
-                className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded font-semibold hover:bg-primary/90 transition-colors"
-              >
+                className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded font-semibold hover:bg-primary/90 transition-colors">
+
                 {t("Läs Mer", "Learn More")}
               </Link>
             </motion.div>
           </motion.div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;
