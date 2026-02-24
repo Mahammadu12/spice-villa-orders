@@ -40,7 +40,7 @@ const Lunch = () => {
       </div>
 
       {/* Day buttons */}
-      <div className="flex flex-wrap justify-center gap-2 px-4 mt-6 mb-4">
+      <div className="flex flex-wrap justify-center gap-2 px-4 mb-4">
         {lunchMenu.map((day) => (
           <button
             key={day.day}
