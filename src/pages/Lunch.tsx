@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { lunchMenu } from "@/data/menuData";
 import { lunchDishImages } from "@/data/menuImages";
@@ -11,17 +12,9 @@ const fadeUp = {
 
 const Lunch = () => {
   const { t } = useLanguage();
+  const [activeDay, setActiveDay] = useState(lunchMenu[0].day);
 
-  // Collect all unique dishes across all days
-  const allDishes = new Map<string, { name: string; description?: string; price: string }>();
-  lunchMenu.forEach((day) => {
-    day.items.forEach((item) => {
-      if (!allDishes.has(item.name)) {
-        allDishes.set(item.name, item);
-      }
-    });
-  });
-  const dishes = Array.from(allDishes.values());
+  const currentDay = lunchMenu.find((d) => d.day === activeDay) || lunchMenu[0];
 
   return (
     <div className="min-h-screen">
@@ -38,23 +31,41 @@ const Lunch = () => {
             {t("Lunchmeny", "Lunch Menu")}
           </motion.h1>
           <motion.p variants={fadeUp} className="text-white/80 text-lg md:text-xl max-w-xl mx-auto">
-            {t("Mån–Fre, 11:00–15:00. Naan & ris ingår till alla rätter.", "Mon–Fri, 11:00–15:00. Naan & rice included with all dishes.")}
+            {t("Mån–Fre, 11:00–15:00. Ris ingår till alla rätter.", "Mon–Fri, 11:00–15:00. Rice included with all dishes.")}
           </motion.p>
           <motion.p variants={fadeUp} className="text-white/60 text-sm mt-2">
-            {t("+10 kr för Garlic Naan · +20 kr för Dryck", "+10 kr for Garlic Naan · +20 kr for Drink")}
+            {t("+10 kr för Naan · +10 kr för Garlic Naan · +20 kr för Dryck", "+10 kr for Naan · +10 kr for Garlic Naan · +20 kr for Drink")}
           </motion.p>
         </motion.div>
       </div>
 
-      {/* Lunch items */}
-      <div className="max-w-5xl mx-auto px-4 py-16 my-8">
+      {/* Day buttons */}
+      <div className="flex flex-wrap justify-center gap-2 px-4 mt-6 mb-4">
+        {lunchMenu.map((day) => (
+          <button
+            key={day.day}
+            onClick={() => setActiveDay(day.day)}
+            className={`px-5 py-2 rounded-full text-xs font-medium tracking-wide uppercase transition-colors ${
+              activeDay === day.day
+                ? "bg-primary text-primary-foreground"
+                : "bg-white/10 text-white/70 hover:text-white border border-white/10"
+            }`}
+          >
+            {day.day}
+          </button>
+        ))}
+      </div>
+
+      {/* Lunch items for selected day */}
+      <div className="max-w-5xl mx-auto px-4 py-8 mb-8">
         <motion.div
+          key={activeDay}
           initial="hidden"
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {dishes.map((item, i) => {
+          {currentDay.items.map((item, i) => {
             const dishImage = lunchDishImages[item.name];
             return (
               <motion.div
@@ -80,7 +91,6 @@ const Lunch = () => {
             );
           })}
         </motion.div>
-
       </div>
     </div>
   );

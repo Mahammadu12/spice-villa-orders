@@ -53,12 +53,12 @@ const Index = () => {
   const popularDishes = [
     {
       img: nihariImg,
-      name: "Nihari",
+      name: "Nihari Lamm",
       desc: t(
-        "Långkokt nötköttsgryta med djupa kryddor, serverad med färsk ingefära och koriander",
-        "Slow-cooked beef stew with deep spices, served with fresh ginger and coriander",
+        "Långkokt lammgryta med kryddor, lime, lök, chili och koriander",
+        "Slow-cooked lamb stew with spices, lime, onion, chili and coriander",
       ),
-      price: "189 kr",
+      price: "170 kr",
     },
     {
       img: chapliKababImg,
@@ -67,7 +67,7 @@ const Index = () => {
         "Kryddiga köttfärsbiffar med färska örter, tomat och granatäpple",
         "Spicy minced meat patties with fresh herbs, tomato and pomegranate",
       ),
-      price: "169 kr",
+      price: "149 kr",
     },
     {
       img: beefPayaImg,
@@ -76,16 +76,16 @@ const Index = () => {
         "Traditionell långkokt kotlettgryta med rik buljong och aromatiska kryddor",
         "Traditional slow-cooked trotters stew with rich broth and aromatic spices",
       ),
-      price: "189 kr",
+      price: "169 kr",
     },
     {
       img: biryaniImg,
-      name: "Biryani",
+      name: "Lamm Biryani",
       desc: t(
         "Doftande basmatiris tillagat med saffran, hela kryddor och möra köttbitar",
         "Fragrant basmati rice cooked with saffron, whole spices and tender meat",
       ),
-      price: "179 kr",
+      price: "169 kr",
     },
   ];
 
