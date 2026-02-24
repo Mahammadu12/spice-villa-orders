@@ -55,7 +55,7 @@ const Reservation = () => {
     <section className="min-h-screen bg-background pt-24 pb-16 px-4">
       <motion.div className="max-w-2xl mx-auto" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.12 } } }}>
         <motion.h1 variants={fadeUp} className="font-serif text-3xl md:text-4xl text-foreground text-center mb-2">Boka bord</motion.h1>
-        <motion.p variants={fadeUp} className="text-muted-foreground text-center mb-10 max-w-md mx-auto">Reservera ett bord hos Spice Villa. Fyll i formuläret så bekräftar vi din bokning.</motion.p>
+        <motion.p variants={fadeUp} className="text-muted-foreground text-center mb-10 max-w-md mx-auto">För bokningar mer än 24 timmar i förväg, fyll i formuläret. För bokningar samma dag, vänligen ring oss.</motion.p>
 
         {submitted ? (
           <motion.div variants={fadeUp} className="bg-card border border-border rounded-lg p-8 text-center">
