@@ -12,14 +12,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="overflow-hidden h-20 w-40 flex items-center justify-center">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="overflow-hidden h-10 w-20 flex items-center justify-center shrink-0">
                 <img
                   src={logoNew}
                   alt="Spice Villa"
-                  className="h-[10rem] object-contain scale-[1.5] drop-shadow-lg"
-                  width={160}
-                  height={160}
+                  className="h-[5rem] object-contain scale-[1.5] drop-shadow-lg"
+                  width={80}
+                  height={80}
                   loading="lazy"
                   decoding="async"
                 />
