@@ -115,7 +115,13 @@ const Contact = () => {
             <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.08 } } }} className="bg-card/90 backdrop-blur-md p-8 md:p-10 border-l border-border/30">
               <motion.div variants={fadeUp}>
                 <h2 className="font-serif text-2xl md:text-3xl text-card-foreground mb-1">{t("Boka bord", "Book a Table")}</h2>
-                <div className="w-12 h-1 bg-primary rounded mb-6" />
+                <div className="w-12 h-1 bg-primary rounded mb-4" />
+                <p className="text-muted-foreground text-sm mb-6">
+                  {t(
+                    "För bokningar mer än 24 timmar i förväg, fyll i formuläret. För bokningar samma dag, vänligen ring oss.",
+                    "For bookings more than 24 hours in advance, please fill in the form. For same-day bookings, please call us."
+                  )}
+                </p>
               </motion.div>
 
               <motion.form variants={fadeUp} onSubmit={handleSubmit} className="space-y-5">
