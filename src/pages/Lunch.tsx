@@ -25,7 +25,7 @@ const Lunch = () => {
       </div>
 
       {/* Hero Banner */}
-      <div className="relative h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[32vh] min-h-[240px] flex items-center justify-center overflow-hidden">
         <motion.div className="relative z-10 text-center px-4" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
           <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4">
             {t("Lunchmeny", "Lunch Menu")}
