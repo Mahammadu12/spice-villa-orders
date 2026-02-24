@@ -92,7 +92,10 @@ const Menu = () => {
                     {category.items.map((item, i) => (
                       <div key={item.name + i} className={`flex justify-between items-start px-5 py-4 ${i !== category.items.length - 1 ? "border-b border-white/10" : ""} hover:bg-white/5 transition-colors`}>
                         <div className="flex-1 pr-4">
-                          <h3 className="text-white font-medium text-sm">{item.name}</h3>
+                          <h3 className="text-white font-medium text-sm">
+                            {item.num && <span className="text-primary/70 mr-1.5">{item.num}.</span>}
+                            {item.name}
+                          </h3>
                           {item.description && <p className="text-white/60 text-xs mt-0.5">{item.description}</p>}
                         </div>
                         <span className="text-primary font-semibold text-sm whitespace-nowrap">{item.price}</span>

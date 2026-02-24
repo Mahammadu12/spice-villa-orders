@@ -88,7 +88,7 @@ const Catering = () => {
                   <Phone className="text-primary" size={24} />
                   <div>
                     <p className="text-white/70 text-sm">{t("Ring oss", "Call us")}</p>
-                    <a href="tel:+46764222770" className="text-white text-lg font-semibold hover:text-primary transition-colors">+46 76-422 27 70</a>
+                    <a href="tel:+46704431515" className="text-white text-lg font-semibold hover:text-primary transition-colors">070-443 15 15</a>
                   </div>
                 </div>
               </div>
