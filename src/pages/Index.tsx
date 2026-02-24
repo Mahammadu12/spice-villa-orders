@@ -109,7 +109,7 @@ const Index = () => {
 
         {/* Centered content */}
         <motion.div
-          className="relative z-10 flex flex-col items-center text-center px-4"
+          className="relative z-10 text-center px-4 items-center justify-start flex flex-col gap-0"
           initial="hidden"
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.18 } } }}>
@@ -119,25 +119,25 @@ const Index = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="overflow-hidden h-56 md:h-72 lg:h-80 flex items-center justify-center">
+            className="mb-1">
 
             <img
               src={logoNew}
               alt="Spice Villa"
-              className="h-[28rem] md:h-[36rem] lg:h-[40rem] mx-auto drop-shadow-2xl object-contain scale-[1.5]"
-              width={384}
-              height={384}
+              className="h-44 md:h-56 lg:h-64 mx-auto mix-blend-screen drop-shadow-2xl object-contain"
+              width={256}
+              height={256}
               fetchPriority="high" />
 
           </motion.div>
-          <motion.h1
-            variants={fadeUp}
-            className="font-serif text-4xl md:text-6xl text-white tracking-[0.15em] uppercase mb-1 -mt-4 md:-mt-6">
+          
 
-            Spice Villa
-          </motion.h1>
+
+
+
+
           <motion.p variants={fadeUp} className="text-white/60 text-sm md:text-base tracking-[0.3em] uppercase mb-10">
-            Spånga
+
           </motion.p>
 
           {/* Big navigation links */}
