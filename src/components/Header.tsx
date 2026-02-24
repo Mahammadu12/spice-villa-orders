@@ -184,16 +184,30 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
-          <div className="pt-3 space-y-2">
+          <div className="pt-3 border-t border-border/30">
+            <p className="px-4 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">{t("Beställ", "Order")}</p>
             {orderLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`block text-center px-5 py-3 rounded-lg text-sm font-semibold transition-colors ${link.color}`}
+                className="flex items-center gap-3 px-4 py-3 text-sm font-bold hover:bg-white/5 transition-colors rounded-lg"
               >
-                {t("Beställ via ", "Order via ")}{link.label}
+                <span
+                  className="tracking-tight"
+                  style={{
+                    color: link.label === "Uber Eats" ? "#06C167" : link.label === "Foodora" ? "#D70F64" : "#2DB84B",
+                  }}
+                >
+                  {link.label === "Uber Eats" ? (
+                    <><span className="font-bold">Uber</span> <span className="font-normal text-foreground">Eats</span></>
+                  ) : link.label === "Foodora" ? (
+                    "foodora"
+                  ) : (
+                    "Qopla"
+                  )}
+                </span>
               </a>
             ))}
           </div>
