@@ -55,14 +55,18 @@ const Header = () => {
     >
       <div className="w-full flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="overflow-hidden h-10 md:h-12 w-24 md:w-28 flex items-center justify-center">
-            <img
-              src={logoNew}
-              alt="Spice Villa"
-              className="h-[6rem] md:h-[7rem] object-contain scale-[1.8]"
-            />
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="hidden sm:block">
+            <span className="font-serif text-lg md:text-xl text-foreground tracking-wide">
+              Spice Villa
+            </span>
+            <span className="block text-[10px] text-primary font-medium tracking-[0.2em] uppercase -mt-0.5">
+              {t("Restaurang & Catering", "Restaurant & Catering")}
+            </span>
           </div>
+          <span className="sm:hidden font-serif text-lg text-foreground tracking-wide">
+            Spice Villa
+          </span>
         </Link>
 
         {/* Desktop nav */}
