@@ -121,11 +121,11 @@ const Index = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="-mb-4 md:-mb-6">
 
-            <div className="overflow-hidden h-36 md:h-44 lg:h-48 flex items-center justify-center">
+            <div className="overflow-hidden h-44 md:h-56 lg:h-60 flex items-center justify-center">
               <img
                 src={logoNew}
                 alt="Spice Villa"
-                className="h-[18rem] md:h-[24rem] lg:h-[28rem] mx-auto mix-blend-screen drop-shadow-2xl object-contain scale-[1.9]"
+                className="h-[20rem] md:h-[26rem] lg:h-[30rem] mx-auto mix-blend-screen drop-shadow-2xl object-contain scale-[1.6]"
                 width={384}
                 height={384}
                 fetchPriority="high" />
