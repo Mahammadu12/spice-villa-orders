@@ -119,12 +119,12 @@ const Index = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-1">
+            className="mb-0">
 
             <img
               src={logoNew}
               alt="Spice Villa"
-              className="h-64 md:h-80 lg:h-96 mx-auto drop-shadow-2xl object-contain"
+              className="h-[28rem] md:h-[34rem] lg:h-[38rem] mx-auto drop-shadow-2xl object-contain -mb-8 md:-mb-12"
               width={384}
               height={384}
               fetchPriority="high" />
