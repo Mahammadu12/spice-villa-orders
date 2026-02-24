@@ -121,21 +121,17 @@ const Index = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="-mb-4 md:-mb-6">
 
-            <img
-              src={logoNew}
-              alt="Spice Villa"
-              className="h-64 md:h-80 lg:h-96 mx-auto mix-blend-screen drop-shadow-2xl object-contain"
-              width={384}
-              height={384}
-              fetchPriority="high" />
+            <div className="overflow-hidden h-36 md:h-44 lg:h-48 flex items-center justify-center">
+              <img
+                src={logoNew}
+                alt="Spice Villa"
+                className="h-[18rem] md:h-[24rem] lg:h-[28rem] mx-auto mix-blend-screen drop-shadow-2xl object-contain scale-[1.9]"
+                width={384}
+                height={384}
+                fetchPriority="high" />
+            </div>
 
           </motion.div>
-
-
-
-          <motion.p variants={fadeUp} className="text-white/60 text-sm md:text-base tracking-[0.3em] uppercase mb-10">
-
-          </motion.p>
 
           {/* Big navigation links */}
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center gap-6 sm:gap-16 mb-12">
