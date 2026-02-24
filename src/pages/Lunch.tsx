@@ -11,7 +11,7 @@ const fadeUp = {
 };
 
 const Lunch = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [activeDay, setActiveDay] = useState(lunchMenu[0].day);
 
   const currentDay = lunchMenu.find((d) => d.day === activeDay) || lunchMenu[0];
@@ -51,7 +51,7 @@ const Lunch = () => {
                 : "bg-white/10 text-white/70 hover:text-white border border-white/10"
             }`}
           >
-            {day.day}
+            {lang === "en" ? (day.dayEn || day.day) : day.day}
           </button>
         ))}
       </div>
@@ -67,6 +67,8 @@ const Lunch = () => {
         >
           {currentDay.items.map((item, i) => {
             const dishImage = lunchDishImages[item.name];
+            const itemName = lang === "en" ? (item.nameEn || item.name) : item.name;
+            const itemDesc = lang === "en" ? (item.descriptionEn || item.description) : item.description;
             return (
               <motion.div
                 key={item.name + i}
@@ -75,16 +77,16 @@ const Lunch = () => {
               >
                 {dishImage && (
                   <div className="w-full h-40">
-                    <img src={dishImage} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
+                    <img src={dishImage} alt={itemName} className="w-full h-full object-cover" loading="lazy" />
                   </div>
                 )}
                 <div className="p-4">
                   <div className="flex justify-between items-start">
-                    <h3 className="text-white font-medium text-sm">{item.name}</h3>
+                    <h3 className="text-white font-medium text-sm">{itemName}</h3>
                     <span className="text-primary font-semibold text-sm whitespace-nowrap ml-3">{item.price}</span>
                   </div>
-                  {item.description && (
-                    <p className="text-white/60 text-xs mt-1">{item.description}</p>
+                  {itemDesc && (
+                    <p className="text-white/60 text-xs mt-1">{itemDesc}</p>
                   )}
                 </div>
               </motion.div>
