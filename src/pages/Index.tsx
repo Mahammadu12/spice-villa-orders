@@ -119,12 +119,12 @@ const Index = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-0">
+            className="overflow-hidden h-48 md:h-64 lg:h-72 flex items-center justify-center">
 
             <img
               src={logoNew}
               alt="Spice Villa"
-              className="h-[28rem] md:h-[34rem] lg:h-[38rem] mx-auto drop-shadow-2xl object-contain -mb-8 md:-mb-12"
+              className="h-[32rem] md:h-[42rem] lg:h-[48rem] mx-auto drop-shadow-2xl object-contain scale-[1.8]"
               width={384}
               height={384}
               fetchPriority="high" />
@@ -132,7 +132,7 @@ const Index = () => {
           </motion.div>
           <motion.h1
             variants={fadeUp}
-            className="font-serif text-4xl md:text-6xl text-white tracking-[0.15em] uppercase mb-1">
+            className="font-serif text-4xl md:text-6xl text-white tracking-[0.15em] uppercase mb-1 -mt-4 md:-mt-6">
 
             Spice Villa
           </motion.h1>
