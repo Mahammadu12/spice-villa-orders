@@ -46,8 +46,8 @@ const About = () => {
       img: nihariImg,
       name: "Nihari",
       desc: t(
-        "Vår mest eftertraktade rätt nötkött långsamt tillagad i timmar med hemliga kryddblandningar.",
-        "Our most sought-after dish beef slowly cooked for hours with secret spice blends.",
+        "Vår mest eftertraktade rätt Lamm som långsamt tillagas i timmar med hemliga kryddblandningar.",
+        "Our most sought-after dish Lamb slowly cooked for hours with secret spice blends.",
       ),
     },
     {
