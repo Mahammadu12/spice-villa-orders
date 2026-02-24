@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { dinnerMenu, SpiceLevel } from "@/data/menuData";
+import { dinnerMenu } from "@/data/menuData";
 import { categoryImages } from "@/data/menuImages";
 import menuCollageBg from "@/assets/menu-collage-bg.jpg";
 
@@ -10,9 +10,8 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
-
 const Menu = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filtered = activeCategory
@@ -53,7 +52,7 @@ const Menu = () => {
                 activeCategory === cat.title ? "bg-primary text-primary-foreground" : "bg-white/10 text-white/70 hover:text-white border border-white/10"
               }`}
             >
-              {cat.title}
+              {lang === "en" ? (cat.titleEn || cat.title) : cat.title}
             </button>
           ))}
         </div>
@@ -68,39 +67,45 @@ const Menu = () => {
           >
             {filtered.map((category) => {
               const catImage = categoryImages[category.title];
+              const displayTitle = lang === "en" ? (category.titleEn || category.title) : category.title;
+              const displayDesc = lang === "en" ? (category.descriptionEn || category.description) : category.description;
               return (
                 <motion.div key={category.title} variants={fadeUp}>
                   <div className="relative rounded-xl overflow-hidden mb-4">
                     {catImage && (
                       <div className="relative h-40 md:h-48">
-                        <img src={catImage} alt={category.title} className="w-full h-full object-cover" loading="lazy" />
+                        <img src={catImage} alt={displayTitle} className="w-full h-full object-cover" loading="lazy" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-5">
-                          <h2 className="font-serif text-2xl md:text-3xl text-primary drop-shadow-lg">{category.title}</h2>
-                          {category.description && <p className="text-foreground/80 text-sm mt-1 max-w-lg drop-shadow">{category.description}</p>}
+                          <h2 className="font-serif text-2xl md:text-3xl text-primary drop-shadow-lg">{displayTitle}</h2>
+                          {displayDesc && <p className="text-foreground/80 text-sm mt-1 max-w-lg drop-shadow">{displayDesc}</p>}
                         </div>
                       </div>
                     )}
                     {!catImage && (
                       <div className="mb-4">
-                        <h2 className="font-serif text-2xl md:text-3xl text-primary">{category.title}</h2>
-                        {category.description && <p className="text-muted-foreground text-sm mt-1">{category.description}</p>}
+                        <h2 className="font-serif text-2xl md:text-3xl text-primary">{displayTitle}</h2>
+                        {displayDesc && <p className="text-muted-foreground text-sm mt-1">{displayDesc}</p>}
                       </div>
                     )}
                   </div>
                   <div className="border border-white/10 rounded-lg overflow-hidden bg-black/40 backdrop-blur-sm">
-                    {category.items.map((item, i) => (
-                      <div key={item.name + i} className={`flex justify-between items-start px-5 py-4 ${i !== category.items.length - 1 ? "border-b border-white/10" : ""} hover:bg-white/5 transition-colors`}>
-                        <div className="flex-1 pr-4">
-                          <h3 className="text-white font-medium text-sm">
-                            {item.num && <span className="text-primary/70 mr-1.5">{item.num}.</span>}
-                            {item.name}
-                          </h3>
-                          {item.description && <p className="text-white/60 text-xs mt-0.5">{item.description}</p>}
+                    {category.items.map((item, i) => {
+                      const itemName = lang === "en" ? (item.nameEn || item.name) : item.name;
+                      const itemDesc = lang === "en" ? (item.descriptionEn || item.description) : item.description;
+                      return (
+                        <div key={item.name + i} className={`flex justify-between items-start px-5 py-4 ${i !== category.items.length - 1 ? "border-b border-white/10" : ""} hover:bg-white/5 transition-colors`}>
+                          <div className="flex-1 pr-4">
+                            <h3 className="text-white font-medium text-sm">
+                              {item.num && <span className="text-primary/70 mr-1.5">{item.num}.</span>}
+                              {itemName}
+                            </h3>
+                            {itemDesc && <p className="text-white/60 text-xs mt-0.5">{itemDesc}</p>}
+                          </div>
+                          <span className="text-primary font-semibold text-sm whitespace-nowrap">{item.price}</span>
                         </div>
-                        <span className="text-primary font-semibold text-sm whitespace-nowrap">{item.price}</span>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </motion.div>
               );
