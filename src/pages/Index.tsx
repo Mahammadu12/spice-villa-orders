@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Moon, MapPin, Phone, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import logoNew from "@/assets/logo-new.svg";
+import logoNew from "@/assets/spice-villa-logo.png";
 import menuCollageBg from "@/assets/menu-collage-bg.jpg";
 import nihariImg from "@/assets/nihari.jpg";
 import chapliKababImg from "@/assets/chapli-kabab.jpeg";
@@ -114,9 +114,22 @@ const Index = () => {
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.18 } } }}
         >
-          {/* Circular logo */}
-
-          {/* Name */}
+          {/* Circular logo with fade-in popup */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="mb-6"
+          >
+            <img
+              src={logoNew}
+              alt="Spice Villa"
+              className="h-32 md:h-44 lg:h-52 rounded-2xl bg-white p-2 shadow-2xl shadow-black/40"
+              width={208}
+              height={208}
+              fetchPriority="high"
+            />
+          </motion.div>
           <motion.h1
             variants={fadeUp}
             className="font-serif text-4xl md:text-6xl text-white tracking-[0.15em] uppercase mb-1"
