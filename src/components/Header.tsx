@@ -59,7 +59,7 @@ const Header = () => {
           <img
             src={logoNew}
             alt="Spice Villa"
-            className="h-14 md:h-18 rounded-full bg-white p-1 shadow-md group-hover:shadow-primary/20 transition-shadow duration-300"
+            className="h-14 md:h-18 drop-shadow-lg group-hover:drop-shadow-xl transition-all duration-300"
             width={56}
             height={56}
             decoding="async"
