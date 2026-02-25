@@ -102,17 +102,17 @@ const About = () => {
               <p className="text-primary/70 text-[10px] font-medium tracking-[0.4em] uppercase mb-4">
                 {t("Sedan 2004", "Since 2004")}
               </p>
-              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6 leading-tight">
+              <h2 className="font-serif text-3xl md:text-5xl text-white mb-6 leading-tight">
                 {t("Välkommen till", "Welcome to")} <span className="text-primary">Spice Villa</span>
               </h2>
               <div className="space-y-4 mb-8">
-                <p className="text-muted-foreground leading-relaxed text-base font-light">
+                <p className="text-white/80 leading-relaxed text-base font-light">
                   {t("Spice Villa erbjuder en unik matupplevelse med autentiska recept från Indien, Pakistan, Bangladesh och Afghanistan. Vår huvudkock har över 20 års erfarenhet inom branschen och brinner för att servera de mest autentiska smakerna.", "Spice Villa offers a unique dining experience with authentic recipes from India, Pakistan, Bangladesh and Afghanistan. Our head chef has over 20 years of experience and is passionate about serving the most authentic flavors.")}
                 </p>
-                <p className="text-muted-foreground leading-relaxed font-light">
+                <p className="text-white/80 leading-relaxed font-light">
                   {t("Varje rätt tillagas med noggrant utvalda kryddor som importeras direkt, och vi använder traditionella matlagningsmetoder som kolgrillning och tandoori-ugn för att ge varje maträtt sin karakteristiska smak.", "Every dish is prepared with carefully selected spices imported directly, and we use traditional cooking methods like charcoal grilling and tandoori oven to give each dish its characteristic flavor.")}
                 </p>
-                <p className="text-muted-foreground leading-relaxed font-light">
+                <p className="text-white/80 leading-relaxed font-light">
                   {t("Vi är kända för våra signaturrätter som Nihari, Chapli Kebab, Beef Paya och Biryani alla tillagade med traditionella metoder, färska kryddor och kärlek. Vår mysiga restaurang med tegelstensinteriör bjuder in till en avkopplande middag med familj och vänner.", "We are known for our signature dishes like Nihari, Chapli Kebab, Beef Paya and Biryani all prepared with traditional methods, fresh spices and love. Our cozy restaurant with brick interior invites you to a relaxing dinner with family and friends.")}
                 </p>
               </div>
@@ -124,8 +124,8 @@ const About = () => {
                 ].map((s) => (
                   <div key={s.label} className="text-center p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
                     {s.icon}
-                    <span className="text-2xl font-serif text-foreground block">{s.val}</span>
-                    <span className="text-muted-foreground text-xs">{s.label}</span>
+                    <span className="text-2xl font-serif text-white block">{s.val}</span>
+                    <span className="text-white/70 text-xs">{s.label}</span>
                   </div>
                 ))}
               </div>
@@ -152,11 +152,11 @@ const About = () => {
             <p className="text-primary/70 text-[10px] font-medium tracking-[0.4em] uppercase mb-3">
               {t("Det Vi Gör Bäst", "What We Do Best")}
             </p>
-            <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-4">
+            <h2 className="font-serif text-3xl md:text-5xl text-white mb-4">
               {t("Våra Signaturrätter", "Our Signature Dishes")}
             </h2>
             <Ornament className="mb-4" />
-            <p className="text-muted-foreground max-w-xl mx-auto text-base font-light italic">
+            <p className="text-white/70 max-w-xl mx-auto text-base font-light italic">
               {t("Rätter som har gjort oss kända varje en berättelse om tradition och hantverksskicklighet.", "Dishes that made us famous each a story of tradition and craftsmanship.")}
             </p>
           </motion.div>
@@ -176,8 +176,8 @@ const About = () => {
               >
                 <img src={dish.img} alt={dish.name} className="w-28 h-28 object-cover rounded-xl flex-shrink-0" />
                 <div>
-                  <h3 className="font-serif text-xl text-foreground mb-2">{dish.name}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed font-light">{dish.desc}</p>
+                  <h3 className="font-serif text-xl text-white mb-2">{dish.name}</h3>
+                  <p className="text-white/70 text-sm leading-relaxed font-light">{dish.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -189,7 +189,7 @@ const About = () => {
       <section className="py-28">
         <div className="container mx-auto px-4">
           <motion.div className="text-center mb-16" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               {t("Det Som Skiljer Oss", "What Sets Us Apart")}
             </h2>
             <Ornament />
@@ -215,8 +215,8 @@ const About = () => {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-4">
                   {item.icon}
                 </div>
-                <h3 className="font-serif text-lg text-foreground mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm font-light">{item.desc}</p>
+                <h3 className="font-serif text-lg text-white mb-2">{item.title}</h3>
+                <p className="text-white/70 text-sm font-light">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -230,11 +230,11 @@ const About = () => {
             <p className="text-primary/70 text-[10px] font-medium tracking-[0.4em] uppercase mb-3">
               {t("Bildgalleri", "Photo Gallery")}
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-3">
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">
               {t("Vår Restaurang", "Our Restaurant")}
             </h2>
             <Ornament className="mb-4" />
-            <p className="text-muted-foreground max-w-lg mx-auto font-light italic">
+            <p className="text-white/70 max-w-lg mx-auto font-light italic">
               {t("En inblick i vår matsal, vårt kök och vårt passionerade team.", "A glimpse into our dining area, kitchen and passionate team.")}
             </p>
           </motion.div>
@@ -260,10 +260,10 @@ const About = () => {
         <div className="container mx-auto px-4 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <Ornament className="mb-8" />
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               {t("Kom och Besök Oss", "Come Visit Us")}
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-md mx-auto font-light italic">
+            <p className="text-white/70 mb-8 max-w-md mx-auto font-light italic">
               {t("Vi ser fram emot att välkomna dig till Spice Villa.", "We look forward to welcoming you to Spice Villa.")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
