@@ -22,6 +22,7 @@ const Catering = () => {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [foodType, setFoodType] = useState("");
+  const [eventType, setEventType] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ const Catering = () => {
       form_type: "catering",
       date: formData.get("date") as string,
       food_type: foodType,
+      event_type: eventType,
       guests: formData.get("guests") as string,
       name: formData.get("name") as string,
       phone: formData.get("phone") as string,
@@ -127,7 +129,7 @@ const Catering = () => {
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{t("Eventtyp", "Event Type")}</label>
-                    <Select>
+                    <Select value={eventType} onValueChange={setEventType}>
                       <SelectTrigger className="border-border bg-secondary/50"><SelectValue placeholder={t("Välj", "Choose")} /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="brollop">{t("Bröllop", "Wedding")}</SelectItem>

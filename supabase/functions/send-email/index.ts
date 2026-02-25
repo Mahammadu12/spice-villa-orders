@@ -71,6 +71,11 @@ function validateFoodType(v: unknown): string {
   if (typeof v !== 'string' || v.length > 100) throw new Error('Invalid food type');
   return v.trim();
 }
+function validateEventType(v: unknown): string {
+  if (v === undefined || v === null || v === '') return '';
+  if (typeof v !== 'string' || v.length > 100) throw new Error('Invalid event type');
+  return v.trim();
+}
 
 function formatDate(dateStr: string): string {
   const [y, m, d] = dateStr.split('-');
@@ -166,13 +171,14 @@ function restaurantBookingEmail(name: string, phone: string, email: string | und
   `;
 }
 
-function restaurantCateringEmail(name: string, phone: string, email: string | undefined, date: string, foodType: string, guests: string, message: string): string {
+function restaurantCateringEmail(name: string, phone: string, email: string | undefined, date: string, foodType: string, eventType: string, guests: string, message: string): string {
   const badge = `<span style="display:inline-block;background:#e8913a;color:#000;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;">Catering</span>`;
   const rows = detailRow('Namn', name)
     + detailRow('Telefon', `<a href="tel:${phone}" style="color:#d4a843;text-decoration:none;">${phone}</a>`)
     + detailRow('E-post', email ? `<a href="mailto:${email}" style="color:#d4a843;text-decoration:none;">${email}</a>` : '<span style="color:#666;">Ej angiven</span>')
     + detailRow('Datum', formatDate(date))
     + detailRow('Mattyp', foodType || '<span style="color:#666;">Ej angiven</span>')
+    + detailRow('Eventtyp', eventType || '<span style="color:#666;">Ej angiven</span>')
     + detailRow('Gäster', `${guests} personer`)
     + detailRow('Meddelande', message || '<span style="color:#666;">Inget</span>', true);
 
@@ -211,9 +217,10 @@ function customerBookingEmail(name: string, date: string, time: string, guests: 
   `;
 }
 
-function customerCateringEmail(name: string, date: string, foodType: string, guests: string, message: string): string {
+function customerCateringEmail(name: string, date: string, foodType: string, eventType: string, guests: string, message: string): string {
   const rows = detailRow('Datum', formatDate(date))
     + detailRow('Mattyp', foodType || 'Ej angiven')
+    + detailRow('Eventtyp', eventType || 'Ej angiven')
     + detailRow('Antal gäster', `${guests} personer`)
     + (message ? detailRow('Meddelande', message, true) : '');
 
@@ -286,12 +293,13 @@ Deno.serve(async (req) => {
     } else if (form_type === "catering") {
       const guests = validateGuests(rawData.guests);
       const food_type = escapeHtml(validateFoodType(rawData.food_type));
+      const event_type = escapeHtml(validateEventType(rawData.event_type));
 
       subject = `🎉 Cateringförfrågan — ${name} | ${guests} gäster`;
-      body = wrapEmail(restaurantCateringEmail(name, phone, email, date, food_type, guests, message), true);
+      body = wrapEmail(restaurantCateringEmail(name, phone, email, date, food_type, event_type, guests, message), true);
 
       customerSubject = `✅ Cateringförfrågan mottagen — Spice Villa`;
-      customerBody = wrapEmail(customerCateringEmail(name, date, food_type, guests, message));
+      customerBody = wrapEmail(customerCateringEmail(name, date, food_type, event_type, guests, message));
     }
 
     const resendKey = Deno.env.get("RESEND_API_KEY");
