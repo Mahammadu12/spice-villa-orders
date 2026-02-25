@@ -30,8 +30,8 @@ const Menu = () => {
     <div className="min-h-screen">
       {/* Layered background for depth */}
       <div className="fixed inset-0 -z-10">
-        <img src={menuCollageBg} alt="" className="w-full h-full object-cover opacity-[0.07]" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(0,0%,4%)] via-[hsl(0,0%,6%)] to-[hsl(0,0%,4%)]" />
+        <img src={menuCollageBg} alt="" className="w-full h-full object-cover opacity-20" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/80" />
         {/* Subtle radial glow */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(43,72%,55%,0.03),transparent_60%)]" />
       </div>
