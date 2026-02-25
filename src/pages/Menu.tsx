@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { dinnerMenu } from "@/data/menuData";
 import { categoryImages } from "@/data/menuImages";
-import menuCollageBg from "@/assets/menu-collage-bg.jpg";
+import diningAreaBg from "@/assets/dining-area.jpeg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -30,7 +30,7 @@ const Menu = () => {
     <div className="min-h-screen">
       {/* Layered background for depth */}
       <div className="fixed inset-0 -z-10">
-        <img src={menuCollageBg} alt="" className="w-full h-full object-cover opacity-35" aria-hidden="true" />
+        <img src={diningAreaBg} alt="" className="w-full h-full object-cover opacity-35" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/50" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(43,72%,55%,0.08),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(43,72%,55%,0.05),transparent_50%)]" />

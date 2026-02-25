@@ -215,10 +215,10 @@ const Index = () => {
             <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-3 block">
               {t("Signaturrätter", "Signature Dishes")}
             </span>
-            <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-4">
+            <h2 className="font-serif text-3xl md:text-5xl text-white mb-4">
               {t("Populära Rätter", "Popular Dishes")}
             </h2>
-            <p className="text-muted-foreground max-w-lg mx-auto text-lg">
+            <p className="text-white/70 max-w-lg mx-auto text-lg">
               {t(
                 "Smaka på våra mest älskade rätter, tillagade med kärlek och tradition.",
                 "Taste our most beloved dishes, prepared with love and tradition."
@@ -237,7 +237,7 @@ const Index = () => {
             <motion.div
               key={dish.name}
               variants={fadeUp}
-              className="bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 group hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+              className="bg-white/[0.04] backdrop-blur-sm rounded-2xl overflow-hidden border border-white/[0.08] group hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
 
                 <div className="overflow-hidden h-64">
                   <img
@@ -255,7 +255,7 @@ const Index = () => {
                     <h3 className="font-serif text-xl">{dish.name}</h3>
                     <span className="text-primary font-bold text-base">{dish.price}</span>
                   </div>
-                  <p className="text-card-foreground/60 text-sm leading-relaxed">{dish.desc}</p>
+                  <p className="text-white/60 text-sm leading-relaxed">{dish.desc}</p>
                 </div>
               </motion.div>
             )}
