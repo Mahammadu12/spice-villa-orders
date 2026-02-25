@@ -26,9 +26,11 @@ const DAY_NAMES_SV = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fred
 const DAY_NAMES_EN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 function getOpenStatus(lang: string) {
+  // Always use Sweden's timezone regardless of user's location
   const now = new Date();
-  const day = now.getDay();
-  const hour = now.getHours();
+  const swedenTime = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Stockholm" }));
+  const day = swedenTime.getDay();
+  const hour = swedenTime.getHours();
   const todayHours = OPENING_HOURS[day];
   const isOpen = hour >= todayHours.open && hour < todayHours.close;
   const dayName = lang === "sv" ? DAY_NAMES_SV[day] : DAY_NAMES_EN[day];
