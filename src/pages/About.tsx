@@ -25,7 +25,7 @@ const fadeUp = {
 const Ornament = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center justify-center gap-4 ${className}`}>
     <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/40" />
-    <span className="text-primary/60 text-sm">✦</span>
+    <span className="text-primary/80 text-sm">✦</span>
     <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/40" />
   </div>
 );
@@ -75,14 +75,14 @@ const About = () => {
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.span className="text-primary/60 text-[10px] font-medium tracking-[0.5em] uppercase mb-5 block" variants={fadeUp}>
+          <motion.span className="text-primary/80 text-[10px] font-medium tracking-[0.5em] uppercase mb-5 block" variants={fadeUp}>
             {t("Vår Historia", "Our Story")}
           </motion.span>
           <motion.h1 className="font-serif text-5xl md:text-7xl text-white mb-5 tracking-tight leading-none" variants={fadeUp}>
             {t("Om Spice Villa", "About Spice Villa")}
           </motion.h1>
           <Ornament className="mb-5" />
-          <motion.p className="text-white/50 text-base max-w-xl mx-auto italic font-light" variants={fadeUp}>
+          <motion.p className="text-white/75 text-base max-w-xl mx-auto italic font-light" variants={fadeUp}>
             {t("Över 20 års passion för autentisk sydasiatisk mat", "Over 20 years of passion for authentic South Asian food")}
           </motion.p>
         </motion.div>
@@ -99,7 +99,7 @@ const About = () => {
             variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
           >
             <motion.div variants={fadeUp}>
-              <p className="text-primary/50 text-[10px] font-medium tracking-[0.4em] uppercase mb-4">
+              <p className="text-primary/70 text-[10px] font-medium tracking-[0.4em] uppercase mb-4">
                 {t("Sedan 2004", "Since 2004")}
               </p>
               <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6 leading-tight">
@@ -149,7 +149,7 @@ const About = () => {
       <section className="py-28 bg-white/[0.02]">
         <div className="container mx-auto px-4">
           <motion.div className="text-center mb-16" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <p className="text-primary/50 text-[10px] font-medium tracking-[0.4em] uppercase mb-3">
+            <p className="text-primary/70 text-[10px] font-medium tracking-[0.4em] uppercase mb-3">
               {t("Det Vi Gör Bäst", "What We Do Best")}
             </p>
             <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-4">
@@ -227,7 +227,7 @@ const About = () => {
       <section className="py-28 bg-white/[0.02]">
         <div className="container mx-auto px-4">
           <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <p className="text-primary/50 text-[10px] font-medium tracking-[0.4em] uppercase mb-3">
+            <p className="text-primary/70 text-[10px] font-medium tracking-[0.4em] uppercase mb-3">
               {t("Bildgalleri", "Photo Gallery")}
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-3">
