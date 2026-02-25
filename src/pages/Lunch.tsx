@@ -13,7 +13,7 @@ const fadeUp = {
 const Ornament = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center justify-center gap-4 ${className}`}>
     <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/40" />
-    <span className="text-primary/60 text-sm">✦</span>
+    <span className="text-primary/80 text-sm">✦</span>
     <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/40" />
   </div>
 );
@@ -38,17 +38,17 @@ const Lunch = () => {
       {/* Hero Banner */}
       <div className="relative pt-36 pb-10 text-center overflow-hidden">
         <motion.div className="relative z-10 px-4" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
-          <motion.p variants={fadeUp} className="text-primary/60 text-[10px] font-medium tracking-[0.5em] uppercase mb-4">
+          <motion.p variants={fadeUp} className="text-primary/80 text-[10px] font-medium tracking-[0.5em] uppercase mb-4">
             {t("Spice Villa", "Spice Villa")}
           </motion.p>
           <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-5 tracking-tight leading-none">
             {t("Lunchmeny", "Lunch Menu")}
           </motion.h1>
           <Ornament className="mb-5" />
-          <motion.p variants={fadeUp} className="text-white/40 text-base max-w-xl mx-auto italic font-light">
+          <motion.p variants={fadeUp} className="text-white/70 text-base max-w-xl mx-auto italic font-light">
             {t("Mån–Fre, 11:00–15:00. Ris ingår till alla rätter.", "Mon–Fri, 11:00–15:00. Rice included with all dishes.")}
           </motion.p>
-          <motion.p variants={fadeUp} className="text-white/30 text-xs mt-3 font-light">
+          <motion.p variants={fadeUp} className="text-white/60 text-xs mt-3 font-light">
             {t("+10 kr för Naan · +10 kr för Garlic Naan · +20 kr för Dryck", "+10 kr for Naan · +10 kr for Garlic Naan · +20 kr for Drink")}
           </motion.p>
         </motion.div>
@@ -63,7 +63,7 @@ const Lunch = () => {
             className={`px-6 py-2.5 rounded-full text-[10px] font-medium tracking-[0.2em] uppercase transition-all duration-300 ${
               activeDay === day.day
                 ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
-                : "bg-white/[0.03] text-white/40 hover:text-white/70 border border-white/[0.08] hover:border-white/15"
+                : "bg-white/[0.03] text-white/70 hover:text-white/90 border border-white/[0.08] hover:border-white/15"
             }`}
           >
             {lang === "en" ? (day.dayEn || day.day) : day.day}
@@ -97,11 +97,11 @@ const Lunch = () => {
                 )}
                 <div className="p-5">
                   <div className="flex justify-between items-start">
-                    <h3 className="text-white/90 font-serif text-sm tracking-wide">{itemName}</h3>
-                    <span className="text-primary/80 font-serif text-sm whitespace-nowrap ml-3">{item.price}</span>
+                    <h3 className="text-white font-serif text-sm tracking-wide">{itemName}</h3>
+                    <span className="text-primary font-serif text-sm whitespace-nowrap ml-3">{item.price}</span>
                   </div>
                   {itemDesc && (
-                    <p className="text-white/30 text-xs mt-1.5 font-light italic">{itemDesc}</p>
+                    <p className="text-white/60 text-xs mt-1.5 font-light italic">{itemDesc}</p>
                   )}
                 </div>
               </motion.div>

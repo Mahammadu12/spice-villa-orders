@@ -19,7 +19,7 @@ const fadeUp = {
 const Ornament = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center justify-center gap-4 ${className}`}>
     <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/40" />
-    <span className="text-primary/60 text-sm">✦</span>
+    <span className="text-primary/80 text-sm">✦</span>
     <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/40" />
   </div>
 );
@@ -80,12 +80,12 @@ const Catering = () => {
 
       <div className="relative z-10 pt-36 pb-14 text-center px-4">
         <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
-          <motion.p variants={fadeUp} className="text-primary/60 text-[10px] font-medium tracking-[0.5em] uppercase mb-4">
+          <motion.p variants={fadeUp} className="text-primary/80 text-[10px] font-medium tracking-[0.5em] uppercase mb-4">
             {t("Evenemang & Fest", "Events & Celebrations")}
           </motion.p>
           <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-5 tracking-tight leading-none">Catering & Event</motion.h1>
           <Ornament className="mb-5" />
-          <motion.p variants={fadeUp} className="text-white/40 text-base max-w-xl mx-auto italic font-light">
+          <motion.p variants={fadeUp} className="text-white/70 text-base max-w-xl mx-auto italic font-light">
             {t("Låt Spice Villa göra ditt event till något speciellt med autentisk pakistansk & indisk mat.", "Let Spice Villa make your event special with authentic Pakistani & Indian food.")}
           </motion.p>
         </motion.div>
@@ -96,7 +96,7 @@ const Catering = () => {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-10 text-center shadow-xl max-w-lg mx-auto">
             <PartyPopper className="text-primary mx-auto mb-4" size={48} />
             <h2 className="font-serif text-2xl mb-2 text-white">{t("Tack för din förfrågan!", "Thank you for your request!")}</h2>
-            <p className="text-white/50 mb-6 font-light">{t("Vi kontaktar dig så snart som möjligt.", "We will contact you as soon as possible.")}</p>
+            <p className="text-white/75 mb-6 font-light">{t("Vi kontaktar dig så snart som möjligt.", "We will contact you as soon as possible.")}</p>
             <Button onClick={() => setSubmitted(false)} variant="outline">{t("Skicka en ny förfrågan", "Send a new request")}</Button>
           </motion.div>
         ) : (
@@ -108,7 +108,7 @@ const Catering = () => {
                 <div className="bg-black/40 backdrop-blur-md rounded-xl p-5 inline-flex items-center gap-3 border border-white/[0.06]">
                   <Phone className="text-primary" size={22} />
                   <div>
-                    <p className="text-white/40 text-[10px] tracking-[0.2em] uppercase">{t("Ring oss", "Call us")}</p>
+                    <p className="text-white/70 text-[10px] tracking-[0.2em] uppercase">{t("Ring oss", "Call us")}</p>
                     <a href="tel:+46704431515" className="text-white text-lg font-semibold hover:text-primary transition-colors">070-443 15 15</a>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ const Catering = () => {
 
             <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.08 } } }} className="bg-[hsl(0,0%,7%)]/95 backdrop-blur-md p-8 md:p-10 border-l border-white/[0.06]">
               <motion.div variants={fadeUp}>
-                <p className="text-primary/50 text-[10px] tracking-[0.4em] uppercase mb-2">Catering</p>
+                <p className="text-primary/70 text-[10px] tracking-[0.4em] uppercase mb-2">Catering</p>
                 <h2 className="font-serif text-2xl md:text-3xl text-white mb-1">{t("Få en offert", "Get a Quote")}</h2>
                 <div className="w-12 h-0.5 bg-primary/40 rounded mb-6" />
               </motion.div>
@@ -125,11 +125,11 @@ const Catering = () => {
               <motion.form variants={fadeUp} onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Datum", "Date")}</label>
+                    <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Datum", "Date")}</label>
                     <Input name="date" type="date" required className="border-white/[0.08] bg-white/[0.03]" />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Typ av mat", "Food Type")}</label>
+                    <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Typ av mat", "Food Type")}</label>
                     <Select value={foodType} onValueChange={setFoodType}>
                       <SelectTrigger className="border-white/[0.08] bg-white/[0.03]"><SelectValue placeholder={t("Välj", "Choose")} /></SelectTrigger>
                       <SelectContent>
@@ -144,11 +144,11 @@ const Catering = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Antal gäster", "Number of Guests")}</label>
+                    <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Antal gäster", "Number of Guests")}</label>
                     <Input name="guests" type="number" min={1} max={500} placeholder="50" required className="border-white/[0.08] bg-white/[0.03]" />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Eventtyp", "Event Type")}</label>
+                    <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Eventtyp", "Event Type")}</label>
                     <Select value={eventType} onValueChange={setEventType}>
                       <SelectTrigger className="border-white/[0.08] bg-white/[0.03]"><SelectValue placeholder={t("Välj", "Choose")} /></SelectTrigger>
                       <SelectContent>
@@ -163,22 +163,22 @@ const Catering = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Namn", "Name")}</label>
+                    <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Namn", "Name")}</label>
                     <Input name="name" required placeholder={t("Ditt namn", "Your name")} maxLength={100} className="border-white/[0.08] bg-white/[0.03]" />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Telefon", "Phone")}</label>
+                    <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Telefon", "Phone")}</label>
                     <Input name="phone" type="tel" required placeholder="07X XXX XX XX" maxLength={20} className="border-white/[0.08] bg-white/[0.03]" />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("E-post", "Email")}</label>
+                  <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("E-post", "Email")}</label>
                   <Input name="email" type="email" required placeholder={t("din@email.se", "your@email.com")} maxLength={255} className="border-white/[0.08] bg-white/[0.03]" />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Meddelande", "Message")}</label>
+                  <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Meddelande", "Message")}</label>
                   <Textarea name="message" placeholder={t("Önskemål, allergier, budget...", "Preferences, allergies, budget...")} maxLength={2000} rows={3} className="border-white/[0.08] bg-white/[0.03]" />
                 </div>
 

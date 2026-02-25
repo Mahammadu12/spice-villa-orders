@@ -19,7 +19,7 @@ const fadeUp = {
 const Ornament = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center justify-center gap-4 ${className}`}>
     <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/40" />
-    <span className="text-primary/60 text-sm">✦</span>
+    <span className="text-primary/80 text-sm">✦</span>
     <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/40" />
   </div>
 );
@@ -50,24 +50,24 @@ const Iftar = () => {
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <motion.div className="relative z-10 text-center px-4 max-w-2xl" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
-          <motion.p className="text-primary/60 text-[10px] font-medium tracking-[0.5em] uppercase mb-4" variants={fadeUp}>
+          <motion.p className="text-primary/80 text-[10px] font-medium tracking-[0.5em] uppercase mb-4" variants={fadeUp}>
             🌙 Ramadan Mubarak
           </motion.p>
           <motion.h1 className="font-serif text-5xl md:text-7xl text-white mb-5 leading-tight tracking-tight" variants={fadeUp}>
             {t("Iftar Meny", "Iftar Menu")}
           </motion.h1>
           <Ornament className="mb-5" />
-          <motion.p className="text-white/40 text-base mb-10 max-w-md mx-auto italic font-light" variants={fadeUp}>
+          <motion.p className="text-white/70 text-base mb-10 max-w-md mx-auto italic font-light" variants={fadeUp}>
             {t("Njut av en komplett iftarmåltid med familj och vänner hos Spice Villa.", "Enjoy a complete iftar meal with family and friends at Spice Villa.")}
           </motion.p>
           <motion.div className="flex flex-wrap gap-4 justify-center mb-10" variants={fadeUp}>
             <div className="bg-primary/10 backdrop-blur border border-primary/20 rounded-xl px-7 py-4 text-center">
               <p className="text-primary font-serif text-3xl">219 kr</p>
-              <p className="text-white/40 text-[10px] tracking-[0.2em] uppercase mt-1">{t("per person", "per person")}</p>
+              <p className="text-white/70 text-[10px] tracking-[0.2em] uppercase mt-1">{t("per person", "per person")}</p>
             </div>
             <div className="bg-white/[0.03] backdrop-blur border border-white/[0.08] rounded-xl px-7 py-4 text-center">
               <p className="text-white font-serif text-3xl">99 kr</p>
-              <p className="text-white/40 text-[10px] tracking-[0.2em] uppercase mt-1">{t("barn (5–10 år)", "children (5–10 yrs)")}</p>
+              <p className="text-white/70 text-[10px] tracking-[0.2em] uppercase mt-1">{t("barn (5–10 år)", "children (5–10 yrs)")}</p>
             </div>
           </motion.div>
           <motion.div variants={fadeUp}>
@@ -83,17 +83,17 @@ const Iftar = () => {
       <section className="bg-white/[0.02] border-y border-white/[0.06] py-4">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Star size={14} className="text-primary/60" />
-            <span className="text-primary/60 font-medium text-[10px] uppercase tracking-[0.3em]">
+            <Star size={14} className="text-primary/80" />
+            <span className="text-primary/80 font-medium text-[10px] uppercase tracking-[0.3em]">
               {t("Förbokning krävs", "Pre-booking required")}
             </span>
-            <Star size={14} className="text-primary/60" />
-            <span className="text-white/20 text-sm">|</span>
-            <span className="text-white/40 text-xs font-light">
+            <Star size={14} className="text-primary/80" />
+            <span className="text-white/50 text-sm">|</span>
+            <span className="text-white/70 text-xs font-light">
               {t("Bokning måste göras före kl. 14:00 (samma dag)", "Booking must be made before 2:00 PM (same day)")}
             </span>
-            <span className="text-white/20 text-sm">|</span>
-            <div className="flex items-center gap-1.5 text-white/40 text-xs font-light">
+            <span className="text-white/50 text-sm">|</span>
+            <div className="flex items-center gap-1.5 text-white/70 text-xs font-light">
               <Clock size={13} />
               16:30 – 20:00
             </div>
@@ -105,14 +105,14 @@ const Iftar = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.div className="text-center mb-16" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <p className="text-primary/50 text-[10px] font-medium tracking-[0.4em] uppercase mb-3">
+            <p className="text-primary/70 text-[10px] font-medium tracking-[0.4em] uppercase mb-3">
               {t("Meny", "Menu")}
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               {t("Vad som ingår", "What's Included")}
             </h2>
             <Ornament className="mb-4" />
-            <p className="text-white/35 max-w-md mx-auto font-light italic">
+            <p className="text-white/70 max-w-md mx-auto font-light italic">
               {t("En komplett iftarmåltid med förrätter, huvudrätt, tillbehör, dessert och drycker.", "A complete iftar meal with starters, main course, sides, dessert and drinks.")}
             </p>
           </motion.div>
@@ -132,13 +132,13 @@ const Iftar = () => {
                 </div>
                 <div className="md:w-3/5 bg-white/[0.02] backdrop-blur-sm border border-white/[0.06] rounded-xl p-7 md:p-9 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="bg-primary/10 text-primary/70 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-[0.2em]">{idx + 1}</span>
+                    <span className="bg-primary/10 text-primary/80 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-[0.2em]">{idx + 1}</span>
                     <h3 className="font-serif text-2xl text-white">{course.title}</h3>
                   </div>
-                  {course.subtitle && <p className="text-white/30 text-sm italic mb-3 font-light">{course.subtitle}</p>}
+                  {course.subtitle && <p className="text-white/60 text-sm italic mb-3 font-light">{course.subtitle}</p>}
                   <div className="flex flex-wrap gap-2">
                     {course.items.map((item) => (
-                      <span key={item} className="bg-white/[0.03] border border-white/[0.06] text-white/60 px-4 py-2 rounded-lg text-sm font-light">{item}</span>
+                      <span key={item} className="bg-white/[0.03] border border-white/[0.06] text-white/75 px-4 py-2 rounded-lg text-sm font-light">{item}</span>
                     ))}
                   </div>
                 </div>
@@ -154,8 +154,8 @@ const Iftar = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
             <Ornament className="mb-6" />
             <motion.div className="flex items-center justify-center gap-2 mb-4" variants={fadeUp}>
-              <MapPin size={18} className="text-primary/60" />
-              <span className="text-white/50 text-sm font-light">Tenstagången 25, Tensta Centrum</span>
+              <MapPin size={18} className="text-primary/80" />
+              <span className="text-white/75 text-sm font-light">Tenstagången 25, Tensta Centrum</span>
             </motion.div>
             <motion.h2 className="font-serif text-3xl text-white mb-8" variants={fadeUp}>
               {t("Boka din Iftar idag", "Book your Iftar today")}
@@ -165,7 +165,7 @@ const Iftar = () => {
                 <Phone size={18} />
                 {t("Ring: 0764222770", "Call: 0764222770")}
               </a>
-              <Link to="/meny" className="inline-flex items-center justify-center border border-primary/30 text-primary/80 px-8 py-3.5 rounded-lg font-semibold hover:bg-primary/10 transition-colors">
+              <Link to="/meny" className="inline-flex items-center justify-center border border-primary/30 text-primary px-8 py-3.5 rounded-lg font-semibold hover:bg-primary/10 transition-colors">
                 {t("Se hela menyn", "See full menu")}
               </Link>
             </motion.div>

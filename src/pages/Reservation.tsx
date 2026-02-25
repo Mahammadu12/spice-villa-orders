@@ -17,7 +17,7 @@ const fadeUp = {
 const Ornament = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center justify-center gap-4 ${className}`}>
     <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/40" />
-    <span className="text-primary/60 text-sm">✦</span>
+    <span className="text-primary/80 text-sm">✦</span>
     <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/40" />
   </div>
 );
@@ -75,14 +75,14 @@ const Reservation = () => {
 
       <div className="relative z-10 pt-36 pb-8 text-center px-4">
         <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
-          <motion.p variants={fadeUp} className="text-primary/60 text-[10px] font-medium tracking-[0.5em] uppercase mb-4">
+          <motion.p variants={fadeUp} className="text-primary/80 text-[10px] font-medium tracking-[0.5em] uppercase mb-4">
             {t("Spice Villa", "Spice Villa")}
           </motion.p>
           <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl text-white mb-5 tracking-tight leading-none">
             {t("Boka Bord", "Book a Table")}
           </motion.h1>
           <Ornament className="mb-5" />
-          <motion.p variants={fadeUp} className="text-white/40 max-w-md mx-auto text-sm font-light italic leading-relaxed">
+          <motion.p variants={fadeUp} className="text-white/70 max-w-md mx-auto text-sm font-light italic leading-relaxed">
             {t(
               "För bokningar mer än 24 timmar i förväg, fyll i formuläret. För bokningar samma dag, vänligen ring oss.",
               "For bookings more than 24 hours in advance, please fill in the form. For same-day bookings, please call us."
@@ -96,44 +96,44 @@ const Reservation = () => {
           <motion.div variants={fadeUp} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-10 text-center">
             <CalendarDays className="text-primary mx-auto mb-4" size={48} />
             <h2 className="font-serif text-2xl text-white mb-2">{t("Tack för din bokning!", "Thank you for your booking!")}</h2>
-            <p className="text-white/50 mb-6 font-light">{t("Vi har tagit emot din förfrågan och återkommer med bekräftelse via telefon eller e-post.", "We have received your request and will confirm via phone or email.")}</p>
+            <p className="text-white/75 mb-6 font-light">{t("Vi har tagit emot din förfrågan och återkommer med bekräftelse via telefon eller e-post.", "We have received your request and will confirm via phone or email.")}</p>
             <Button onClick={() => setSubmitted(false)} variant="outline">{t("Gör en ny bokning", "Make a new booking")}</Button>
           </motion.div>
         ) : (
           <motion.form variants={fadeUp} onSubmit={handleSubmit} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 md:p-9 space-y-5">
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-1.5">
-                <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Namn", "Name")} *</label>
+                <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Namn", "Name")} *</label>
                 <Input name="name" required placeholder={t("Ditt namn", "Your name")} maxLength={100} className="border-white/[0.08] bg-white/[0.03]" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Telefon", "Phone")} *</label>
+                <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Telefon", "Phone")} *</label>
                 <Input name="phone" type="tel" required placeholder="07X XXX XX XX" maxLength={20} className="border-white/[0.08] bg-white/[0.03]" />
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("E-post", "Email")}</label>
+              <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("E-post", "Email")}</label>
               <Input name="email" type="email" placeholder={t("din@email.se", "your@email.com")} maxLength={255} className="border-white/[0.08] bg-white/[0.03]" />
             </div>
 
             <div className="grid md:grid-cols-3 gap-5">
               <div className="space-y-1.5">
-                <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em] flex items-center gap-1"><CalendarDays size={12} /> {t("Datum", "Date")} *</label>
+                <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em] flex items-center gap-1"><CalendarDays size={12} /> {t("Datum", "Date")} *</label>
                 <Input name="date" type="date" required className="border-white/[0.08] bg-white/[0.03]" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em] flex items-center gap-1"><Clock size={12} /> {t("Tid", "Time")} *</label>
+                <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em] flex items-center gap-1"><Clock size={12} /> {t("Tid", "Time")} *</label>
                 <Input name="time" type="time" required className="border-white/[0.08] bg-white/[0.03]" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em] flex items-center gap-1"><Users size={12} /> {t("Antal gäster", "Guests")} *</label>
+                <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em] flex items-center gap-1"><Users size={12} /> {t("Antal gäster", "Guests")} *</label>
                 <Input name="guests" type="number" min={1} max={50} required placeholder="2" className="border-white/[0.08] bg-white/[0.03]" />
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-medium text-white/40 uppercase tracking-[0.15em]">{t("Önskemål", "Requests")}</label>
+              <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Önskemål", "Requests")}</label>
               <Textarea name="message" placeholder={t("Allergier, barnstol, speciella önskemål...", "Allergies, high chair, special requests...")} maxLength={500} rows={3} className="border-white/[0.08] bg-white/[0.03]" />
             </div>
 
