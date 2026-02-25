@@ -40,8 +40,10 @@ const Iftar = () => {
     <div className="min-h-screen relative">
       {/* Layered background */}
       <div className="fixed inset-0 -z-10">
-        <img src={iftarBg} alt="" className="w-full h-full object-cover opacity-30" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/70" />
+        <img src={iftarBg} alt="" className="w-full h-full object-cover opacity-40" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/45" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(43,72%,55%,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(43,72%,55%,0.06),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(43,72%,55%,0.04),transparent_60%)]" />
       </div>
 

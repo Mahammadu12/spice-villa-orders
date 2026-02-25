@@ -67,8 +67,10 @@ const Contact = () => {
     <div className="min-h-screen relative">
       {/* Layered background */}
       <div className="fixed inset-0 -z-10">
-        <img src={heroImg} alt="" className="w-full h-full object-cover opacity-25" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/75" />
+        <img src={heroImg} alt="" className="w-full h-full object-cover opacity-35" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(43,72%,55%,0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(43,72%,55%,0.05),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(43,72%,55%,0.03),transparent_60%)]" />
       </div>
 
