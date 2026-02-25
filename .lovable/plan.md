@@ -1,52 +1,45 @@
 
-# Spice Villa — Restaurant Website
 
-A beautiful, modern Swedish-language website for Spice Villa, an Indian/Pakistani/Bengali/Afghan halal restaurant in Sweden. The site will showcase the restaurant's atmosphere, food, and full menu — with an "Order on Uber Eats" button for online ordering.
+## Improve Text Readability Across All Pages
 
-## Pages & Sections
+The text on every page (except Home) uses very low opacity values making it difficult to read. This plan increases text opacity/contrast throughout without changing any background brightness or styling.
 
-### 1. Home Page (Landing)
-- **Hero Section**: Full-width hero with the restaurant exterior photo, the Spice Villa SVG logo, tagline "Indisk · Pakistansk · Bengalisk · Afghansk", and a prominent **"Beställ via Uber Eats"** button
-- **About Section**: Short intro about Spice Villa — authentic South Asian cuisine, halal certified, cozy atmosphere. Uses the interior photo of the restaurant
-- **Popular Dishes Highlight**: A few featured dishes with the uploaded food photos (karahi, tandoori grill, etc.) to entice visitors
-- **Call-to-Action**: "Beställ nu" button linking to Uber Eats
+### What Changes
 
-### 2. Full Menu Page
-The complete dinner menu organized into categories with prices (in SEK), pulled from the provided menu PDF:
-- Traditionella Förrätter (Starters)
-- Biryani Rätter
-- Sizzler / Grill Rätter
-- Special Punjabi Grytor
-- Tikka Masala Rätter
-- Karahi Rätter
-- Plain Grill Rätter
-- Tawa Rätter
-- Vegetariska Rätter
-- Specialmeny
-- Specialrullar / Wraps
-- Färskbakat Bröd
-- Tillbehör, Desserter & Drycker
+All text opacity values will be boosted across 7 files. No background layers, gradients, or glow effects will be modified.
 
-### 3. Lunch Menu Section
-Daily lunch specials (Monday–Friday, 11:00–15:00) with rotating dishes per day, based on the lunch menu PDF. Naan/ris included, with add-on pricing.
+### Opacity Mapping (Before -> After)
 
-### 4. Contact & Location
-- Restaurant address (placeholder for now)
-- Opening hours
-- Phone number
-- Embedded Google Maps placeholder
-- Uber Eats order button
+| Current | New | Used For |
+|---------|-----|----------|
+| `text-white/20` | `text-white/50` | Footer notes, subtle labels |
+| `text-white/30` | `text-white/60` | Dish descriptions, secondary text |
+| `text-white/40` | `text-white/70` | Subtitles, filter buttons, labels |
+| `text-white/50` | `text-white/75` | Descriptions, info text |
+| `text-primary/30` | `text-primary/60` | Dish numbers |
+| `text-primary/50` | `text-primary/70` | Category labels |
+| `text-primary/60` | `text-primary/80` | Subtitle labels, ornament text |
+| `text-primary/80` | `text-primary` | Prices |
+| `text-white/90` | `text-white` | Dish names |
+| `border-white/[0.04]` | `border-white/[0.08]` | Divider lines between items |
+| `border-white/[0.08]` (dotted) | `border-white/[0.15]` | Dotted price leaders |
 
-## Design & Style
-- **Color palette**: Dark charcoal/black background with gold and red accents — matching the Spice Villa signage and branding
-- **Typography**: Elegant serif for headings, clean sans-serif for body text
-- **Halal badge** displayed prominently
-- **Mobile-first responsive** design — optimized for customers browsing on their phones
-- **Food photos** from the uploads used throughout to showcase the dishes
+### Files to Update
 
-## Key Features
-- **Uber Eats integration**: Prominent "Beställ via Uber Eats" buttons throughout the site (link placeholder until URL is provided)
-- **Smooth scrolling** single-page navigation with a sticky header
-- **Menu filtering** by category with smooth animations
-- **Fully in Swedish** matching the restaurant's branding
-- **No backend needed** — this is a static informational website with external ordering via Uber Eats
+1. **src/pages/Menu.tsx** -- Subtitle text, dish names, descriptions, prices, filter buttons, footer note
+2. **src/pages/About.tsx** -- Hero subtitle, body text, stat cards, gallery captions
+3. **src/pages/Contact.tsx** -- Hero subtitle, form labels, info cards, transport descriptions
+4. **src/pages/Catering.tsx** -- Hero subtitle, form labels, descriptions
+5. **src/pages/Lunch.tsx** -- Hero subtitle, dish descriptions, day filter buttons
+6. **src/pages/Reservation.tsx** -- Hero subtitle, form labels, info text
+7. **src/pages/Iftar.tsx** -- Hero subtitle, course descriptions, info cards
+
+### Technical Details
+
+- Only CSS class opacity values change (e.g., `text-white/40` becomes `text-white/70`)
+- No structural HTML changes
+- No background-related classes touched
+- Ornament decorative elements get slightly higher opacity for better visibility
+- Form input placeholder and label text also gets boosted
+- Hover states on filter buttons adjusted proportionally
+
