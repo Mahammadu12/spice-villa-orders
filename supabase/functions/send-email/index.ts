@@ -7,8 +7,8 @@ const RESTAURANT_EMAIL = "farazs156@gmail.com";
 
 // Simple in-memory rate limiter (resets on cold start, but sufficient for basic protection)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT = 5; // max requests
-const RATE_WINDOW_MS = 60 * 60 * 1000; // per hour
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 60 * 60 * 1000;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -72,13 +72,184 @@ function validateFoodType(v: unknown): string {
   return v.trim();
 }
 
+function formatDate(dateStr: string): string {
+  const [y, m, d] = dateStr.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+// ─── Shared email wrapper ───────────────────────────────────────────────
+function wrapEmail(content: string, isRestaurant = false): string {
+  return `
+<!DOCTYPE html>
+<html lang="sv">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/></head>
+<body style="margin:0;padding:0;background:#0f0f0f;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#e0e0e0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f0f0f;padding:24px 0;">
+<tr><td align="center">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#1a1a1a;border-radius:16px;overflow:hidden;border:1px solid #2a2a2a;">
+
+  <!-- Header -->
+  <tr><td style="background:linear-gradient(135deg,#d4a843 0%,#b8912e 100%);padding:32px 40px;text-align:center;">
+    <h1 style="margin:0;font-size:28px;font-weight:700;color:#000;letter-spacing:2px;">SPICE VILLA</h1>
+    <p style="margin:6px 0 0;font-size:13px;color:#333;letter-spacing:3px;text-transform:uppercase;">Restaurang &amp; Catering — Spånga</p>
+  </td></tr>
+
+  <!-- Body -->
+  <tr><td style="padding:36px 40px 24px;">
+    ${content}
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="padding:0 40px 8px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+    <tr><td style="border-top:1px solid #2a2a2a;padding-top:24px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="vertical-align:top;padding-right:20px;">
+          <p style="margin:0 0 4px;font-size:12px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Kontakt</p>
+          <p style="margin:0;font-size:13px;color:#bbb;">📞 <a href="tel:+46764222770" style="color:#d4a843;text-decoration:none;">076-422 27 70</a></p>
+          <p style="margin:4px 0 0;font-size:13px;color:#bbb;">📍 Tenstagången 25, 163 64 Spånga</p>
+        </td>
+        <td style="vertical-align:top;text-align:right;">
+          <p style="margin:0 0 4px;font-size:12px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Öppettider</p>
+          <p style="margin:0;font-size:13px;color:#bbb;">Mån–Fre 11:00–22:00</p>
+          <p style="margin:4px 0 0;font-size:13px;color:#bbb;">Lör–Sön 12:00–22:00</p>
+        </td>
+      </tr>
+      </table>
+    </td></tr>
+    </table>
+  </td></tr>
+
+  <tr><td style="padding:16px 40px 24px;text-align:center;">
+    <p style="margin:0;font-size:11px;color:#555;">© ${new Date().getFullYear()} Spice Villa Spånga — Autentisk pakistansk mat</p>
+    ${!isRestaurant ? '<p style="margin:6px 0 0;font-size:11px;color:#444;">Detta är ett automatiskt meddelande. Svara inte direkt på detta mail.</p>' : ''}
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+
+// ─── Detail row helper ──────────────────────────────────────────────────
+function detailRow(label: string, value: string, isLast = false): string {
+  const border = isLast ? '' : 'border-bottom:1px solid #2a2a2a;';
+  return `<tr>
+    <td style="padding:12px 16px;${border}font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;width:140px;">${label}</td>
+    <td style="padding:12px 16px;${border}font-size:14px;color:#f0f0f0;">${value}</td>
+  </tr>`;
+}
+
+function detailsTable(rows: string): string {
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#111;border-radius:10px;overflow:hidden;margin:20px 0 24px;">${rows}</table>`;
+}
+
+// ─── Restaurant email builders ──────────────────────────────────────────
+function restaurantBookingEmail(name: string, phone: string, email: string | undefined, date: string, time: string, guests: string, message: string): string {
+  const badge = `<span style="display:inline-block;background:#d4a843;color:#000;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;">Ny Bokning</span>`;
+  const rows = detailRow('Namn', name)
+    + detailRow('Telefon', `<a href="tel:${phone}" style="color:#d4a843;text-decoration:none;">${phone}</a>`)
+    + detailRow('E-post', email ? `<a href="mailto:${email}" style="color:#d4a843;text-decoration:none;">${email}</a>` : '<span style="color:#666;">Ej angiven</span>')
+    + detailRow('Datum', formatDate(date))
+    + detailRow('Tid', time)
+    + detailRow('Gäster', `${guests} personer`)
+    + detailRow('Önskemål', message || '<span style="color:#666;">Inga</span>', true);
+
+  return `
+    ${badge}
+    <h2 style="margin:16px 0 6px;font-size:22px;color:#f0f0f0;font-weight:600;">Bordbokning från ${name}</h2>
+    <p style="margin:0 0 20px;font-size:14px;color:#888;">Mottagen ${new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Stockholm' })}</p>
+    ${detailsTable(rows)}
+    <p style="margin:0;font-size:13px;color:#888;">⚡ Bekräfta bokningen genom att ringa eller maila kunden.</p>
+  `;
+}
+
+function restaurantCateringEmail(name: string, phone: string, email: string | undefined, date: string, foodType: string, guests: string, message: string): string {
+  const badge = `<span style="display:inline-block;background:#e8913a;color:#000;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;">Catering</span>`;
+  const rows = detailRow('Namn', name)
+    + detailRow('Telefon', `<a href="tel:${phone}" style="color:#d4a843;text-decoration:none;">${phone}</a>`)
+    + detailRow('E-post', email ? `<a href="mailto:${email}" style="color:#d4a843;text-decoration:none;">${email}</a>` : '<span style="color:#666;">Ej angiven</span>')
+    + detailRow('Datum', formatDate(date))
+    + detailRow('Mattyp', foodType || '<span style="color:#666;">Ej angiven</span>')
+    + detailRow('Gäster', `${guests} personer`)
+    + detailRow('Meddelande', message || '<span style="color:#666;">Inget</span>', true);
+
+  return `
+    ${badge}
+    <h2 style="margin:16px 0 6px;font-size:22px;color:#f0f0f0;font-weight:600;">Cateringförfrågan från ${name}</h2>
+    <p style="margin:0 0 20px;font-size:14px;color:#888;">Mottagen ${new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Stockholm' })}</p>
+    ${detailsTable(rows)}
+    <p style="margin:0;font-size:13px;color:#888;">⚡ Kontakta kunden för att diskutera detaljer och skicka offert.</p>
+  `;
+}
+
+// ─── Customer email builders ────────────────────────────────────────────
+function customerBookingEmail(name: string, date: string, time: string, guests: string, message: string): string {
+  const rows = detailRow('Datum', formatDate(date))
+    + detailRow('Tid', time)
+    + detailRow('Antal gäster', `${guests} personer`)
+    + (message ? detailRow('Önskemål', message, true) : '');
+
+  return `
+    <h2 style="margin:0 0 8px;font-size:22px;color:#d4a843;font-weight:600;">Tack för din bokning, ${name}!</h2>
+    <p style="margin:0 0 4px;font-size:15px;color:#ccc;">Vi har mottagit din bordsbokning och återkommer med bekräftelse inom kort.</p>
+
+    <div style="margin:24px 0;padding:16px 20px;background:rgba(212,168,67,0.08);border-left:3px solid #d4a843;border-radius:6px;">
+      <p style="margin:0;font-size:14px;color:#d4a843;font-weight:600;">📋 Dina bokningsuppgifter</p>
+    </div>
+
+    ${detailsTable(rows)}
+
+    <div style="background:#111;border-radius:10px;padding:20px;margin:0 0 16px;text-align:center;">
+      <p style="margin:0 0 6px;font-size:14px;color:#ccc;">Behöver du ändra bokningen?</p>
+      <p style="margin:0;font-size:15px;">Ring oss på <a href="tel:+46764222770" style="color:#d4a843;font-weight:600;text-decoration:none;">076-422 27 70</a></p>
+    </div>
+
+    <p style="margin:16px 0 0;font-size:13px;color:#888;text-align:center;">Vi ser fram emot ditt besök! 🌶️</p>
+  `;
+}
+
+function customerCateringEmail(name: string, date: string, foodType: string, guests: string, message: string): string {
+  const rows = detailRow('Datum', formatDate(date))
+    + detailRow('Mattyp', foodType || 'Ej angiven')
+    + detailRow('Antal gäster', `${guests} personer`)
+    + (message ? detailRow('Meddelande', message, true) : '');
+
+  return `
+    <h2 style="margin:0 0 8px;font-size:22px;color:#d4a843;font-weight:600;">Tack för din cateringförfrågan, ${name}!</h2>
+    <p style="margin:0 0 4px;font-size:15px;color:#ccc;">Vi har mottagit din förfrågan och kontaktar dig inom kort med en offert.</p>
+
+    <div style="margin:24px 0;padding:16px 20px;background:rgba(212,168,67,0.08);border-left:3px solid #d4a843;border-radius:6px;">
+      <p style="margin:0;font-size:14px;color:#d4a843;font-weight:600;">📋 Din cateringförfrågan</p>
+    </div>
+
+    ${detailsTable(rows)}
+
+    <div style="background:#111;border-radius:10px;padding:20px;margin:0 0 16px;">
+      <h3 style="margin:0 0 10px;font-size:15px;color:#f0f0f0;">Vad händer nu?</h3>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr><td style="padding:6px 0;font-size:13px;color:#bbb;"><span style="color:#d4a843;font-weight:700;">1.</span> Vi granskar din förfrågan</td></tr>
+        <tr><td style="padding:6px 0;font-size:13px;color:#bbb;"><span style="color:#d4a843;font-weight:700;">2.</span> Vi kontaktar dig för att diskutera detaljer</td></tr>
+        <tr><td style="padding:6px 0;font-size:13px;color:#bbb;"><span style="color:#d4a843;font-weight:700;">3.</span> Du får en skräddarsydd offert</td></tr>
+      </table>
+    </div>
+
+    <div style="text-align:center;margin:16px 0 0;">
+      <p style="margin:0 0 6px;font-size:14px;color:#ccc;">Frågor? Ring oss gärna!</p>
+      <p style="margin:0;font-size:15px;"><a href="tel:+46764222770" style="color:#d4a843;font-weight:600;text-decoration:none;">076-422 27 70</a></p>
+    </div>
+  `;
+}
+
+// ─── Main handler ───────────────────────────────────────────────────────
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    // Rate limiting
     const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
     if (isRateLimited(clientIP)) {
       return new Response(JSON.stringify({ error: 'Too many requests. Please try again later.' }), {
@@ -88,152 +259,39 @@ Deno.serve(async (req) => {
     }
 
     const rawData = await req.json();
-
-    // Validate form_type
     const form_type = validateFormType(rawData.form_type);
 
-    // Validate and sanitize all inputs
     const name = escapeHtml(validateName(rawData.name));
     const phone = escapeHtml(validatePhone(rawData.phone));
     const email = validateEmail(rawData.email);
     const message = escapeHtml(validateMessage(rawData.message));
     const date = validateDate(rawData.date);
 
-    let subject = "New Form Submission - Spice Villa";
+    let subject = "";
     let body = "";
     let customerSubject = "";
     let customerBody = "";
     const customerEmail = email;
 
-    if (form_type === "table_booking") {
+    if (form_type === "table_booking" || form_type === "reservation") {
       const time = validateTime(rawData.time);
       const guests = validateGuests(rawData.guests);
 
-      subject = `🍽️ New Table Booking - ${name}`;
-      body = `
-        <h2>New Table Booking</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Email:</strong> ${email || "Not provided"}</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Time:</strong> ${time}</p>
-        <p><strong>Guests:</strong> ${guests}</p>
-        <p><strong>Requests:</strong> ${message || "None"}</p>
-        <hr/>
-        <p style="color:#888;font-size:12px;">Sent from spice-villa-orders.lovable.app</p>
-      `;
-      customerSubject = "Bokningsbekräftelse - Spice Villa";
-      customerBody = `
-        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#1a1a1a;color:#fff;border-radius:12px;overflow:hidden;">
-          <div style="background:#d4a843;padding:20px;text-align:center;">
-            <h1 style="margin:0;color:#000;font-size:24px;">Spice Villa</h1>
-            <p style="margin:4px 0 0;color:#333;font-size:14px;">Restaurang &amp; Catering</p>
-          </div>
-          <div style="padding:30px;">
-            <h2 style="color:#d4a843;margin-top:0;">Tack för din bokning!</h2>
-            <p>Hej ${name},</p>
-            <p>Vi har mottagit din bordsbokning. Här är dina uppgifter:</p>
-            <table style="width:100%;border-collapse:collapse;margin:20px 0;">
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Datum</td><td style="padding:8px 0;border-bottom:1px solid #333;">${date}</td></tr>
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Tid</td><td style="padding:8px 0;border-bottom:1px solid #333;">${time}</td></tr>
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Antal gäster</td><td style="padding:8px 0;border-bottom:1px solid #333;">${guests}</td></tr>
-              ${message ? `<tr><td style="padding:8px 0;color:#999;">Önskemål</td><td style="padding:8px 0;">${message}</td></tr>` : ""}
-            </table>
-            <p>Vi återkommer med en bekräftelse inom kort. Vid frågor, ring oss gärna.</p>
-            <p style="margin-top:20px;">📞 <a href="tel:+46764222770" style="color:#d4a843;">+46 76-422 27 70</a></p>
-            <p>📍 Tenstagången 25, 163 64 Spånga</p>
-          </div>
-          <div style="background:#111;padding:15px;text-align:center;font-size:12px;color:#666;">
-            © Spice Villa Spånga — Autentisk pakistansk mat
-          </div>
-        </div>
-      `;
+      subject = `🍽️ Ny Bordsbokning — ${name} | ${formatDate(date)} kl ${time}`;
+      body = wrapEmail(restaurantBookingEmail(name, phone, email, date, time, guests, message), true);
+
+      customerSubject = `✅ Bokningsbekräftelse — Spice Villa | ${formatDate(date)}`;
+      customerBody = wrapEmail(customerBookingEmail(name, date, time, guests, message));
+
     } else if (form_type === "catering") {
       const guests = validateGuests(rawData.guests);
       const food_type = escapeHtml(validateFoodType(rawData.food_type));
 
-      subject = `🎉 Catering Request - ${name}`;
-      body = `
-        <h2>New Catering Request</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Email:</strong> ${email || "Not provided"}</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Food Type:</strong> ${food_type || "Not specified"}</p>
-        <p><strong>Guests:</strong> ${guests}</p>
-        <p><strong>Message:</strong> ${message || "None"}</p>
-        <hr/>
-        <p style="color:#888;font-size:12px;">Sent from spice-villa-orders.lovable.app</p>
-      `;
-      customerSubject = "Cateringförfrågan mottagen - Spice Villa";
-      customerBody = `
-        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#1a1a1a;color:#fff;border-radius:12px;overflow:hidden;">
-          <div style="background:#d4a843;padding:20px;text-align:center;">
-            <h1 style="margin:0;color:#000;font-size:24px;">Spice Villa</h1>
-            <p style="margin:4px 0 0;color:#333;font-size:14px;">Restaurang &amp; Catering</p>
-          </div>
-          <div style="padding:30px;">
-            <h2 style="color:#d4a843;margin-top:0;">Tack för din cateringförfrågan!</h2>
-            <p>Hej ${name},</p>
-            <p>Vi har mottagit din förfrågan och återkommer med en offert så snart som möjligt.</p>
-            <table style="width:100%;border-collapse:collapse;margin:20px 0;">
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Datum</td><td style="padding:8px 0;border-bottom:1px solid #333;">${date}</td></tr>
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Typ av mat</td><td style="padding:8px 0;border-bottom:1px solid #333;">${food_type || "Ej angiven"}</td></tr>
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Antal gäster</td><td style="padding:8px 0;border-bottom:1px solid #333;">${guests}</td></tr>
-              ${message ? `<tr><td style="padding:8px 0;color:#999;">Meddelande</td><td style="padding:8px 0;">${message}</td></tr>` : ""}
-            </table>
-            <p>Vi kontaktar dig inom kort för att diskutera ditt event.</p>
-            <p style="margin-top:20px;">📞 <a href="tel:+46764222770" style="color:#d4a843;">+46 76-422 27 70</a></p>
-            <p>📍 Tenstagången 25, 163 64 Spånga</p>
-          </div>
-          <div style="background:#111;padding:15px;text-align:center;font-size:12px;color:#666;">
-            © Spice Villa Spånga — Autentisk pakistansk mat
-          </div>
-        </div>
-      `;
-    } else if (form_type === "reservation") {
-      const time = validateTime(rawData.time);
-      const guests = validateGuests(rawData.guests);
+      subject = `🎉 Cateringförfrågan — ${name} | ${guests} gäster`;
+      body = wrapEmail(restaurantCateringEmail(name, phone, email, date, food_type, guests, message), true);
 
-      subject = `📅 Reservation - ${name}`;
-      body = `
-        <h2>New Reservation</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Email:</strong> ${email || "Not provided"}</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Time:</strong> ${time}</p>
-        <p><strong>Guests:</strong> ${guests}</p>
-        <p><strong>Requests:</strong> ${message || "None"}</p>
-        <hr/>
-        <p style="color:#888;font-size:12px;">Sent from spice-villa-orders.lovable.app</p>
-      `;
-      customerSubject = "Bokningsbekräftelse - Spice Villa";
-      customerBody = `
-        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#1a1a1a;color:#fff;border-radius:12px;overflow:hidden;">
-          <div style="background:#d4a843;padding:20px;text-align:center;">
-            <h1 style="margin:0;color:#000;font-size:24px;">Spice Villa</h1>
-            <p style="margin:4px 0 0;color:#333;font-size:14px;">Restaurang &amp; Catering</p>
-          </div>
-          <div style="padding:30px;">
-            <h2 style="color:#d4a843;margin-top:0;">Tack för din reservation!</h2>
-            <p>Hej ${name},</p>
-            <p>Vi har mottagit din reservation. Här är dina uppgifter:</p>
-            <table style="width:100%;border-collapse:collapse;margin:20px 0;">
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Datum</td><td style="padding:8px 0;border-bottom:1px solid #333;">${date}</td></tr>
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Tid</td><td style="padding:8px 0;border-bottom:1px solid #333;">${time}</td></tr>
-              <tr><td style="padding:8px 0;color:#999;border-bottom:1px solid #333;">Antal gäster</td><td style="padding:8px 0;border-bottom:1px solid #333;">${guests}</td></tr>
-              ${message ? `<tr><td style="padding:8px 0;color:#999;">Önskemål</td><td style="padding:8px 0;">${message}</td></tr>` : ""}
-            </table>
-            <p>Vi återkommer med en bekräftelse inom kort.</p>
-            <p style="margin-top:20px;">📞 <a href="tel:+46764222770" style="color:#d4a843;">+46 76-422 27 70</a></p>
-            <p>📍 Tenstagången 25, 163 64 Spånga</p>
-          </div>
-          <div style="background:#111;padding:15px;text-align:center;font-size:12px;color:#666;">
-            © Spice Villa Spånga — Autentisk pakistansk mat
-          </div>
-        </div>
-      `;
+      customerSubject = `✅ Cateringförfrågan mottagen — Spice Villa`;
+      customerBody = wrapEmail(customerCateringEmail(name, date, food_type, guests, message));
     }
 
     const resendKey = Deno.env.get("RESEND_API_KEY");
