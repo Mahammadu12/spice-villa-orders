@@ -316,7 +316,7 @@ Deno.serve(async (req) => {
         Authorization: `Bearer ${resendKey}`,
       },
       body: JSON.stringify({
-        from: "Spice Villa <info@spice-villa.com>",
+        from: "Spice Villa <onboarding@resend.dev>",
         to: [RESTAURANT_EMAIL],
         subject,
         html: body,
@@ -340,7 +340,7 @@ Deno.serve(async (req) => {
           Authorization: `Bearer ${resendKey}`,
         },
         body: JSON.stringify({
-          from: "Spice Villa <info@spice-villa.com>",
+          from: "Spice Villa <onboarding@resend.dev>",
           to: [customerEmail],
           subject: customerSubject,
           html: customerBody,
