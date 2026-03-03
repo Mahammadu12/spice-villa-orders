@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { PartyPopper, Phone, Loader2 } from "lucide-react";
+import { PartyPopper, Phone, Loader2, CalendarDays } from "lucide-react";
+import { format } from "date-fns";
+import { sv } from "date-fns/locale";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { sendFormEmail } from "@/lib/sendFormEmail";
+import { cn } from "@/lib/utils";
 import heroImg from "@/assets/catering-hero.jpg";
 import foodImg from "@/assets/catering-hero.jpg";
 
@@ -31,15 +36,17 @@ const Catering = () => {
   const [sending, setSending] = useState(false);
   const [foodType, setFoodType] = useState("");
   const [eventType, setEventType] = useState("");
+  const [selectedDate, setSelectedDate] = useState<Date>();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!selectedDate) return;
     setSending(true);
 
     const formData = new FormData(e.currentTarget);
     const data: Record<string, string> = {
       form_type: "catering",
-      date: formData.get("date") as string,
+      date: format(selectedDate, "yyyy-MM-dd"),
       food_type: foodType,
       event_type: eventType,
       guests: formData.get("guests") as string,
@@ -126,7 +133,24 @@ const Catering = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Datum", "Date")}</label>
-                    <Input name="date" type="date" required className="border-white/[0.08] bg-white/[0.03]" />
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button variant="outline" className={cn("w-full justify-start text-left font-normal border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06]", !selectedDate && "text-muted-foreground")}>
+                          <CalendarDays className="mr-2 h-4 w-4" />
+                          {selectedDate ? format(selectedDate, "d MMM yyyy", { locale: sv }) : <span>{t("Välj datum", "Pick date")}</span>}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={selectedDate}
+                          onSelect={setSelectedDate}
+                          disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))}
+                          initialFocus
+                          className={cn("p-3 pointer-events-auto")}
+                        />
+                      </PopoverContent>
+                    </Popover>
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-medium text-white/70 uppercase tracking-[0.15em]">{t("Typ av mat", "Food Type")}</label>
@@ -182,7 +206,7 @@ const Catering = () => {
                   <Textarea name="message" placeholder={t("Önskemål, allergier, budget...", "Preferences, allergies, budget...")} maxLength={2000} rows={3} className="border-white/[0.08] bg-white/[0.03]" />
                 </div>
 
-                <Button type="submit" className="w-full" size="lg" disabled={sending}>
+                <Button type="submit" className="w-full" size="lg" disabled={sending || !selectedDate}>
                   {sending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   {t("Skicka förfrågan", "Send Request")}
                 </Button>
