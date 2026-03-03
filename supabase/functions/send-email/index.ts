@@ -3,7 +3,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 };
 
-const RESTAURANT_EMAIL = "info@spice-villa.com";
+const RESTAURANT_EMAIL = "spicevillaab@gmail.com";
 
 // Simple in-memory rate limiter (resets on cold start, but sufficient for basic protection)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
