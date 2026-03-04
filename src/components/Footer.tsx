@@ -21,15 +21,15 @@ const Footer = () => {
                   width={80}
                   height={80}
                   loading="lazy"
-                  decoding="async"
-                />
+                  decoding="async" />
+                
               </div>
               <span className="font-serif text-xl text-white">Spice Villa</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed">
               {t(
                 "Autentisk Indisk - pakistansk - Bengalisk mat i hjärtat av Spånga. Från vår lerugn till ditt bord.",
-                "Authentic Indian - Pakistani - Bengali food in the heart of Spånga. From our clay oven to your table.",
+                "Authentic Indian - Pakistani - Bengali food in the heart of Spånga. From our clay oven to your table."
               )}
             </p>
           </div>
@@ -85,8 +85,8 @@ const Footer = () => {
                   href="https://www.ubereats.com/se/store/spice-villa/Kl8Zy8-nVg2eLxlWCDNlZg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
+                  className="hover:text-primary transition-colors">
+                  
                   {t("Leverans via Uber Eats", "Delivery via Uber Eats")}
                 </a>
               </li>
@@ -110,7 +110,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="mailto:info@spicevillaspanga.se" className="hover:text-primary transition-colors">
-                  info@spicevillaspanga.se
+                  info@spice-villa.se
                 </a>
               </li>
               <li className="leading-relaxed">
@@ -142,8 +142,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;
