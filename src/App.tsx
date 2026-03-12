@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingParticles from "@/components/FloatingParticles";
+import CookieConsent from "@/components/CookieConsent";
 import Index from "./pages/Index";
 
 const Menu = lazy(() => import("./pages/Menu"));
