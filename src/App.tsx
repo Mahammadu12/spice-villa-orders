@@ -17,6 +17,8 @@ const Catering = lazy(() => import("./pages/Catering"));
 const Iftar = lazy(() => import("./pages/Iftar"));
 const About = lazy(() => import("./pages/About"));
 
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Ramadan 2026 ends approximately March 30, 2026
