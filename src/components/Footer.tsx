@@ -126,10 +126,21 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/40 text-xs">
-            © {new Date().getFullYear()} Spice Villa Spånga.{" "}
-            {t("Alla rättigheter förbehållna.", "All rights reserved.")}
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-white/40 text-xs">
+              © {new Date().getFullYear()} Spice Villa Spånga.{" "}
+              {t("Alla rättigheter förbehållna.", "All rights reserved.")}
+            </p>
+            <div className="flex items-center gap-3 text-xs text-white/40">
+              <Link to="/villkor" className="hover:text-primary transition-colors">
+                {t("Villkor", "Terms")}
+              </Link>
+              <span>·</span>
+              <Link to="/integritetspolicy" className="hover:text-primary transition-colors">
+                {t("Integritetspolicy", "Privacy Policy")}
+              </Link>
+            </div>
+          </div>
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-1.5 border border-primary/40 text-primary px-3.5 py-1.5 rounded-full text-xs font-semibold">
               <Check size={14} />
