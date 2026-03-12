@@ -56,6 +56,7 @@ const App = () => (
             </Suspense>
           </main>
           <Footer />
+          <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
