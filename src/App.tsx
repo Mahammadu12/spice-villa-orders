@@ -48,6 +48,8 @@ const App = () => (
                 <Route path="/catering" element={<Catering />} />
                 <Route path="/om-oss" element={<About />} />
                 
+                <Route path="/villkor" element={<TermsOfService />} />
+                <Route path="/integritetspolicy" element={<PrivacyPolicy />} />
                 {isRamadanActive() && <Route path="/iftar" element={<Iftar />} />}
                 <Route path="*" element={<NotFound />} />
               </Routes>
